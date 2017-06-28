@@ -18,18 +18,39 @@ class NewUserViewController: UIViewController {
     
     @IBOutlet var loginButton: UIButton!
     
+    @IBAction func userNameEnter(_ sender: UITextField) {
+        
+        pasWord.becomeFirstResponder()
+        
+    }
+    
+    
+    
+    @IBAction func passWordEnter(_ sender: UITextField) {
+        createUSer()
+    }
+    
+    
+    
+    
     
     @IBAction func loginAction(_ sender: UIButton) {
         
-//        Auth.auth().createUser(withEmail: , password: <#T##String#>) { (user, error) in
-//            
-//        }
         
+        createUSer()
+
      
     }
     
     
     @IBAction func loginWithFacebook(_ sender: UIButton) {
+        
+        
+        
+        
+        
+        
+        
     }
     
     
@@ -62,3 +83,48 @@ class NewUserViewController: UIViewController {
     */
 
 }
+
+
+//MARK: create user
+extension NewUserViewController {
+    
+    func createUSer() {
+        
+        guard let username = userName.text, let password = pasWord.text else { return }
+        
+        
+        if username.characters.count > 0 && password.characters.count > 0 {
+            
+            Auth.auth().createUser(withEmail: username  , password: password) { (user, error) in
+                
+                if error == nil {
+                    print("success")
+                    
+                } else {
+                    
+                    self.standardAlert(title: "Credential Error", message: (error?.localizedDescription)!)
+                }
+                
+                
+                
+                
+            }
+            
+        } else {
+            
+            self.standardAlert(title: "Credentials", message: "Please fill in all fields")
+            
+            
+        }
+        
+        
+    }
+    
+    
+}
+
+
+
+
+
+
