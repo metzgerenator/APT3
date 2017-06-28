@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		279745931F03E9FF00ED5D34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745921F03E9FF00ED5D34 /* AppDelegate.swift */; };
-		279745951F03E9FF00ED5D34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745941F03E9FF00ED5D34 /* ViewController.swift */; };
 		279745981F03E9FF00ED5D34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279745961F03E9FF00ED5D34 /* Main.storyboard */; };
 		2797459A1F03E9FF00ED5D34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 279745991F03E9FF00ED5D34 /* Assets.xcassets */; };
 		2797459D1F03E9FF00ED5D34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2797459B1F03E9FF00ED5D34 /* LaunchScreen.storyboard */; };
 		279745A81F03E9FF00ED5D34 /* AptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745A71F03E9FF00ED5D34 /* AptTests.swift */; };
 		279745B31F03E9FF00ED5D34 /* AptUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745B21F03E9FF00ED5D34 /* AptUITests.swift */; };
 		279745C11F03EAAF00ED5D34 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 279745C01F03EAAF00ED5D34 /* GoogleService-Info.plist */; };
+		279745C51F03EDA700ED5D34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745C41F03EDA700ED5D34 /* LoginViewController.swift */; };
+		279745CA1F03F0B000ED5D34 /* UibuttonFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745C91F03F0B000ED5D34 /* UibuttonFormats.swift */; };
 		8CEB8DC593222523527A71A3 /* Pods_Apt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C6397714E41901F2A659AF /* Pods_Apt.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +39,6 @@
 /* Begin PBXFileReference section */
 		2797458F1F03E9FF00ED5D34 /* Apt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279745921F03E9FF00ED5D34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		279745941F03E9FF00ED5D34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		279745971F03E9FF00ED5D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		279745991F03E9FF00ED5D34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2797459C1F03E9FF00ED5D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,6 +50,8 @@
 		279745B21F03E9FF00ED5D34 /* AptUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AptUITests.swift; sourceTree = "<group>"; };
 		279745B41F03E9FF00ED5D34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		279745C01F03EAAF00ED5D34 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		279745C41F03EDA700ED5D34 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		279745C91F03F0B000ED5D34 /* UibuttonFormats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UibuttonFormats.swift; sourceTree = "<group>"; };
 		3CA3879DF81A39E1048246E4 /* Pods-Apt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Apt/Pods-Apt.debug.xcconfig"; sourceTree = "<group>"; };
 		56C6397714E41901F2A659AF /* Pods_Apt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D74362172C90B3097E2B308D /* Pods-Apt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Apt/Pods-Apt.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,8 +117,9 @@
 		279745911F03E9FF00ED5D34 /* Apt */ = {
 			isa = PBXGroup;
 			children = (
+				279745C81F03F08900ED5D34 /* formatextensions */,
+				279745C31F03ED7B00ED5D34 /* Authentication */,
 				279745921F03E9FF00ED5D34 /* AppDelegate.swift */,
-				279745941F03E9FF00ED5D34 /* ViewController.swift */,
 				279745961F03E9FF00ED5D34 /* Main.storyboard */,
 				279745991F03E9FF00ED5D34 /* Assets.xcassets */,
 				2797459B1F03E9FF00ED5D34 /* LaunchScreen.storyboard */,
@@ -142,6 +145,22 @@
 				279745B41F03E9FF00ED5D34 /* Info.plist */,
 			);
 			path = AptUITests;
+			sourceTree = "<group>";
+		};
+		279745C31F03ED7B00ED5D34 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				279745C41F03EDA700ED5D34 /* LoginViewController.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		279745C81F03F08900ED5D34 /* formatextensions */ = {
+			isa = PBXGroup;
+			children = (
+				279745C91F03F0B000ED5D34 /* UibuttonFormats.swift */,
+			);
+			name = formatextensions;
 			sourceTree = "<group>";
 		};
 		A0756DD6E94A1E27BFF66940 /* Frameworks */ = {
@@ -316,7 +335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		DD00AF7C5390306C83479809 /* [CP] Copy Pods Resources */ = {
@@ -341,7 +360,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				279745951F03E9FF00ED5D34 /* ViewController.swift in Sources */,
+				279745CA1F03F0B000ED5D34 /* UibuttonFormats.swift in Sources */,
+				279745C51F03EDA700ED5D34 /* LoginViewController.swift in Sources */,
 				279745931F03E9FF00ED5D34 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
