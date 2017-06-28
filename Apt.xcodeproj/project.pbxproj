@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27562C111F04432600C6FFFC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27562C0D1F04432600C6FFFC /* Bolts.framework */; };
+		27562C121F04432600C6FFFC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27562C0E1F04432600C6FFFC /* FBSDKCoreKit.framework */; };
+		27562C131F04432600C6FFFC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27562C0F1F04432600C6FFFC /* FBSDKLoginKit.framework */; };
+		27562C141F04432600C6FFFC /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27562C101F04432600C6FFFC /* FBSDKShareKit.framework */; };
 		279745931F03E9FF00ED5D34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745921F03E9FF00ED5D34 /* AppDelegate.swift */; };
 		279745981F03E9FF00ED5D34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279745961F03E9FF00ED5D34 /* Main.storyboard */; };
 		2797459A1F03E9FF00ED5D34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 279745991F03E9FF00ED5D34 /* Assets.xcassets */; };
@@ -40,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27562C0D1F04432600C6FFFC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		27562C0E1F04432600C6FFFC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		27562C0F1F04432600C6FFFC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		27562C101F04432600C6FFFC /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		2797458F1F03E9FF00ED5D34 /* Apt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279745921F03E9FF00ED5D34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		279745971F03E9FF00ED5D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +77,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CEB8DC593222523527A71A3 /* Pods_Apt.framework in Frameworks */,
+				27562C121F04432600C6FFFC /* FBSDKCoreKit.framework in Frameworks */,
+				27562C141F04432600C6FFFC /* FBSDKShareKit.framework in Frameworks */,
+				27562C131F04432600C6FFFC /* FBSDKLoginKit.framework in Frameworks */,
+				27562C111F04432600C6FFFC /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +195,10 @@
 		A0756DD6E94A1E27BFF66940 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27562C0D1F04432600C6FFFC /* Bolts.framework */,
+				27562C0E1F04432600C6FFFC /* FBSDKCoreKit.framework */,
+				27562C0F1F04432600C6FFFC /* FBSDKLoginKit.framework */,
+				27562C101F04432600C6FFFC /* FBSDKShareKit.framework */,
 				56C6397714E41901F2A659AF /* Pods_Apt.framework */,
 			);
 			name = Frameworks;
@@ -536,6 +552,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BP8BUJFQU2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Apt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.metzger.Apt;
@@ -550,6 +570,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = BP8BUJFQU2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Apt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.metzger.Apt;

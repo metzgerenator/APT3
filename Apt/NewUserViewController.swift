@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class NewUserViewController: UIViewController {
     
@@ -60,6 +61,15 @@ class NewUserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+//        loginButton.center = self.view.center;
+//        [self.view addSubview:loginButton];
+//        
+        
+        let button = FBSDKLoginButton()
+        button.center = self.view.center
+        self.view.addSubview(button)
         
         loginButton.clearRound()
 
