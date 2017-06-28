@@ -20,5 +20,13 @@ extension UIButton {
     }
     
     
+    func clearRound() {
+        
+        self.layer.cornerRadius = 10.0
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = #colorLiteral(red: 0.1155018732, green: 0.505417347, blue: 0.9707024693, alpha: 1).cgColor
+    }
+    
+    
 }
 
