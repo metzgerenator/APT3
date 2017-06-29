@@ -86,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="1076" y="254.12293853073464"/>
         </scene>
-        <!--New User View Controller-->
+        <!--Delegate-->
         <scene sceneID="3aI-go-PHo">
             <objects>
                 <viewController id="mOE-aF-Nei" customClass="NewUserViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
@@ -160,11 +160,11 @@
                                     <action selector="loginAction:" destination="mOE-aF-Nei" eventType="touchUpInside" id="5Ch-1Y-i3k"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltA-ih-r88">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltA-ih-r88" customClass="FBSDKLoginButton">
                                 <rect key="frame" x="102" y="441" width="170" height="30"/>
                                 <state key="normal" title="LOGIN WITH FACEBOOK"/>
                                 <connections>
-                                    <action selector="loginWithFacebook:" destination="mOE-aF-Nei" eventType="touchUpInside" id="6v0-ph-jjW"/>
+                                    <outlet property="delegate" destination="mOE-aF-Nei" id="6Ah-tm-ivI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -186,6 +186,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="N9a-kR-uLP"/>
                     <connections>
+                        <outlet property="faceBookButton" destination="ltA-ih-r88" id="1sO-Qb-kji"/>
                         <outlet property="loginButton" destination="N5r-Aj-LjS" id="tYM-Dk-q19"/>
                         <outlet property="pasWord" destination="MxA-Jh-YOb" id="ue6-YS-UM9"/>
                         <outlet property="userName" destination="DmU-ev-m1V" id="2NY-uI-uod"/>

@@ -19,6 +19,10 @@ class NewUserViewController: UIViewController {
     
     @IBOutlet var loginButton: UIButton!
     
+    
+    
+    @IBOutlet var faceBookButton: FBSDKLoginButton!
+    
     @IBAction func userNameEnter(_ sender: UITextField) {
         
         pasWord.becomeFirstResponder()
@@ -44,15 +48,7 @@ class NewUserViewController: UIViewController {
     }
     
     
-    @IBAction func loginWithFacebook(_ sender: UIButton) {
-        
-        
-        
-        
-        
-        
-        
-    }
+
     
     
     
@@ -62,14 +58,10 @@ class NewUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-//        loginButton.center = self.view.center;
-//        [self.view addSubview:loginButton];
-//        
-        
-        let button = FBSDKLoginButton()
-        button.center = self.view.center
-        self.view.addSubview(button)
+        //faceBookButton.delegate = self
+       // let button = FBSDKLoginButton()
+//        button.center = self.view.center
+//        self.view.addSubview(button)
         
         loginButton.clearRound()
 
@@ -96,14 +88,58 @@ class NewUserViewController: UIViewController {
 
 
 //MARK: create user
-extension NewUserViewController {
+extension NewUserViewController: FBSDKLoginButtonDelegate {
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+    }
+    
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
+        
+        if error == nil {
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            print("success facebook\(credential) ")
+            
+            
+            
+            Auth.auth().signIn(with: credential) { (user, error) in
+                if let error = error {
+                    
+                    print("error occured \(error)")
+                    // ...
+                    return
+                }
+                
+                print("user = (user)")
+                // User is signed in
+                // ...
+            }
+        
+
+        }
+        
+        if let error = error {
+            print("error facebook")
+            print(error.localizedDescription)
+            return
+        }
+        // ...
+    }
+    
+    
+    
     
     func createUSer() {
+        
         
         guard let username = userName.text, let password = pasWord.text else { return }
         
         
         if username.characters.count > 0 && password.characters.count > 0 {
+            
+            
             
             Auth.auth().createUser(withEmail: username  , password: password) { (user, error) in
                 
@@ -132,6 +168,8 @@ extension NewUserViewController {
     
     
 }
+
+
 
 
 

@@ -66,6 +66,7 @@
 		279745CB1F04039400ED5D34 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		279745CD1F04283D00ED5D34 /* alertViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = alertViews.swift; path = Apt/alertViews.swift; sourceTree = "<group>"; };
 		279745D01F042F6200ED5D34 /* FirbaseReadWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirbaseReadWrite.swift; sourceTree = "<group>"; };
+		27F84F4A1F053BF700693945 /* Apt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Apt.entitlements; sourceTree = "<group>"; };
 		3CA3879DF81A39E1048246E4 /* Pods-Apt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Apt/Pods-Apt.debug.xcconfig"; sourceTree = "<group>"; };
 		56C6397714E41901F2A659AF /* Pods_Apt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D74362172C90B3097E2B308D /* Pods-Apt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Apt/Pods-Apt.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 		279745911F03E9FF00ED5D34 /* Apt */ = {
 			isa = PBXGroup;
 			children = (
+				27F84F4A1F053BF700693945 /* Apt.entitlements */,
 				279745C81F03F08900ED5D34 /* formatextensions */,
 				279745C31F03ED7B00ED5D34 /* Authentication */,
 				279745921F03E9FF00ED5D34 /* AppDelegate.swift */,
@@ -277,6 +279,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = BP8BUJFQU2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					279745A21F03E9FF00ED5D34 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -551,6 +558,7 @@
 			baseConfigurationReference = 3CA3879DF81A39E1048246E4 /* Pods-Apt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Apt/Apt.entitlements;
 				DEVELOPMENT_TEAM = BP8BUJFQU2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -569,6 +577,7 @@
 			baseConfigurationReference = D74362172C90B3097E2B308D /* Pods-Apt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Apt/Apt.entitlements;
 				DEVELOPMENT_TEAM = BP8BUJFQU2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
