@@ -39,6 +39,18 @@ class LoginViewController: UIViewController {
         //MARK: sign user out
         try! Auth.auth().signOut()
         
+        
+        if Auth.auth().currentUser != nil {
+            
+            let user = Auth.auth().currentUser
+            
+            print("here is user \(String(describing: user?.uid))")
+            
+            
+        } else {
+            print("user is singed out")
+        }
+        
       formattButtons()
         
 

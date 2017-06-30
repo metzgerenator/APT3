@@ -101,13 +101,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKt-5c-v87">
-                                <rect key="frame" x="83" y="629" width="208" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="208" id="N6V-Vt-hoK"/>
-                                </constraints>
-                                <state key="normal" title="FORGOT YOUR PASSWORD ? "/>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pJ6-xh-NGt" userLabel="Loginfields">
                                 <rect key="frame" x="16" y="298.5" width="343" height="70"/>
                                 <subviews>
@@ -176,14 +169,12 @@
                             <constraint firstItem="zcr-TE-5bT" firstAttribute="centerX" secondItem="NuR-Y1-3Ru" secondAttribute="centerX" id="0ME-qe-TVG"/>
                             <constraint firstItem="ltA-ih-r88" firstAttribute="centerX" secondItem="NuR-Y1-3Ru" secondAttribute="centerX" id="3S0-wm-tL1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pJ6-xh-NGt" secondAttribute="trailing" id="5wE-K1-r6U"/>
-                            <constraint firstItem="rKt-5c-v87" firstAttribute="centerX" secondItem="NuR-Y1-3Ru" secondAttribute="centerX" id="GDP-te-xH3"/>
                             <constraint firstItem="ltA-ih-r88" firstAttribute="top" secondItem="N5r-Aj-LjS" secondAttribute="bottom" constant="26" id="HTW-7K-V01"/>
                             <constraint firstItem="N5r-Aj-LjS" firstAttribute="top" secondItem="pJ6-xh-NGt" secondAttribute="bottom" constant="16.5" id="Tfs-Jm-5nR"/>
                             <constraint firstItem="N5r-Aj-LjS" firstAttribute="centerX" secondItem="NuR-Y1-3Ru" secondAttribute="centerX" id="bo0-dh-XMj"/>
                             <constraint firstItem="pJ6-xh-NGt" firstAttribute="leading" secondItem="NuR-Y1-3Ru" secondAttribute="leadingMargin" id="dXU-ak-LQD"/>
                             <constraint firstItem="zcr-TE-5bT" firstAttribute="top" secondItem="lZs-Y7-WFa" secondAttribute="bottom" constant="60" id="eop-6e-cNc"/>
                             <constraint firstItem="pJ6-xh-NGt" firstAttribute="centerX" secondItem="NuR-Y1-3Ru" secondAttribute="centerX" id="gkG-81-XZa"/>
-                            <constraint firstItem="nLf-fk-s5v" firstAttribute="top" secondItem="rKt-5c-v87" secondAttribute="bottom" constant="8" id="k0c-Bj-3eb"/>
                             <constraint firstItem="pJ6-xh-NGt" firstAttribute="centerY" secondItem="NuR-Y1-3Ru" secondAttribute="centerY" id="u5a-GE-BJs"/>
                         </constraints>
                     </view>
@@ -237,10 +228,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="254.12293853073464"/>
         </scene>
-        <!--View Controller-->
+        <!--Delegate-->
         <scene sceneID="JfP-XV-C1T">
             <objects>
-                <viewController id="6fX-Uc-iY2" sceneMemberID="viewController">
+                <viewController id="6fX-Uc-iY2" customClass="CurrentUserViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9YB-nM-n2w"/>
                         <viewControllerLayoutGuide type="bottom" id="Mpg-oE-4Rl"/>
@@ -264,7 +255,10 @@
                                         <color key="backgroundColor" red="0.96852236989999996" green="0.96868795159999999" blue="0.96851199870000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="userNameNext:" destination="6fX-Uc-iY2" eventType="primaryActionTriggered" id="6Ag-wA-RI4"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Vu-ft-c2x">
                                         <rect key="frame" x="0.0" y="40" width="343" height="30"/>
@@ -272,6 +266,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="passwordGo:" destination="6fX-Uc-iY2" eventType="primaryActionTriggered" id="f5H-BU-ETh"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -301,10 +298,16 @@
                                     <constraint firstAttribute="width" constant="200" id="63T-GY-amb"/>
                                 </constraints>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonAction:" destination="6fX-Uc-iY2" eventType="touchUpInside" id="gBY-FD-nIu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ick-kW-5Sm" customClass="FBSDKLoginButton">
                                 <rect key="frame" x="102" y="441" width="170" height="30"/>
                                 <state key="normal" title="LOGIN WITH FACEBOOK"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6fX-Uc-iY2" id="HAc-iE-up7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -324,6 +327,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iAc-ad-Fjs"/>
+                    <connections>
+                        <outlet property="faceBookLogin" destination="Ick-kW-5Sm" id="LHQ-sh-749"/>
+                        <outlet property="loginButton" destination="hkR-45-bZd" id="fhc-El-INf"/>
+                        <outlet property="passWord" destination="2Vu-ft-c2x" id="N2O-io-0xH"/>
+                        <outlet property="userName" destination="shA-FW-d7J" id="9yM-Yg-Xic"/>
+                        <segue destination="y0H-ti-rs9" kind="presentation" identifier="properties" id="OCr-XA-FAK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odJ-Lk-WyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -335,6 +345,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="y0H-ti-rs9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jW0-1v-EwI">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -347,4 +358,7 @@
             <point key="canvasLocation" x="2439.1999999999998" y="1151.8740629685158"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="OCr-XA-FAK"/>
+    </inferredMetricsTieBreakers>
 </document>

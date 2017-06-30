@@ -59,10 +59,7 @@ class NewUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //faceBookButton.delegate = self
-       // let button = FBSDKLoginButton()
-//        button.center = self.view.center
-//        self.view.addSubview(button)
+
         
         loginButton.clearRound()
 
@@ -131,7 +128,6 @@ extension NewUserViewController: FBSDKLoginButtonDelegate {
             print(error.localizedDescription)
             return
         }
-        // ...
     }
     
     
@@ -184,23 +180,6 @@ extension NewUserViewController: FBSDKLoginButtonDelegate {
 }
 
 
-//extension NewUserViewController {
-//    
-//    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == propertyview {
-//            
-//            
-//            guard let barViewControllers = segue.destination as? UITabBarController else {return }
-//            let nav = barViewControllers.viewControllers![0] as! UINavigationController
-//            guard let destinationViewController = nav.topViewController else { return}
-//            
-//        }
-//    }
-//    
-//    
-//    
-//}
 
 
 
