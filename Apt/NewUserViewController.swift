@@ -100,19 +100,24 @@ extension NewUserViewController: FBSDKLoginButtonDelegate {
         if error == nil {
             
             let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            print("success facebook\(credential) ")
             
             
-            
+        
             Auth.auth().signIn(with: credential) { (user, error) in
                 if let error = error {
                     
-                    print("error occured \(error)")
+                    self.standardAlert(title: "Error", message: error.localizedDescription)
+                    
                     // ...
                     return
+                } else {
+                    
+                    guard let newUser = user else {return }
+                    
+                    Endpoints.createNewUser(user: newUser, authType: .facebook)
+                    
                 }
                 
-                print("user = (user)")
                 // User is signed in
                 // ...
             }
@@ -144,7 +149,11 @@ extension NewUserViewController: FBSDKLoginButtonDelegate {
             Auth.auth().createUser(withEmail: username  , password: password) { (user, error) in
                 
                 if error == nil {
-                    print("success")
+                    
+                    guard let newUSer = user else {return}
+                    
+                    Endpoints.createNewUser(user: newUSer, authType: .email)
+                    
                     
                 } else {
                     

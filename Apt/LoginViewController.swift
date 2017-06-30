@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         //MARK: sign user out
-       // try! Auth.auth().signOut()
+        //try! Auth.auth().signOut()
         
       formattButtons()
         
