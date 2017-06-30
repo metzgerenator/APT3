@@ -12,6 +12,7 @@ import FBSDKLoginKit
 
 class NewUserViewController: UIViewController {
     
+    let  propertyview = "properties"
     
     @IBOutlet var userName: UITextField!
     
@@ -115,11 +116,11 @@ extension NewUserViewController: FBSDKLoginButtonDelegate {
                     guard let newUser = user else {return }
                     
                     Endpoints.createNewUser(user: newUser, authType: .facebook)
+                     self.performSegue(withIdentifier: self.propertyview, sender: self)
                     
                 }
                 
-                // User is signed in
-                // ...
+              
             }
         
 
@@ -152,7 +153,11 @@ extension NewUserViewController: FBSDKLoginButtonDelegate {
                     
                     guard let newUSer = user else {return}
                     
+                    print("user \(String(describing: user?.uid))")
+                    
                     Endpoints.createNewUser(user: newUSer, authType: .email)
+                    
+                    self.performSegue(withIdentifier: self.propertyview, sender: self)
                     
                     
                 } else {
@@ -177,6 +182,25 @@ extension NewUserViewController: FBSDKLoginButtonDelegate {
     
     
 }
+
+
+//extension NewUserViewController {
+//    
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == propertyview {
+//            
+//            
+//            guard let barViewControllers = segue.destination as? UITabBarController else {return }
+//            let nav = barViewControllers.viewControllers![0] as! UINavigationController
+//            guard let destinationViewController = nav.topViewController else { return}
+//            
+//        }
+//    }
+//    
+//    
+//    
+//}
 
 
 

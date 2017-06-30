@@ -116,7 +116,7 @@
                                         <color key="backgroundColor" red="0.96852236986160278" green="0.96868795156478882" blue="0.96851199865341187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                         <connections>
                                             <action selector="userNameEnter:" destination="mOE-aF-Nei" eventType="primaryActionTriggered" id="ABK-IO-czV"/>
                                         </connections>
@@ -126,7 +126,7 @@
                                         <color key="backgroundColor" red="0.96852236986160278" green="0.96868795156478882" blue="0.96851199865341187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                                         <connections>
                                             <action selector="passWordEnter:" destination="mOE-aF-Nei" eventType="primaryActionTriggered" id="yUi-mj-xpM"/>
                                         </connections>
@@ -193,11 +193,31 @@
                         <outlet property="loginButton" destination="N5r-Aj-LjS" id="tYM-Dk-q19"/>
                         <outlet property="pasWord" destination="MxA-Jh-YOb" id="ue6-YS-UM9"/>
                         <outlet property="userName" destination="DmU-ev-m1V" id="2NY-uI-uod"/>
+                        <segue destination="y0H-ti-rs9" kind="presentation" identifier="properties" id="qSC-MX-tZX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xye-ww-wJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1127" y="1056"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="OC4-Xw-Q1O">
+            <objects>
+                <viewController id="6GW-oY-ELK" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xu0-vs-3Wd"/>
+                        <viewControllerLayoutGuide type="bottom" id="kaf-FC-NYc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tqV-hK-ljN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Knh-o2-8cW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0K9-Pi-T3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3378.4000000000001" y="1151.8740629685158"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fp1-o9-LpR">
@@ -308,6 +328,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odJ-Lk-WyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2009" y="267"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="GIo-2N-Qsd">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="y0H-ti-rs9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="jW0-1v-EwI">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="6GW-oY-ELK" kind="relationship" relationship="viewControllers" id="mfr-Vo-I6F"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c1l-Ws-iNv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2439.1999999999998" y="1151.8740629685158"/>
         </scene>
     </scenes>
 </document>

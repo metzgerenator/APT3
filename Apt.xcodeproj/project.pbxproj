@@ -102,9 +102,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		274108DA1F06A1BE00B60BBA /* Mainproperty page */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Mainproperty page";
+			sourceTree = "<group>";
+		};
 		279745861F03E9FF00ED5D34 = {
 			isa = PBXGroup;
 			children = (
+				274108DA1F06A1BE00B60BBA /* Mainproperty page */,
 				279745CF1F04284900ED5D34 /* Resources */,
 				279745911F03E9FF00ED5D34 /* Apt */,
 				279745A61F03E9FF00ED5D34 /* AptTests */,
