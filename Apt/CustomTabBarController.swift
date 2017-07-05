@@ -50,3 +50,28 @@ class CustomTabBar: UITabBarController {
 
     
 }
+
+
+
+
+class customNavItem: UINavigationController {
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+       self.navigationController?.navigationBar.backgroundColor =  #colorLiteral(red: 0.1155018732, green: 0.505417347, blue: 0.9707024693, alpha: 1)
+        
+    }
+    
+
+    
+    
+    
+   
+}
