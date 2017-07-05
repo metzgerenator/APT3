@@ -315,7 +315,7 @@
             <objects>
                 <tableViewController id="A8z-Fx-6oj" customClass="PropertyDetailsTableViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ntO-3n-yUp">
-                        <rect key="frame" x="0.0" y="0.0" width="375.5" height="466.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375.5" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -433,7 +433,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="aOI-Xu-PGQ">
-                                        <rect key="frame" x="0.0" y="276" width="376" height="110"/>
+                                        <rect key="frame" x="0.0" y="276" width="375.5" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aOI-Xu-PGQ" id="YUe-AD-0Lm">
                                             <rect key="frame" x="0.0" y="0.0" width="375.5" height="109.5"/>
@@ -441,6 +441,7 @@
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3s-D1-8Zt">
                                                     <rect key="frame" x="0.0" y="0.0" width="375.5" height="109.5"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <connections>
                                                         <outlet property="dataSource" destination="A8z-Fx-6oj" id="rBi-zZ-qiB"/>
                                                         <outlet property="delegate" destination="A8z-Fx-6oj" id="rOK-ul-seu"/>
@@ -461,6 +462,18 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qRD-f4-q3w" id="gWy-CK-mHV">
                                             <rect key="frame" x="0.0" y="0.0" width="375.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tester" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUW-db-5Jx">
+                                                    <rect key="frame" x="165.5" y="11.5" width="45" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nUW-db-5Jx" firstAttribute="centerY" secondItem="gWy-CK-mHV" secondAttribute="centerY" id="2Pu-Bu-qQH"/>
+                                                <constraint firstItem="nUW-db-5Jx" firstAttribute="centerX" secondItem="gWy-CK-mHV" secondAttribute="centerX" id="ZLe-ix-NAr"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -471,8 +484,11 @@
                             <outlet property="delegate" destination="A8z-Fx-6oj" id="KWt-jc-aMf"/>
                         </connections>
                     </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375.5" height="1000"/>
                     <connections>
                         <outlet property="bedRoomSelection" destination="L3s-D1-8Zt" id="9eh-jG-JGE"/>
+                        <outlet property="bedRoomSelectionRow" destination="aOI-Xu-PGQ" id="QnM-Av-3Co"/>
                         <outlet property="bedroomNumber" destination="OCf-kd-Bu2" id="rE4-Nv-Qm2"/>
                         <segue destination="bms-nl-h37" kind="presentation" identifier="rent" id="iet-Qy-zUO"/>
                     </connections>

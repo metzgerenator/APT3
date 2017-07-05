@@ -14,6 +14,7 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     @IBOutlet var bedroomNumber: UILabel!
     
+    @IBOutlet var bedRoomSelectionRow: UITableViewCell!
     
     let bedrooms = ["0","1","2", "3", "4", "5", "6", "7"]
     
@@ -21,21 +22,13 @@ class PropertyDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-        
-        
-    
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
    
@@ -44,14 +37,75 @@ class PropertyDetailsTableViewController: UITableViewController {
 }
 
 
+
+
+
+//MARK: tableview Methods 
+
+
+extension PropertyDetailsTableViewController  {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch (indexPath.row, indexPath.section) {
+        case (0, 1):
+            
+            
+            switch bedRoomSelectionRow.isHidden {
+            case true:
+                bedRoomSelectionRow.isHidden = false
+                tableView.reloadData()
+            default:
+                 bedRoomSelectionRow.isHidden = true
+                tableView.reloadData()
+            }
+        default:
+            return
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+
+        
+        if indexPath.row == 1 && indexPath.section == 1 {
+            
+            switch bedRoomSelectionRow.isHidden {
+            case true:
+                return 0
+            case false:
+                return UITableViewAutomaticDimension
+            }
+            
+        } else {
+            return UITableViewAutomaticDimension
+        }
+        
+    }
+
+    
+    
+    
+}
+
+
+
+
+
+
 //MARK: picker methods
 
 extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
-        
-        
+
         return 1
     }
     
@@ -66,6 +120,8 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
         }
     
     }
+    
+    
    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
@@ -79,6 +135,7 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
     }
     
     
+
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
@@ -90,6 +147,9 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
         }
         
     }
+    
+    
+
     
     
     
