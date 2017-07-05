@@ -9,13 +9,30 @@
 import Foundation
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 
-
+var currentUSer: User?  {
+    guard let user =  Auth.auth().currentUser else { return nil}
+    return user
+}
 
 enum UserAuthType: String {
     case facebook
     case email
+    
+}
+
+
+enum Childs: String {
+    
+    case Properties
+    
+}
+
+enum PropertyKeys: String {
+    
+    case PropertyName = "Property_Name"
     
 }
 
@@ -25,9 +42,10 @@ enum Endpoints {
     
     var url: DatabaseReference {
         switch self {
+            
         case .users:
             return  Database.database().reference().child("Users")
-        
+
         }
     }
     
@@ -39,6 +57,23 @@ enum Endpoints {
         self.users.url.child(uid).setValue(["Authtype" : authType.rawValue])
         
         
+        
+    }
+    
+    
+    static func appendValues(child: Childs, values: [String : Any])-> DatabaseReference? {
+        
+        if let user = currentUSer {
+            
+            let autoID = self.users.url.child(user.uid).child("\(child)").childByAutoId()
+            
+          autoID.setValue(values)
+         return autoID
+            
+        } else {
+            
+            return nil
+        }
         
     }
     
