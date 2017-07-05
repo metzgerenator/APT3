@@ -23,6 +23,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        // check for current user and change initial view controller
+        
+        //MARK: sign user out
+        //try! Auth.auth().signOut()
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let loginView = storyBoard.instantiateViewController(withIdentifier: "toMain")
+        let mainView = storyBoard.instantiateViewController(withIdentifier: "toLogin")
+        
+        
+        if Auth.auth().currentUser != nil {
+            
+            //toMain
+            self.window?.rootViewController = loginView
+
+        } else {
+            // toLogin
+             self.window?.rootViewController = mainView
+        }
+        
+        self.window?.makeKeyAndVisible()
+        
         
         return true
     }

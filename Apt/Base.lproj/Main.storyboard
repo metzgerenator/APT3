@@ -213,7 +213,7 @@
         <!--Navigation Controller-->
         <scene sceneID="fp1-o9-LpR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dFL-Lk-wSP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="toLogin" automaticallyAdjustsScrollViewInsets="NO" id="dFL-Lk-wSP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ger-sz-mtl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -342,7 +342,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="GIo-2N-Qsd">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="y0H-ti-rs9" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="toMain" automaticallyAdjustsScrollViewInsets="NO" id="y0H-ti-rs9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jW0-1v-EwI">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
