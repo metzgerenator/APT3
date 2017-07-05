@@ -247,10 +247,10 @@
             </objects>
             <point key="canvasLocation" x="5004" y="1074.5127436281859"/>
         </scene>
-        <!--View Controller-->
+        <!--Property Details View Controller-->
         <scene sceneID="LpG-zA-yJ7">
             <objects>
-                <viewController id="idc-yB-k3n" sceneMemberID="viewController">
+                <viewController id="idc-yB-k3n" customClass="PropertyDetailsViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cef-y7-VKr"/>
                         <viewControllerLayoutGuide type="bottom" id="mL9-iu-yN7"/>

@@ -23,7 +23,7 @@ class PropertyNameViewController: UIViewController {
             
            let autoID =  Endpoints.appendValues(child: .Properties, values: dictionary)
             
-            self.performSegue(withIdentifier: "property_details", sender: nil)
+            self.performSegue(withIdentifier: "property_details", sender: name)
             
             // pass auto id to new controller
             
@@ -57,6 +57,18 @@ class PropertyNameViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "property_details" {
+            
+            guard let vc = segue.destination as? PropertyDetailsViewController,
+                let propertyName = sender as? String  else {return}
+
+            vc.propertyName = propertyName
+            
+            
+        }
+    }
 
   
 

@@ -9,10 +9,13 @@
 import UIKit
 
 class PropertyDetailsViewController: UIViewController {
+    
+    var propertyName: String?  
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("here is property name \(propertyName)")
         
         
 
