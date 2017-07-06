@@ -32,7 +32,11 @@ enum Childs: String {
 
 enum PropertyKeys: String {
     
+    case RentPrice = "Rent_Price"
+    case RentFrequency = "Rent_Frequency"
     case PropertyName = "Property_Name"
+    case BedroomNumber = "Number_of_Bedrooms"
+    case BathroomNumber = "Number_of_Bathrooms"
     
 }
 

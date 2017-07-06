@@ -9,6 +9,8 @@
 import UIKit
 
 class PropertyDetailsTableViewController: UITableViewController {
+    
+    var dictionaryToSave: Dictionary = [String : Any]()
 
     @IBOutlet var bedRoomSelection: UIPickerView!
     
@@ -66,7 +68,6 @@ extension PropertyDetailsTableViewController  {
             
         }
         
-        print("selected row \(indexPath.row) section \(indexPath.section)")
         
         
         switch (indexPath.row, indexPath.section) {
@@ -172,9 +173,11 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
         switch pickerView {
         case bedRoomSelection:
             bedroomNumber.text = bedrooms[row]
+            appender(key: .BathroomNumber, value: bedrooms[row])
             
         case bathroomSelectionPicker:
             bathroomNumber.text = bedrooms[row]
+            appender(key: .BedroomNumber, value: bedrooms[row])
         default:
             break
         }
@@ -204,3 +207,33 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
     
     
 }
+
+
+
+
+extension PropertyDetailsTableViewController: appendToDictionaryDelegate {
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "rent" {
+            
+            guard let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? RentTableViewController else {return}
+            
+            vc.delegate = self
+            
+            
+        }
+    }
+    
+    
+    func appender(key: PropertyKeys, value: String) {
+        
+        dictionaryToSave.updateValue(value, forKey: key.rawValue)
+        
+        print("here is current dictionary \(dictionaryToSave)")
+        
+    }
+    
+}
+
+

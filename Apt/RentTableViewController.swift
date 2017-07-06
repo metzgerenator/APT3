@@ -11,7 +11,13 @@ import UIKit
 class RentTableViewController: UITableViewController {
     
     
+    
+    var delegate: appendToDictionaryDelegate?
+    
     let pickerWheel = ["Weekly", "Yearly", "Monthly"]
+    
+    var currentPrice: String?
+    var rentTerms:String?
     
     
     @IBOutlet var priceField: UITextField!
@@ -21,6 +27,8 @@ class RentTableViewController: UITableViewController {
 
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         
+        //be sure to zero out what is appended to delage 
+        
         self.dismiss(animated: true, completion: nil)
  
     }
@@ -29,7 +37,24 @@ class RentTableViewController: UITableViewController {
     
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
         
-        // add protocol here
+        if let delegateCheck = delegate {
+            
+            if let rent = currentPrice {
+                
+                 delegateCheck.appender(key: .RentPrice, value: rent)
+            }
+            
+            if let terms = rentTerms {
+                
+                delegateCheck.appender(key: .RentFrequency, value: terms)
+            }
+            
+           
+            
+            
+        }
+        
+        
         
     }
     
@@ -44,10 +69,9 @@ class RentTableViewController: UITableViewController {
        let currencyFormat = NumberFormatter.localizedString(from: nsnumberDouble , number: .currency)
         
         priceField.text = currencyFormat
+        currentPrice = currencyFormat
         
-        ///print("here is currency format \(currencyFormat)")
-        
-        
+    
     }
     
   
@@ -85,6 +109,8 @@ extension RentTableViewController: UIPickerViewDataSource, UIPickerViewDelegate 
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+       rentTerms = pickerWheel[row]
         
         frequencyOutlet.text = pickerWheel[row]
     }

@@ -559,7 +559,7 @@
         <!--Rent Table View Controller-->
         <scene sceneID="vvB-zA-eZw">
             <objects>
-                <tableViewController id="94N-Gw-3Wn" customClass="RentTableViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="rentPrice" id="94N-Gw-3Wn" customClass="RentTableViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iQh-v7-tix">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

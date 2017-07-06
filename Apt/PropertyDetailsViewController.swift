@@ -13,6 +13,11 @@ class PropertyDetailsViewController: UIViewController {
     var propertyName: String?  
 
     override func viewDidLoad() {
+        //rentPrice
+        
+       
+       
+        
         super.viewDidLoad()
         self.navigationController?.title = "ADD DETAILS"
         
@@ -29,3 +34,7 @@ class PropertyDetailsViewController: UIViewController {
   
 
 }
+
+
+
+

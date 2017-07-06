@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2714AC421F0CF4690028A81E /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714AC411F0CF4690028A81E /* CustomTabBarController.swift */; };
+		273686731F0E96DE002E9F93 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273686721F0E96DE002E9F93 /* Protocols.swift */; };
 		274108DE1F06BCEC00B60BBA /* CurrentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274108DD1F06BCEC00B60BBA /* CurrentUserViewController.swift */; };
 		27562C111F04432600C6FFFC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27562C0D1F04432600C6FFFC /* Bolts.framework */; };
 		275F6FEF1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FEE1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		2714AC411F0CF4690028A81E /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		273686721F0E96DE002E9F93 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		274108DD1F06BCEC00B60BBA /* CurrentUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserViewController.swift; sourceTree = "<group>"; };
 		27562C0D1F04432600C6FFFC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		275F6FEE1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyNameViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				279745CD1F04283D00ED5D34 /* alertViews.swift */,
 				279745D01F042F6200ED5D34 /* FirbaseReadWrite.swift */,
+				273686721F0E96DE002E9F93 /* Protocols.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				275F6FF31F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift in Sources */,
 				279745CC1F04039400ED5D34 /* NewUserViewController.swift in Sources */,
 				275F6FF51F0D7BAD00F9B2C2 /* RentTableViewController.swift in Sources */,
+				273686731F0E96DE002E9F93 /* Protocols.swift in Sources */,
 				275F6FEF1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift in Sources */,
 				275F6FF11F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift in Sources */,
 				279745931F03E9FF00ED5D34 /* AppDelegate.swift in Sources */,
