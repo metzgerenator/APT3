@@ -31,6 +31,11 @@ class PropertyDetailsTableViewController: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
+        
+        
+        bedRoomSelectionRow.isHidden = true
+        bathRoomSelectionRow.isHidden = true
+        tableView.reloadData()
 
     }
 
@@ -54,6 +59,15 @@ extension PropertyDetailsTableViewController  {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        //row 2 section 0
+        if indexPath.row == 2 && indexPath.section == 0 {
+            
+            self.performSegue(withIdentifier: "rent", sender: nil)
+            
+        }
+        
+        print("selected row \(indexPath.row) section \(indexPath.section)")
+        
         
         switch (indexPath.row, indexPath.section) {
         case (0, 1):
@@ -61,6 +75,7 @@ extension PropertyDetailsTableViewController  {
             switch bedRoomSelectionRow.isHidden {
             case (true):
                 bedRoomSelectionRow.isHidden = false
+
                 tableView.reloadData()
             default:
                 bedRoomSelectionRow.isHidden = true
@@ -71,10 +86,10 @@ extension PropertyDetailsTableViewController  {
             switch bathRoomSelectionRow.isHidden {
             case true:
                 bathRoomSelectionRow.isHidden = false
-                tableView.reloadData()
+               tableView.reloadData()
             default:
                 bathRoomSelectionRow.isHidden = true
-                tableView.reloadData()
+               tableView.reloadData()
             }
             
             
