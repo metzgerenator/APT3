@@ -16,6 +16,13 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     @IBOutlet var bedRoomSelectionRow: UITableViewCell!
     
+    @IBOutlet var bathroomNumber: UILabel!
+    
+    @IBOutlet var bathroomSelectionPicker: UIPickerView!
+    
+    
+    @IBOutlet var bathRoomSelectionRow: UITableViewCell!
+    
     let bedrooms = ["0","1","2", "3", "4", "5", "6", "7"]
     
     
@@ -47,24 +54,34 @@ extension PropertyDetailsTableViewController  {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
         switch (indexPath.row, indexPath.section) {
         case (0, 1):
             
-            
             switch bedRoomSelectionRow.isHidden {
-            case true:
+            case (true):
                 bedRoomSelectionRow.isHidden = false
                 tableView.reloadData()
             default:
-                 bedRoomSelectionRow.isHidden = true
+                bedRoomSelectionRow.isHidden = true
                 tableView.reloadData()
             }
+            
+        case (2,1):
+            switch bathRoomSelectionRow.isHidden {
+            case true:
+                bathRoomSelectionRow.isHidden = false
+                tableView.reloadData()
+            default:
+                bathRoomSelectionRow.isHidden = true
+                tableView.reloadData()
+            }
+            
+            
         default:
             return
         }
-        
-        
-        
+   
     }
     
     
@@ -83,9 +100,19 @@ extension PropertyDetailsTableViewController  {
                 return UITableViewAutomaticDimension
             }
             
+        } else if indexPath.row == 3 && indexPath.section == 1 {
+            
+            switch bathRoomSelectionRow.isHidden {
+            case true:
+                return 0
+            case false:
+                return UITableViewAutomaticDimension
+            }
+            
         } else {
             return UITableViewAutomaticDimension
         }
+
         
     }
 
@@ -115,6 +142,8 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
         switch pickerView {
         case bedRoomSelection:
             return bedrooms.count
+        case bathroomSelectionPicker:
+            return bedrooms.count
         default:
             return 1
         }
@@ -128,6 +157,9 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
         switch pickerView {
         case bedRoomSelection:
             bedroomNumber.text = bedrooms[row]
+            
+        case bathroomSelectionPicker:
+            bathroomNumber.text = bedrooms[row]
         default:
             break
         }
@@ -142,6 +174,9 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
         switch pickerView {
         case bedRoomSelection:
             return bedrooms[row]
+            
+        case bathroomSelectionPicker:
+            return  bedrooms[row]
         default:
             return ""
         }

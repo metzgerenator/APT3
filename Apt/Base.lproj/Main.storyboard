@@ -456,8 +456,65 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qRD-f4-q3w">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qKc-F3-7om">
                                         <rect key="frame" x="0.0" y="386" width="375.5" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qKc-F3-7om" id="OQT-Nz-UjN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375.5" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="yFq-RJ-Ene">
+                                                    <rect key="frame" x="8" y="8" width="359.5" height="27.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Bathrooms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVm-Ul-ys6">
+                                                            <rect key="frame" x="0.0" y="0.0" width="149" height="27.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uK2-w0-uKi">
+                                                            <rect key="frame" x="349" y="0.0" width="10.5" height="27.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yFq-RJ-Ene" secondAttribute="trailing" id="WwS-vj-pNA"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="yFq-RJ-Ene" secondAttribute="bottom" id="a1d-WL-7nF"/>
+                                                <constraint firstItem="yFq-RJ-Ene" firstAttribute="leading" secondItem="OQT-Nz-UjN" secondAttribute="leadingMargin" id="pHr-Gc-dCy"/>
+                                                <constraint firstItem="yFq-RJ-Ene" firstAttribute="top" secondItem="OQT-Nz-UjN" secondAttribute="topMargin" id="pI3-UL-Tqz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="Eqz-0q-v2z">
+                                        <rect key="frame" x="0.0" y="430" width="375.5" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eqz-0q-v2z" id="8Y0-GP-aLK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375.5" height="109.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s1J-m2-XMQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375.5" height="109.5"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="A8z-Fx-6oj" id="bSs-Lu-hwy"/>
+                                                        <outlet property="delegate" destination="A8z-Fx-6oj" id="yoM-pW-Znc"/>
+                                                    </connections>
+                                                </pickerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="s1J-m2-XMQ" secondAttribute="trailing" id="BKn-7O-Zpe"/>
+                                                <constraint firstItem="s1J-m2-XMQ" firstAttribute="leading" secondItem="8Y0-GP-aLK" secondAttribute="leading" id="DHU-vg-KLm"/>
+                                                <constraint firstAttribute="bottom" secondItem="s1J-m2-XMQ" secondAttribute="bottom" id="Fmk-AT-IcE"/>
+                                                <constraint firstItem="s1J-m2-XMQ" firstAttribute="top" secondItem="8Y0-GP-aLK" secondAttribute="top" id="p56-0R-Qw3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qRD-f4-q3w">
+                                        <rect key="frame" x="0.0" y="540" width="375.5" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qRD-f4-q3w" id="gWy-CK-mHV">
                                             <rect key="frame" x="0.0" y="0.0" width="375.5" height="43.5"/>
@@ -487,6 +544,9 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375.5" height="1000"/>
                     <connections>
+                        <outlet property="bathRoomSelectionRow" destination="Eqz-0q-v2z" id="qNU-Dd-kpa"/>
+                        <outlet property="bathroomNumber" destination="uK2-w0-uKi" id="9bq-WW-nTD"/>
+                        <outlet property="bathroomSelectionPicker" destination="s1J-m2-XMQ" id="8H8-Z0-sWG"/>
                         <outlet property="bedRoomSelection" destination="L3s-D1-8Zt" id="9eh-jG-JGE"/>
                         <outlet property="bedRoomSelectionRow" destination="aOI-Xu-PGQ" id="QnM-Av-3Co"/>
                         <outlet property="bedroomNumber" destination="OCf-kd-Bu2" id="rE4-Nv-Qm2"/>
