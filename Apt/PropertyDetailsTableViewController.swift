@@ -55,7 +55,7 @@ class PropertyDetailsTableViewController: UITableViewController {
         
         bedRoomSelectionRow.isHidden = true
         bathRoomSelectionRow.isHidden = true
-        //washerDryerSelectionRow.isHidden = true
+        washerDryerSelectionRow.isHidden = true
         
         tableView.reloadData()
 
@@ -81,11 +81,8 @@ extension PropertyDetailsTableViewController  {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //row 5, section 1
+//print("row \(indexPath.row), section \(indexPath.section)")
         
-        print("row \(indexPath.row), section \(indexPath.section)")
-        
-        //row 2 section 0
         if indexPath.row == 2 && indexPath.section == 0 {
             
             self.performSegue(withIdentifier: "rent", sender: nil)
@@ -95,6 +92,18 @@ extension PropertyDetailsTableViewController  {
         
         
         switch (indexPath.row, indexPath.section) {
+        case (5, 1):
+            
+            switch washerDryerSelectionRow.isHidden {
+            case (true):
+                washerDryerSelectionRow.isHidden = false
+                
+                tableView.reloadData()
+            default:
+                washerDryerSelectionRow.isHidden = true
+                tableView.reloadData()
+            }
+            
         case (0, 1):
             
             switch bedRoomSelectionRow.isHidden {
@@ -149,7 +158,18 @@ extension PropertyDetailsTableViewController  {
                 return UITableViewAutomaticDimension
             }
             
-        } else {
+        } else if indexPath.row == 6 && indexPath.section == 1 {
+            
+            switch washerDryerSelectionRow.isHidden {
+            case true:
+                return 0
+            case false:
+                return UITableViewAutomaticDimension
+            }
+
+            
+        }
+        else {
             return UITableViewAutomaticDimension
         }
 
@@ -227,7 +247,7 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
         case bathroomSelectionPicker:
             return  bedrooms[row]
             
-        case washerDryerType:
+        case washerPicker:
             return washingMachines[row]
         default:
             return ""

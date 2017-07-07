@@ -573,7 +573,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="i5s-vv-Djl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="i5s-vv-Djl" userLabel="washerDryerRow">
                                         <rect key="frame" x="0.0" y="628" width="375.5" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i5s-vv-Djl" id="4Lf-bC-uiq">
@@ -635,7 +635,7 @@
                         <outlet property="bedRoomSelectionRow" destination="aOI-Xu-PGQ" id="QnM-Av-3Co"/>
                         <outlet property="bedroomNumber" destination="OCf-kd-Bu2" id="rE4-Nv-Qm2"/>
                         <outlet property="petsSwitch" destination="3KI-LJ-y0r" id="aTT-Qc-y1b"/>
-                        <outlet property="washerDryerSelectionRow" destination="9RX-mu-z5S" id="bir-fe-W88"/>
+                        <outlet property="washerDryerSelectionRow" destination="i5s-vv-Djl" id="cQp-Bh-3sR"/>
                         <outlet property="washerDryerType" destination="Eqa-zh-yEB" id="xxM-du-YBC"/>
                         <outlet property="washerPicker" destination="fOb-bT-rgB" id="OjY-ti-ndg"/>
                         <segue destination="bms-nl-h37" kind="presentation" identifier="rent" id="iet-Qy-zUO"/>
