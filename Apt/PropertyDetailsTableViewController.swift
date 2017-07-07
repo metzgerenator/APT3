@@ -11,6 +11,9 @@ import UIKit
 class PropertyDetailsTableViewController: UITableViewController {
     
     var dictionaryToSave: Dictionary = [String : Any]()
+    
+    
+    @IBOutlet var petsSwitch: UISwitch!
 
     @IBOutlet var bedRoomSelection: UIPickerView!
     
@@ -21,11 +24,26 @@ class PropertyDetailsTableViewController: UITableViewController {
     @IBOutlet var bathroomNumber: UILabel!
     
     @IBOutlet var bathroomSelectionPicker: UIPickerView!
-    
-    
+
     @IBOutlet var bathRoomSelectionRow: UITableViewCell!
+ 
+    @IBOutlet var washerDryerType: UILabel!
+    
+    @IBOutlet var washerDryerSelectionRow: UITableViewCell!
+    
+    @IBAction func petsSwitchAction(_ sender: UISwitch) {
+        
+        petsSwitch.isOn = sender.isOn
+        
+        appender(key: .PetsAllowed, value: "\(sender.isOn)")
+        
+        
+    }
+    @IBOutlet var washerPicker: UIPickerView!
     
     let bedrooms = ["0","1","2", "3", "4", "5", "6", "7"]
+    
+    let washingMachines = ["None", "In Unit", "In Building", "Hookups"]
     
     
     override func viewDidLoad() {
@@ -37,6 +55,8 @@ class PropertyDetailsTableViewController: UITableViewController {
         
         bedRoomSelectionRow.isHidden = true
         bathRoomSelectionRow.isHidden = true
+        //washerDryerSelectionRow.isHidden = true
+        
         tableView.reloadData()
 
     }
@@ -60,6 +80,10 @@ class PropertyDetailsTableViewController: UITableViewController {
 extension PropertyDetailsTableViewController  {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //row 5, section 1
+        
+        print("row \(indexPath.row), section \(indexPath.section)")
         
         //row 2 section 0
         if indexPath.row == 2 && indexPath.section == 0 {
@@ -160,6 +184,8 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
             return bedrooms.count
         case bathroomSelectionPicker:
             return bedrooms.count
+        case washerPicker:
+            return washingMachines.count
         default:
             return 1
         }
@@ -178,6 +204,11 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
         case bathroomSelectionPicker:
             bathroomNumber.text = bedrooms[row]
             appender(key: .BedroomNumber, value: bedrooms[row])
+            
+        case washerPicker:
+            washerDryerType.text = washingMachines[row]
+            appender(key: .WasherDryerType, value: washingMachines[row])
+     
         default:
             break
         }
@@ -195,6 +226,9 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
             
         case bathroomSelectionPicker:
             return  bedrooms[row]
+            
+        case washerDryerType:
+            return washingMachines[row]
         default:
             return ""
         }

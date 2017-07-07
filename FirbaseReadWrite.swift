@@ -37,6 +37,8 @@ enum PropertyKeys: String {
     case PropertyName = "Property_Name"
     case BedroomNumber = "Number_of_Bedrooms"
     case BathroomNumber = "Number_of_Bathrooms"
+    case PetsAllowed = "Pets_Allowed"
+    case WasherDryerType = "Washingmachine_Type"
     
 }
 
