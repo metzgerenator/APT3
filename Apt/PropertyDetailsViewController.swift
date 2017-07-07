@@ -10,7 +10,8 @@ import UIKit
 
 class PropertyDetailsViewController: UIViewController {
     
-    var propertyName: String?  
+    var propertyName: String?
+    
 
     override func viewDidLoad() {
         //rentPrice
@@ -28,6 +29,19 @@ class PropertyDetailsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "embeded" {
+            
+            if let vc = segue.destination as? PropertyDetailsTableViewController, let name = propertyName {
+                
+                vc.appender(key: .PropertyName, value: name)
+            }
+            
+            
+        }
     }
     
 

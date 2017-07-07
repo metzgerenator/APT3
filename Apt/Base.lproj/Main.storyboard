@@ -291,7 +291,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4E-FQ-tJt">
                                         <rect key="frame" x="0.0" y="137" width="375.5" height="466.5"/>
                                         <connections>
-                                            <segue destination="A8z-Fx-6oj" kind="embed" id="1kp-XA-YP3"/>
+                                            <segue destination="A8z-Fx-6oj" kind="embed" identifier="embeded" id="1kp-XA-YP3"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -313,7 +313,7 @@
         <!--Property Details Table View Controller-->
         <scene sceneID="z4U-wM-bhn">
             <objects>
-                <tableViewController id="A8z-Fx-6oj" customClass="PropertyDetailsTableViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="propertyDetails" id="A8z-Fx-6oj" customClass="PropertyDetailsTableViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ntO-3n-yUp">
                         <rect key="frame" x="0.0" y="0.0" width="375.5" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

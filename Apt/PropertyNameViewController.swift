@@ -9,6 +9,8 @@
 import UIKit
 
 class PropertyNameViewController: UIViewController {
+    
+    
 
     @IBOutlet var propertyName: UITextField!
     
@@ -19,9 +21,9 @@ class PropertyNameViewController: UIViewController {
         
         if name.characters.count > 0 {
             
-            let dictionary = [PropertyKeys.PropertyName.rawValue : name ]
+            //let dictionary = [PropertyKeys.PropertyName.rawValue : name ]
             
-           let autoID =  Endpoints.appendValues(child: .Properties, values: dictionary)
+           //let autoID =  Endpoints.appendValues(child: .Properties, values: dictionary)
             
             self.performSegue(withIdentifier: "property_details", sender: name)
             
@@ -48,6 +50,8 @@ class PropertyNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        
+
 
         // Do any additional setup after loading the view.
     }
@@ -59,11 +63,14 @@ class PropertyNameViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        
         if segue.identifier == "property_details" {
             
             guard let vc = segue.destination as? PropertyDetailsViewController,
                 let propertyName = sender as? String  else {return}
-
+            
             vc.propertyName = propertyName
             
             

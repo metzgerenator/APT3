@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class PropertyDetailsTableViewController: UITableViewController {
     
     var dictionaryToSave: Dictionary = [String : Any]()
+    
+ 
+    var propertyID: DatabaseReference?
     
     
     @IBOutlet var petsSwitch: UISwitch!
@@ -219,11 +223,11 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
         switch pickerView {
         case bedRoomSelection:
             bedroomNumber.text = bedrooms[row]
-            appender(key: .BathroomNumber, value: bedrooms[row])
+            appender(key: .BedroomNumber, value: bedrooms[row])
             
         case bathroomSelectionPicker:
             bathroomNumber.text = bedrooms[row]
-            appender(key: .BedroomNumber, value: bedrooms[row])
+            appender(key: .BathroomNumber, value: bedrooms[row])
             
         case washerPicker:
             washerDryerType.text = washingMachines[row]
@@ -285,6 +289,17 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate {
         dictionaryToSave.updateValue(value, forKey: key.rawValue)
         
         print("here is current dictionary \(dictionaryToSave)")
+        
+        if let endPointID = propertyID {
+            
+            Endpoints.appendToExisting(with: endPointID, values: dictionaryToSave)
+            
+        } else {
+            propertyID = Endpoints.appendValues(dictionaryToSave)
+        }
+        
+        
+        
         
     }
     
