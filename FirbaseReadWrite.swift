@@ -76,7 +76,7 @@ enum Endpoints {
     static func appendValues(_ values: [String : Any])-> DatabaseReference? {
         
         if let user = currentUSer {
-            let autoID = self.users.url.child(user.uid).childByAutoId()
+            let autoID = self.users.url.child(user.uid).child("Properties").childByAutoId()
             
           autoID.setValue(values)
          return autoID

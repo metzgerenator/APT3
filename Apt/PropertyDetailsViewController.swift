@@ -9,21 +9,19 @@
 import UIKit
 
 class PropertyDetailsViewController: UIViewController {
-    
+
+    @IBOutlet var collectionView: UICollectionView!
+
     var propertyName: String?
     
 
     override func viewDidLoad() {
         //rentPrice
-        
-       
-       
-        
+    
         super.viewDidLoad()
         self.navigationController?.title = "ADD DETAILS"
         
     
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +46,46 @@ class PropertyDetailsViewController: UIViewController {
   
 
 }
+
+
+extension PropertyDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

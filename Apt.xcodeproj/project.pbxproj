@@ -15,6 +15,7 @@
 		275F6FF11F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FF01F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift */; };
 		275F6FF31F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FF21F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift */; };
 		275F6FF51F0D7BAD00F9B2C2 /* RentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */; };
+		27693E4E1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */; };
 		279745931F03E9FF00ED5D34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745921F03E9FF00ED5D34 /* AppDelegate.swift */; };
 		279745981F03E9FF00ED5D34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279745961F03E9FF00ED5D34 /* Main.storyboard */; };
 		2797459A1F03E9FF00ED5D34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 279745991F03E9FF00ED5D34 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		275F6FF01F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailsViewController.swift; sourceTree = "<group>"; };
 		275F6FF21F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailsTableViewController.swift; sourceTree = "<group>"; };
 		275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentTableViewController.swift; sourceTree = "<group>"; };
+		27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		2797458F1F03E9FF00ED5D34 /* Apt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279745921F03E9FF00ED5D34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		279745971F03E9FF00ED5D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				275F6FF01F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift */,
 				275F6FF21F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift */,
 				275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */,
+				27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */,
 			);
 			name = "New Property ";
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				279745CC1F04039400ED5D34 /* NewUserViewController.swift in Sources */,
 				275F6FF51F0D7BAD00F9B2C2 /* RentTableViewController.swift in Sources */,
 				273686731F0E96DE002E9F93 /* Protocols.swift in Sources */,
+				27693E4E1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift in Sources */,
 				275F6FEF1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift in Sources */,
 				275F6FF11F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift in Sources */,
 				279745931F03E9FF00ED5D34 /* AppDelegate.swift in Sources */,
