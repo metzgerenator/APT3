@@ -10,8 +10,19 @@ import UIKit
 
 class PropertyDetailsViewController: UIViewController {
 
-    @IBOutlet var collectionView: UICollectionView!
+    
+    @IBOutlet var mainBackGroundImage: UIImageView!
 
+    @IBOutlet var CameraButtonOutlet: UIButton!
+    
+    @IBAction func cameraButtonAction(_ sender: UIButton) {
+        
+        
+        
+        
+        
+    }
+    
     var propertyName: String?
     
 
@@ -48,21 +59,6 @@ class PropertyDetailsViewController: UIViewController {
 }
 
 
-extension PropertyDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-}
 
 
 
