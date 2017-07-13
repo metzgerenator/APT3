@@ -269,10 +269,20 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
 
 
 
-extension PropertyDetailsTableViewController: appendToDictionaryDelegate {
+extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remoteSegue {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "cameraControl" {
+            
+            guard let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? PropertyPhotosViewController else {return}
+     
+            vc.delegate = self
+       
+        }
+        
+        
         if segue.identifier == "rent" {
             
             guard let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? RentTableViewController else {return}
@@ -297,9 +307,14 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate {
         } else {
             propertyID = Endpoints.appendValues(dictionaryToSave)
         }
+  
         
+    }
+    
+    
+    func remoteSegue(){
         
-        
+        self.performSegue(withIdentifier: "cameraControl", sender: self)
         
     }
     

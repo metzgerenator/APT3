@@ -17,6 +17,7 @@
 		275F6FF51F0D7BAD00F9B2C2 /* RentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */; };
 		27693E4E1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */; };
 		27693E571F1408D2005D891F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27693E561F1408D2005D891F /* GradientView.swift */; };
+		27693E5E1F164822005D891F /* PropertyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27693E5D1F164822005D891F /* PropertyPhotosViewController.swift */; };
 		279745931F03E9FF00ED5D34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745921F03E9FF00ED5D34 /* AppDelegate.swift */; };
 		279745981F03E9FF00ED5D34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279745961F03E9FF00ED5D34 /* Main.storyboard */; };
 		2797459A1F03E9FF00ED5D34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 279745991F03E9FF00ED5D34 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentTableViewController.swift; sourceTree = "<group>"; };
 		27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		27693E561F1408D2005D891F /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		27693E5D1F164822005D891F /* PropertyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotosViewController.swift; sourceTree = "<group>"; };
 		2797458F1F03E9FF00ED5D34 /* Apt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		279745921F03E9FF00ED5D34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		279745971F03E9FF00ED5D34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		275F6FED1F0D1EBF00F9B2C2 /* New Property  */ = {
 			isa = PBXGroup;
 			children = (
+				27693E5C1F1647E4005D891F /* propertyPhotos */,
 				275F6FEE1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift */,
 				275F6FF01F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift */,
 				275F6FF21F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift */,
@@ -130,6 +133,14 @@
 				27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */,
 			);
 			name = "New Property ";
+			sourceTree = "<group>";
+		};
+		27693E5C1F1647E4005D891F /* propertyPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				27693E5D1F164822005D891F /* PropertyPhotosViewController.swift */,
+			);
+			name = propertyPhotos;
 			sourceTree = "<group>";
 		};
 		279745861F03E9FF00ED5D34 = {
@@ -429,6 +440,7 @@
 				2714AC421F0CF4690028A81E /* CustomTabBarController.swift in Sources */,
 				279745C51F03EDA700ED5D34 /* LoginViewController.swift in Sources */,
 				279745D11F042F6200ED5D34 /* FirbaseReadWrite.swift in Sources */,
+				27693E5E1F164822005D891F /* PropertyPhotosViewController.swift in Sources */,
 				279745CE1F04283D00ED5D34 /* alertViews.swift in Sources */,
 				275F6FF31F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift in Sources */,
 				279745CC1F04039400ED5D34 /* NewUserViewController.swift in Sources */,

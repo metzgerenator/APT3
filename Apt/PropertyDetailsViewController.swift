@@ -9,6 +9,9 @@
 import UIKit
 
 class PropertyDetailsViewController: UIViewController {
+    
+    
+    var childDelegate: remoteSegue?
 
     
     @IBOutlet var mainBackGroundImage: UIImageView!
@@ -18,8 +21,7 @@ class PropertyDetailsViewController: UIViewController {
     @IBAction func cameraButtonAction(_ sender: UIButton) {
         
         
-        
-        
+        childDelegate?.remoteSegue()
         
     }
     
@@ -42,9 +44,21 @@ class PropertyDetailsViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if segue.identifier == "toCamera" {
+            
+            print("segue performed")
+            
+        }
+        
+        
+        
         if segue.identifier == "embeded" {
             
             if let vc = segue.destination as? PropertyDetailsTableViewController, let name = propertyName {
+                
+                childDelegate = vc
                 
                 vc.appender(key: .PropertyName, value: name)
             }
@@ -57,6 +71,7 @@ class PropertyDetailsViewController: UIViewController {
   
 
 }
+
 
 
 

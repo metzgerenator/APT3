@@ -315,6 +315,36 @@
             </objects>
             <point key="canvasLocation" x="5928.8000000000002" y="1061.9190404797603"/>
         </scene>
+        <!--Property Photos View Controller-->
+        <scene sceneID="zPB-aS-hjc">
+            <objects>
+                <viewController id="5HA-PY-qUy" customClass="PropertyPhotosViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zst-Pj-xDI"/>
+                        <viewControllerLayoutGuide type="bottom" id="HV0-8w-k2b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MxA-rX-JYf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="z15-RQ-eS7">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9AZ-nW-dQa">
+                            <connections>
+                                <action selector="cancelButton:" destination="5HA-PY-qUy" id="R16-Hq-iHA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="c0E-nz-GEL">
+                            <connections>
+                                <action selector="addButton:" destination="5HA-PY-qUy" id="4U6-b2-ChX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lNj-0J-PGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6822" y="230"/>
+        </scene>
         <!--Property Details Table View Controller-->
         <scene sceneID="z4U-wM-bhn">
             <objects>
@@ -644,6 +674,7 @@
                         <outlet property="washerDryerType" destination="Eqa-zh-yEB" id="xxM-du-YBC"/>
                         <outlet property="washerPicker" destination="fOb-bT-rgB" id="OjY-ti-ndg"/>
                         <segue destination="bms-nl-h37" kind="presentation" identifier="rent" id="iet-Qy-zUO"/>
+                        <segue destination="R9Z-wJ-aLL" kind="presentation" identifier="cameraControl" id="5rm-6Z-ltx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5o-Cn-Nrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1119,6 +1150,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h88-L6-r46" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7741.6000000000004" y="1154.5727136431785"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ApE-dz-ELq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R9Z-wJ-aLL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hs0-2n-H7M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5HA-PY-qUy" kind="relationship" relationship="rootViewController" id="MZ2-0I-fEC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QY5-Ta-RhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5929" y="230"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

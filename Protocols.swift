@@ -13,3 +13,11 @@ protocol appendToDictionaryDelegate {
 }
 
 
+protocol remoteSegue {
+    func remoteSegue()
+    
+}
+
+
+
+
