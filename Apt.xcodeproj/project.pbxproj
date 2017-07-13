@@ -130,7 +130,6 @@
 				275F6FF01F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift */,
 				275F6FF21F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift */,
 				275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */,
-				27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */,
 			);
 			name = "New Property ";
 			sourceTree = "<group>";
@@ -139,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				27693E5D1F164822005D891F /* PropertyPhotosViewController.swift */,
+				27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */,
 			);
 			name = propertyPhotos;
 			sourceTree = "<group>";

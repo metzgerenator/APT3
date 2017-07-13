@@ -13,6 +13,7 @@ class PropertyPhotosViewController: UIViewController {
     
     var delegate: appendToDictionaryDelegate?
     
+    @IBOutlet var collectionView: UICollectionView!
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         
@@ -26,7 +27,7 @@ class PropertyPhotosViewController: UIViewController {
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         
-        delegate?.appender(key: .BathroomNumber, value: "25")
+        //delegate?.appender(key: .BathroomNumber, value: "25")
         
     }
     
@@ -55,3 +56,21 @@ class PropertyPhotosViewController: UIViewController {
     */
 
 }
+
+
+extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+

@@ -44,15 +44,7 @@ class PropertyDetailsViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
-        if segue.identifier == "toCamera" {
-            
-            print("segue performed")
-            
-        }
-        
-        
+      
         
         if segue.identifier == "embeded" {
             
