@@ -404,11 +404,91 @@
                     <connections>
                         <outlet property="collectionView" destination="eNo-5n-e5Z" id="cfZ-fE-SKt"/>
                         <outlet property="loadingIndicator" destination="mGJ-l4-qEs" id="RqM-ej-63A"/>
+                        <segue destination="Apc-7E-d68" kind="show" identifier="captionForImage" id="8cN-7i-cvP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNj-0J-PGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6821.6000000000004" y="229.83508245877064"/>
+        </scene>
+        <!--AddPhoto-->
+        <scene sceneID="ErD-yO-B7e">
+            <objects>
+                <viewController id="Apc-7E-d68" customClass="SubmitPhotoViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NMW-Qx-8be"/>
+                        <viewControllerLayoutGuide type="bottom" id="sYx-Vz-irN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B8H-l3-7iV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZyH-Pu-D9Y">
+                                <rect key="frame" x="0.0" y="64" width="375" height="299"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="p6m-cm-ypl">
+                                <rect key="frame" x="16" y="371" width="343" height="81"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Caption" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Od-sU-s3f">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <color key="backgroundColor" red="0.96852236989999996" green="0.96868795159999999" blue="0.96851199870000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="eFs-kn-GZN"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                        <connections>
+                                            <action selector="dismissKeyboard:" destination="Apc-7E-d68" eventType="primaryActionTriggered" id="le4-If-FEw"/>
+                                        </connections>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="Rr6-NQ-Z5S" userLabel="is cover photo">
+                                        <rect key="frame" x="0.0" y="50" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make Cover Image " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCl-nO-dPD">
+                                                <rect key="frame" x="0.0" y="0.0" width="249" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MDM-gV-edF">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="coverSwitchAction:" destination="Apc-7E-d68" eventType="valueChanged" id="Dkp-OY-GZN"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZyH-Pu-D9Y" secondAttribute="trailing" id="5q5-XK-gSO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p6m-cm-ypl" secondAttribute="trailing" id="HKW-wk-GTu"/>
+                            <constraint firstItem="ZyH-Pu-D9Y" firstAttribute="top" secondItem="NMW-Qx-8be" secondAttribute="bottom" id="JFY-Pz-0ac"/>
+                            <constraint firstItem="ZyH-Pu-D9Y" firstAttribute="leading" secondItem="B8H-l3-7iV" secondAttribute="leading" id="Xct-9b-CFQ"/>
+                            <constraint firstItem="p6m-cm-ypl" firstAttribute="leading" secondItem="B8H-l3-7iV" secondAttribute="leadingMargin" id="fPO-TI-qYX"/>
+                            <constraint firstItem="p6m-cm-ypl" firstAttribute="top" secondItem="ZyH-Pu-D9Y" secondAttribute="bottom" constant="8" id="mfu-iO-oij"/>
+                            <constraint firstItem="sYx-Vz-irN" firstAttribute="top" secondItem="p6m-cm-ypl" secondAttribute="bottom" constant="215" id="xLj-64-SAy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="AddPhoto" id="vme-Hv-pfv">
+                        <barButtonItem key="rightBarButtonItem" title="SUBMIT" id="ism-r1-kfm">
+                            <connections>
+                                <action selector="submitPhoto:" destination="Apc-7E-d68" id="wqZ-3X-Pre"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="captionField" destination="8Od-sU-s3f" id="FNc-5O-DGF"/>
+                        <outlet property="coverSwitch" destination="MDM-gV-edF" id="f2Y-nR-42J"/>
+                        <outlet property="currentImage" destination="ZyH-Pu-D9Y" id="XoW-aj-0dH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ojV-Zu-dKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7636" y="229.83508245877064"/>
         </scene>
         <!--Property Details Table View Controller-->
         <scene sceneID="z4U-wM-bhn">

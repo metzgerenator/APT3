@@ -40,7 +40,7 @@ class PropertyPhotosViewController: UIViewController {
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         
-        picker.allowsEditing = true
+        picker.allowsEditing = false
         picker.sourceType = .photoLibrary
         self.present(picker, animated: true, completion: nil)
         
@@ -64,6 +64,19 @@ class PropertyPhotosViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "captionForImage" {
+            
+            guard let vc = segue.destination as? SubmitPhotoViewController, let image = sender as? UIImage else {return}
+            
+            vc.selectedImage = image
+            
+            
+        }
+        
+    }
 
 
 
@@ -108,45 +121,56 @@ extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionVi
 
 extension PropertyPhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
+    //captionForImage
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
-            loadingIndicator.startAnimating()
-            loadingIndicator.isHidden = false
-            
-            guard let data = UIImageJPEGRepresentation(image, 0.9) else {return}
-            
-             let storageRef = storage.reference().child("propertyImages").child("test.jpg")
-            
-            storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
-                
-                self.loadingIndicator.stopAnimating()
-                self.loadingIndicator.isHidden = true
-                
-                if let error = error {
-                    
-                    print("error occured error\(error)")
-                } else {
-                    
-                    let downloadURL = metaData!.downloadURL()
-                    print("here is the file path \(String(describing: downloadURL))")
-                    
-                }
-                
-            })
+            self.performSegue(withIdentifier: "captionForImage", sender: image)
             
             
+//            loadingIndicator.startAnimating()
+//            loadingIndicator.isHidden = false
+//            
+//            guard let data = UIImageJPEGRepresentation(image, 0.9) else {return}
+//            
+//            
+//            
+//             let storageRef = storage.reference().child("propertyImages").child("test.jpg")
+//            
+//            storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
+//                
+//                self.loadingIndicator.stopAnimating()
+//                self.loadingIndicator.isHidden = true
+//                
+//                if let error = error {
+//                    
+//                    print("error occured error\(error)")
+//                } else {
+//                    
+//                    let downloadURL = metaData!.downloadURL()
+//                    print("here is the file path \(String(describing: downloadURL))")
+//                    
+//                }
+//                
+//            })
+//            
             
             
+            
+        } else {
+            
+            print("error ")
         }
         
         dismiss(animated: true, completion: nil)
         
         //transition to next vc here
     }
+    
+    
+    
     
     
     
