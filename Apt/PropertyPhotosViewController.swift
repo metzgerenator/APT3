@@ -15,9 +15,10 @@ class PropertyPhotosViewController: UIViewController {
     
     
     var propertyPhotos = [PropertyPhoto]()
-    
-    
+
     let resuseIdentifier = "photoCell"
+    
+    let picker = UIImagePickerController()
       
     
     @IBOutlet var collectionView: UICollectionView!
@@ -34,7 +35,11 @@ class PropertyPhotosViewController: UIViewController {
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         
-        //delegate?.appender(key: .BathroomNumber, value: "25")
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
+        
+        
         
     }
     
@@ -42,8 +47,10 @@ class PropertyPhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        picker.delegate = self
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +63,7 @@ class PropertyPhotosViewController: UIViewController {
 
 }
 
+//MARK: collection cell methods
 
 extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -87,6 +95,43 @@ extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionVi
     
     
 }
+
+
+//MARK: imagePicker Controlls 
+
+
+extension PropertyPhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            print("here is image \(image)")
+            
+            
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
