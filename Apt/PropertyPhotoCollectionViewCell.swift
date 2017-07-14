@@ -11,6 +11,24 @@ import UIKit
 class PropertyPhotoCollectionViewCell: UICollectionViewCell {
     
  
+    @IBOutlet var cellImage: UIImageView!
+    
+    
+    @IBOutlet var cellLabel: UILabel!
+    
+    
+    var image: UIImage?
+    
+    var label: String? {
+        
+        didSet {
+            if let newLabel = label {
+                
+                cellLabel.text = newLabel
+            }
+        }
+        
+    }
     
     
 }

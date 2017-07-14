@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2714AC421F0CF4690028A81E /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714AC411F0CF4690028A81E /* CustomTabBarController.swift */; };
+		271731881F18A9AF0044BA27 /* PropertyPhotoStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271731871F18A9AF0044BA27 /* PropertyPhotoStructures.swift */; };
 		273686731F0E96DE002E9F93 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273686721F0E96DE002E9F93 /* Protocols.swift */; };
 		274108DE1F06BCEC00B60BBA /* CurrentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274108DD1F06BCEC00B60BBA /* CurrentUserViewController.swift */; };
 		27562C111F04432600C6FFFC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27562C0D1F04432600C6FFFC /* Bolts.framework */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		2714AC411F0CF4690028A81E /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		271731871F18A9AF0044BA27 /* PropertyPhotoStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotoStructures.swift; sourceTree = "<group>"; };
 		273686721F0E96DE002E9F93 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		274108DD1F06BCEC00B60BBA /* CurrentUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserViewController.swift; sourceTree = "<group>"; };
 		27562C0D1F04432600C6FFFC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				27693E5D1F164822005D891F /* PropertyPhotosViewController.swift */,
 				27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */,
+				271731871F18A9AF0044BA27 /* PropertyPhotoStructures.swift */,
 			);
 			name = propertyPhotos;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				279745CA1F03F0B000ED5D34 /* UibuttonFormats.swift in Sources */,
 				274108DE1F06BCEC00B60BBA /* CurrentUserViewController.swift in Sources */,
 				27693E571F1408D2005D891F /* GradientView.swift in Sources */,
+				271731881F18A9AF0044BA27 /* PropertyPhotoStructures.swift in Sources */,
 				2714AC421F0CF4690028A81E /* CustomTabBarController.swift in Sources */,
 				279745C51F03EDA700ED5D34 /* LoginViewController.swift in Sources */,
 				279745D11F042F6200ED5D34 /* FirbaseReadWrite.swift in Sources */,

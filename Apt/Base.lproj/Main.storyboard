@@ -337,7 +337,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ISU-fT-hHe" customClass="PropertyPhotoCollectionViewCell" customModule="Apt" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="ISU-fT-hHe" customClass="PropertyPhotoCollectionViewCell" customModule="Apt" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="127"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -364,6 +364,10 @@
                                             <constraint firstAttribute="trailing" secondItem="4bm-Ld-MJs" secondAttribute="trailing" id="h28-CQ-zHf"/>
                                             <constraint firstAttribute="trailing" secondItem="GMV-wk-85b" secondAttribute="trailing" id="xcx-4R-Cy8"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="cellImage" destination="GMV-wk-85b" id="kCE-mg-0zc"/>
+                                            <outlet property="cellLabel" destination="4bm-Ld-MJs" id="jMR-PI-UHm"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
