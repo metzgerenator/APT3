@@ -375,13 +375,18 @@
                                     <outlet property="delegate" destination="5HA-PY-qUy" id="4o5-wn-FWY"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mGJ-l4-qEs">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eNo-5n-e5Z" secondAttribute="trailing" id="3J1-7B-IGG"/>
                             <constraint firstItem="eNo-5n-e5Z" firstAttribute="leading" secondItem="MxA-rX-JYf" secondAttribute="leading" id="BCk-9d-RTq"/>
+                            <constraint firstItem="mGJ-l4-qEs" firstAttribute="centerX" secondItem="MxA-rX-JYf" secondAttribute="centerX" id="Tnf-kC-WlL"/>
                             <constraint firstItem="HV0-8w-k2b" firstAttribute="top" secondItem="eNo-5n-e5Z" secondAttribute="bottom" id="WkQ-UJ-Yf5"/>
                             <constraint firstItem="eNo-5n-e5Z" firstAttribute="top" secondItem="Zst-Pj-xDI" secondAttribute="bottom" id="gxB-dC-qCq"/>
+                            <constraint firstItem="mGJ-l4-qEs" firstAttribute="centerY" secondItem="MxA-rX-JYf" secondAttribute="centerY" id="oTQ-uY-O4q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="z15-RQ-eS7">
@@ -398,6 +403,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="eNo-5n-e5Z" id="cfZ-fE-SKt"/>
+                        <outlet property="loadingIndicator" destination="mGJ-l4-qEs" id="RqM-ej-63A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNj-0J-PGl" userLabel="First Responder" sceneMemberID="firstResponder"/>

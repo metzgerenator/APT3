@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Firebase
+
 
 class PropertyPhotosViewController: UIViewController {
     
     
+    let storage = Storage.storage()
+    
     var delegate: appendToDictionaryDelegate?
     
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     
     var propertyPhotos = [PropertyPhoto]()
 
@@ -48,7 +53,8 @@ class PropertyPhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        loadingIndicator.isHidden = true
+       
         picker.delegate = self
 
     }
@@ -103,16 +109,43 @@ extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionVi
 extension PropertyPhotosViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
-            print("here is image \(image)")
+            loadingIndicator.startAnimating()
+            loadingIndicator.isHidden = false
+            
+            guard let data = UIImageJPEGRepresentation(image, 0.9) else {return}
+            
+             let storageRef = storage.reference().child("propertyImages").child("test.jpg")
+            
+            storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
+                
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
+                
+                if let error = error {
+                    
+                    print("error occured error\(error)")
+                } else {
+                    
+                    let downloadURL = metaData!.downloadURL()
+                    print("here is the file path \(String(describing: downloadURL))")
+                    
+                }
+                
+            })
+            
+            
             
             
         }
         
         dismiss(animated: true, completion: nil)
+        
+        //transition to next vc here
     }
     
     

@@ -11,5 +11,7 @@ pod 'IQKeyboardManagerSwift'
 pod 'FBSDKCoreKit', '~> 4.18.0'
 pod 'FBSDKLoginKit', '~> 4.18.0'
 pod 'SwiftyJSON'
+pod 'Firebase/Core'
+pod 'Firebase/Storage'
 
 end
