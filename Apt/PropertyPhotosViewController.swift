@@ -12,6 +12,8 @@ import Firebase
 
 class PropertyPhotosViewController: UIViewController {
     
+    var propertyReference: DatabaseReference?
+    
     var propertyPhotosDictionary = [String : Any]()
 
     var delegate: appendToDictionaryDelegate?
@@ -52,9 +54,34 @@ class PropertyPhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //download photos here
+        
         loadingIndicator.isHidden = true
        
         picker.delegate = self
+        
+        
+        if let url = propertyReference {
+            
+            url.observe(.value, with: { (snapshot) in
+                
+                let valueDictionary = snapshot.value as? [String : Any] ?? [:]
+                
+                
+                 let photoURLS = ObServedPhotos.init(dictionary: valueDictionary)
+                
+                if let photoArray = photoURLS.photos {
+                    self.propertyPhotos = photoArray
+                }
+                    
+                
+                
+                
+                
+            })
+            
+            
+        }
 
     }
 
@@ -159,7 +186,16 @@ extension PropertyPhotosViewController: photoDictionaryCreateDelegate {
         let caption = photo.photoCaption
         let downloadPath = photo.downLoadPath
         
+        if photo.isCoverPhoto {
+            
+            // set this as a different append method
+            
+        }
+        
         propertyPhotosDictionary.updateValue(downloadPath, forKey: caption)
+        
+        delegate?.appender(key: .PropertyPhotos, value: propertyPhotosDictionary)
+       
         
     }
     

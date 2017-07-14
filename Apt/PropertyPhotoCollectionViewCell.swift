@@ -31,4 +31,12 @@ class PropertyPhotoCollectionViewCell: UICollectionViewCell {
     }
     
     
+    override func prepareForReuse() {
+        
+        image = nil
+        label = nil
+  
+    }
+    
+    
 }

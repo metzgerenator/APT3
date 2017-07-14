@@ -279,6 +279,11 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
             guard let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? PropertyPhotosViewController else {return}
      
             vc.delegate = self
+            
+            if let refernce = propertyID {
+    
+                vc.propertyReference = refernce
+            }
        
         }
         
@@ -294,11 +299,11 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
     }
     
     
-    func appender(key: PropertyKeys, value: String) {
+    func appender(key: PropertyKeys, value: Any) {
         
         dictionaryToSave.updateValue(value, forKey: key.rawValue)
         
-        print("here is current dictionary \(dictionaryToSave)")
+        // print("here is current dictionary \(dictionaryToSave)")
         
         if let endPointID = propertyID {
             

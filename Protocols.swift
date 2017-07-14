@@ -9,7 +9,7 @@
 import Foundation
 
 protocol appendToDictionaryDelegate {
-    func appender(key: PropertyKeys, value: String)
+    func appender(key: PropertyKeys, value: Any)
 }
 
 

@@ -20,6 +20,9 @@ class SubmitPhotoViewController: UIViewController {
     let storage = Storage.storage()
     
     
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
+    
+    
     @IBOutlet var currentImage: UIImageView!
     
     
@@ -28,15 +31,22 @@ class SubmitPhotoViewController: UIViewController {
         
         if let caption = currentCaption {
             
+            loadingIndicator.startAnimating()
+            loadingIndicator.isHidden = false
+            
             guard let image = selectedImage, let data = UIImageJPEGRepresentation(image, 0.9) else {return}
 
-            let storageRef = storage.reference().child("propertyImages").child("test.jpg")
+            let storageRef = storage.reference().child("propertyImages").child("\(caption).jpg")
             
             storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
+                
+                self.loadingIndicator.stopAnimating()
+                self.loadingIndicator.isHidden = true
      
                 if let error = error {
                     
-                    print("error occured error\(error)")
+                    self.standardAlert(title: "error", message: error.localizedDescription)
+                    
                 } else {
                     
                     let downloadURL = "\(metaData!.downloadURL()!)"
@@ -44,6 +54,7 @@ class SubmitPhotoViewController: UIViewController {
  
                      self.delegate?.appendToPhotoDictinary(photo: PropertyPhoto(photoCaption: caption, isCoverPhoto: self.coverSwitch.isOn, downLoadPath: downloadURL))
                     
+                    self.dismiss(animated: true, completion: nil)
                 }
                 
             })
@@ -94,6 +105,9 @@ class SubmitPhotoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadingIndicator.isHidden = true
+        
         if let image = selectedImage {
             
             currentImage.image = image
