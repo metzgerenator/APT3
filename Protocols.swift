@@ -18,6 +18,12 @@ protocol remoteSegue {
     
 }
 
+protocol photoDictionaryCreateDelegate {
+    
+    func appendToPhotoDictinary(photo: PropertyPhoto)
+    
+}
+
 
 
 

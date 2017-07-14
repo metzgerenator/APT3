@@ -440,6 +440,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                         <connections>
                                             <action selector="dismissKeyboard:" destination="Apc-7E-d68" eventType="primaryActionTriggered" id="le4-If-FEw"/>
+                                            <action selector="editingDone:" destination="Apc-7E-d68" eventType="editingChanged" id="zi1-57-idi"/>
                                         </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="Rr6-NQ-Z5S" userLabel="is cover photo">

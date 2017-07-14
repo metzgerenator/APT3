@@ -12,9 +12,8 @@ import Firebase
 
 class PropertyPhotosViewController: UIViewController {
     
-    
-    let storage = Storage.storage()
-    
+    var propertyPhotosDictionary = [String : Any]()
+
     var delegate: appendToDictionaryDelegate?
     
     @IBOutlet var loadingIndicator: UIActivityIndicatorView!
@@ -70,6 +69,8 @@ class PropertyPhotosViewController: UIViewController {
         if segue.identifier == "captionForImage" {
             
             guard let vc = segue.destination as? SubmitPhotoViewController, let image = sender as? UIImage else {return}
+            
+            vc.delegate = self
             
             vc.selectedImage = image
             
@@ -128,36 +129,7 @@ extension PropertyPhotosViewController: UIImagePickerControllerDelegate, UINavig
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             self.performSegue(withIdentifier: "captionForImage", sender: image)
-            
-            
-//            loadingIndicator.startAnimating()
-//            loadingIndicator.isHidden = false
-//            
-//            guard let data = UIImageJPEGRepresentation(image, 0.9) else {return}
-//            
-//            
-//            
-//             let storageRef = storage.reference().child("propertyImages").child("test.jpg")
-//            
-//            storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
-//                
-//                self.loadingIndicator.stopAnimating()
-//                self.loadingIndicator.isHidden = true
-//                
-//                if let error = error {
-//                    
-//                    print("error occured error\(error)")
-//                } else {
-//                    
-//                    let downloadURL = metaData!.downloadURL()
-//                    print("here is the file path \(String(describing: downloadURL))")
-//                    
-//                }
-//                
-//            })
-//            
-            
-            
+ 
             
         } else {
             
@@ -178,7 +150,20 @@ extension PropertyPhotosViewController: UIImagePickerControllerDelegate, UINavig
 
 
 
+//MARK: protocols 
 
+extension PropertyPhotosViewController: photoDictionaryCreateDelegate {
+    
+    func appendToPhotoDictinary(photo: PropertyPhoto) {
+        
+        let caption = photo.photoCaption
+        let downloadPath = photo.downLoadPath
+        
+        propertyPhotosDictionary.updateValue(downloadPath, forKey: caption)
+        
+    }
+    
+}
 
 
 

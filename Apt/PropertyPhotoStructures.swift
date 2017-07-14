@@ -12,4 +12,8 @@ import Foundation
 
 struct PropertyPhoto {
     
+    var photoCaption: String
+    var isCoverPhoto: Bool
+    var downLoadPath: String
+    
 }
