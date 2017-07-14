@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import SDWebImage
+import FirebaseStorage
+
 
 class PropertyPhotoCollectionViewCell: UICollectionViewCell {
     
@@ -19,16 +23,7 @@ class PropertyPhotoCollectionViewCell: UICollectionViewCell {
     
     var image: UIImage?
     
-    var label: String? {
-        
-        didSet {
-            if let newLabel = label {
-                
-                cellLabel.text = newLabel
-            }
-        }
-        
-    }
+    var label: String?
     
     
     override func prepareForReuse() {
@@ -38,5 +33,16 @@ class PropertyPhotoCollectionViewCell: UICollectionViewCell {
   
     }
     
-    
+    func setupCell(propertyPhoto: PropertyPhoto ) {
+        
+        let url = URL(string: propertyPhoto.downLoadPath)
+        let placeholderImage = #imageLiteral(resourceName: "test")
+        cellLabel.text = propertyPhoto.photoCaption
+        
+        cellImage.sd_setImage(with: url, placeholderImage: placeholderImage)
+        
+        cellImage.setShowActivityIndicator(true)
+        cellImage.setIndicatorStyle(.gray)
+
+    }
 }

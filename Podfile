@@ -13,5 +13,6 @@ pod 'FBSDKLoginKit', '~> 4.18.0'
 pod 'SwiftyJSON'
 pod 'Firebase/Core'
 pod 'Firebase/Storage'
+pod 'SDWebImage', '~>3.8'
 
 end

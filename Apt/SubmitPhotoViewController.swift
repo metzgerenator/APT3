@@ -54,7 +54,8 @@ class SubmitPhotoViewController: UIViewController {
  
                      self.delegate?.appendToPhotoDictinary(photo: PropertyPhoto(photoCaption: caption, isCoverPhoto: self.coverSwitch.isOn, downLoadPath: downloadURL))
                     
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
+                
                 }
                 
             })

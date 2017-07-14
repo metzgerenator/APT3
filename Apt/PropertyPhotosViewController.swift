@@ -40,7 +40,7 @@ class PropertyPhotosViewController: UIViewController {
     
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
-        
+        //add dropdown to choose camera picker 
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
         self.present(picker, animated: true, completion: nil)
@@ -72,12 +72,9 @@ class PropertyPhotosViewController: UIViewController {
                 
                 if let photoArray = photoURLS.photos {
                     self.propertyPhotos = photoArray
+                    self.collectionView.reloadData()
                 }
-                    
-                
-                
-                
-                
+  
             })
             
             
@@ -120,7 +117,7 @@ extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionVi
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return propertyPhotos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -129,7 +126,8 @@ extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionVi
         
         if let photoCell = cell as? PropertyPhotoCollectionViewCell {
             
-            photoCell.label = "Test"
+            let cureentPhoto = propertyPhotos[indexPath.row]
+            photoCell.setupCell(propertyPhoto: cureentPhoto)
             
             return photoCell
         }
