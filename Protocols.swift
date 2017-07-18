@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol appendToDictionaryDelegate {
     func appender(key: PropertyKeys, value: Any)
@@ -22,6 +23,10 @@ protocol photoDictionaryCreateDelegate {
     
     func appendToPhotoDictinary(photo: PropertyPhoto)
     
+}
+
+protocol loadCoverPhotoProtocol {
+    func loadPhoto(image: UIImage)
 }
 
 

@@ -24,6 +24,7 @@ struct ObServedPhotos {
     
     var photos: [PropertyPhoto]?
     
+    
     init(dictionary: [String : Any]) {
         
        let json = JSON(dictionary)

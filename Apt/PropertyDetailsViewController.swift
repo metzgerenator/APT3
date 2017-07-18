@@ -34,6 +34,9 @@ class PropertyDetailsViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.title = "ADD DETAILS"
         
+        
+    
+        
     
     }
 
@@ -52,6 +55,7 @@ class PropertyDetailsViewController: UIViewController {
                 
                 childDelegate = vc
                 
+                vc.loadCoverPhotDelegate = self
                 vc.appender(key: .PropertyName, value: name)
             }
             
@@ -62,6 +66,18 @@ class PropertyDetailsViewController: UIViewController {
 
   
 
+}
+
+extension PropertyDetailsViewController: loadCoverPhotoProtocol {
+    
+    
+    func loadPhoto(image: UIImage) {
+        
+        print("loading photo")
+        
+    }
+    
+    
 }
 
 

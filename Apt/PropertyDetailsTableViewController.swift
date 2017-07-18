@@ -16,6 +16,8 @@ class PropertyDetailsTableViewController: UITableViewController {
  
     var propertyID: DatabaseReference?
     
+    var loadCoverPhotDelegate: loadCoverPhotoProtocol?
+    
     
     @IBOutlet var petsSwitch: UISwitch!
 
@@ -52,6 +54,28 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //listen for coverphotos and other details 
+        
+        
+        
+        if let url = propertyID {
+            
+            url.observe(.value, with: { (snapshot) in
+                
+                let valueDictionary = snapshot.value as? [String : Any] ?? [:]
+                
+                
+                let photoURLS = ObServedPhotos.init(dictionary: valueDictionary)
+                
+               
+                
+            })
+            
+            
+        }
+        
+        
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
