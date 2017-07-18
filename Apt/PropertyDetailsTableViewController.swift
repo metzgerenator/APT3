@@ -310,7 +310,7 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
             Endpoints.appendToExisting(with: endPointID, values: dictionaryToSave)
             
         } else {
-            propertyID = Endpoints.appendValues(dictionaryToSave)
+            propertyID = Endpoints.appendPropertyValues(dictionaryToSave)
         }
   
         

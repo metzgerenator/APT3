@@ -54,6 +54,13 @@ class PropertyPhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("here is current refernce \(propertyReference!)")
+        
+        let width = collectionView.frame.width / 3
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: width, height: width)
+    
+        
         //download photos here
         
         loadingIndicator.isHidden = true
@@ -186,7 +193,9 @@ extension PropertyPhotosViewController: photoDictionaryCreateDelegate {
         
         if photo.isCoverPhoto {
             
-            // set this as a different append method
+            let coverPhoto = [caption : downloadPath]
+            delegate?.appender(key: .CoverPhoto, value: coverPhoto)
+            
             
         }
         

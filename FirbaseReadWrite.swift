@@ -40,6 +40,7 @@ enum PropertyKeys: String {
     case PetsAllowed = "Pets_Allowed"
     case WasherDryerType = "Washingmachine_Type"
     case PropertyPhotos = "Property_Photos"
+    case CoverPhoto = "Cover_Photo"
 
     
 }
@@ -71,11 +72,15 @@ enum Endpoints {
     
     static func appendToExisting(with reference: DatabaseReference, values: [String : Any]) {
         
+        
         reference.setValue(values)
  
     }
     
-    static func appendValues(_ values: [String : Any])-> DatabaseReference? {
+    
+
+    
+    static func appendPropertyValues(_ values: [String : Any])-> DatabaseReference? {
         
         if let user = currentUSer {
             let autoID = self.users.url.child(user.uid).child("Properties").childByAutoId()

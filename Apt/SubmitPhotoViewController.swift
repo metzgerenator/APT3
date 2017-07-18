@@ -34,7 +34,7 @@ class SubmitPhotoViewController: UIViewController {
             loadingIndicator.startAnimating()
             loadingIndicator.isHidden = false
             
-            guard let image = selectedImage, let data = UIImageJPEGRepresentation(image, 0.9) else {return}
+            guard let image = selectedImage, let data = UIImageJPEGRepresentation(image, 0.4) else {return}
 
             let storageRef = storage.reference().child("propertyImages").child("\(caption).jpg")
             
@@ -50,7 +50,6 @@ class SubmitPhotoViewController: UIViewController {
                 } else {
                     
                     let downloadURL = "\(metaData!.downloadURL()!)"
-                    print("here is the file path \(String(describing: downloadURL))")
  
                      self.delegate?.appendToPhotoDictinary(photo: PropertyPhoto(photoCaption: caption, isCoverPhoto: self.coverSwitch.isOn, downLoadPath: downloadURL))
                     
@@ -106,6 +105,7 @@ class SubmitPhotoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         loadingIndicator.isHidden = true
         
