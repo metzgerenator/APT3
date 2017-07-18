@@ -23,6 +23,7 @@ struct PropertyPhoto {
 struct ObServedPhotos {
     
     var photos: [PropertyPhoto]?
+    var coverPhoto: String?
     
     
     init(dictionary: [String : Any]) {
@@ -39,12 +40,24 @@ struct ObServedPhotos {
                 returnArray.append(propertyPhoto)
             }
 
-            
         }
+        
         
         self.photos = returnArray
         
+        if let coverPhoto = json[PropertyKeys.CoverPhoto.rawValue].dictionaryObject {
+            
+            for (caption, url) in coverPhoto {
+                
+                print("caption: \(caption), url: \(url)")
+                
+            }
+            
+        }
+        
         
     }
+    
+   
 
 }
