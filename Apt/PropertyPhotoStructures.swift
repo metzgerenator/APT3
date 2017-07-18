@@ -23,41 +23,73 @@ struct PropertyPhoto {
 struct ObServedPhotos {
     
     var photos: [PropertyPhoto]?
-    var coverPhoto: String?
+    var coverPhotoURL: String?
+    var coverPhotoCaption: String?
     
     
     init(dictionary: [String : Any]) {
         
-       let json = JSON(dictionary)
+        let json = JSON(dictionary)
         
-        guard let photos = json[PropertyKeys.PropertyPhotos.rawValue].dictionaryObject else {return}
-        
-        var returnArray = [PropertyPhoto]()
-        for (caption, url) in photos {
-            
-            if let photoURL = url as? String {
-                let propertyPhoto = PropertyPhoto(photoCaption: caption, isCoverPhoto: false, downLoadPath: photoURL)
-                returnArray.append(propertyPhoto)
+        if let photos = json[PropertyKeys.PropertyPhotos.rawValue].dictionaryObject {
+            var returnArray = [PropertyPhoto]()
+            for (caption, url) in photos {
+                
+                if let photoURL = url as? String {
+                    let propertyPhoto = PropertyPhoto(photoCaption: caption, isCoverPhoto: false, downLoadPath: photoURL)
+                    returnArray.append(propertyPhoto)
+                }
+                
             }
-
+            
+            
+            self.photos = returnArray
+            
         }
         
+       
         
-        self.photos = returnArray
+        
+        
+    }
+    
+ 
+    
+}
+
+
+struct ObserveCoverPhoto {
+    
+    var coverPhotoURL: String?
+    var coverPhotoCaption: String?
+    
+     init(dictionary: [String : Any]) {
+        
+        let json = JSON(dictionary)
         
         if let coverPhoto = json[PropertyKeys.CoverPhoto.rawValue].dictionaryObject {
             
             for (caption, url) in coverPhoto {
                 
-                print("caption: \(caption), url: \(url)")
+                
+                if let photoURL = url as? String {
+                    
+                    self.coverPhotoCaption = caption
+                    self.coverPhotoURL = photoURL
+                }
+                
+                
                 
             }
             
         }
         
-        
     }
     
+    
    
-
+    
 }
+
+
+

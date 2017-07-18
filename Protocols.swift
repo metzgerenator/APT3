@@ -26,7 +26,7 @@ protocol photoDictionaryCreateDelegate {
 }
 
 protocol loadCoverPhotoProtocol {
-    func loadPhoto(image: UIImage)
+    func loadPhoto(image: String)
 }
 
 

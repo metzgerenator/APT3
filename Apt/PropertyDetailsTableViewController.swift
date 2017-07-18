@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class PropertyDetailsTableViewController: UITableViewController {
     
     var dictionaryToSave: Dictionary = [String : Any]()
@@ -64,11 +65,14 @@ class PropertyDetailsTableViewController: UITableViewController {
             url.observe(.value, with: { (snapshot) in
                 
                 let valueDictionary = snapshot.value as? [String : Any] ?? [:]
+
+                let photoURLS = ObserveCoverPhoto.init(dictionary: valueDictionary)
+ 
+                guard let bacgroundURL = photoURLS.coverPhotoURL else {return}
                 
+                self.loadCoverPhotDelegate?.loadPhoto(image: bacgroundURL)
                 
-                let photoURLS = ObServedPhotos.init(dictionary: valueDictionary)
-                
-               
+                //load photo function
                 
             })
             
@@ -291,7 +295,7 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
 }
 
 
-
+// protocal extensions
 
 extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remoteSegue {
     
@@ -348,5 +352,16 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
 
 

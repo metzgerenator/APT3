@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PropertyDetailsViewController: UIViewController {
     
@@ -71,7 +72,19 @@ class PropertyDetailsViewController: UIViewController {
 extension PropertyDetailsViewController: loadCoverPhotoProtocol {
     
     
-    func loadPhoto(image: UIImage) {
+    func loadPhoto(image: String) {
+        
+        
+        
+            let url = URL(string: image)
+            let placeholderImage = #imageLiteral(resourceName: "test")
+            //cellLabel.text = propertyPhoto.photoCaption
+            
+            mainBackGroundImage.sd_setImage(with: url, placeholderImage: placeholderImage)
+            
+            
+            
+        
         
         print("loading photo")
         

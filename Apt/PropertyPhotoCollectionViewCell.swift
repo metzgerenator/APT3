@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import SDWebImage
-import FirebaseStorage
+
 
 
 class PropertyPhotoCollectionViewCell: UICollectionViewCell {
