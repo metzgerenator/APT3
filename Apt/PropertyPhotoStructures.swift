@@ -20,7 +20,7 @@ struct PropertyPhoto {
 }
 
 
-struct ObServedPhotos {
+class ObServedPhotos {
     
     var photos: [PropertyPhoto]?
     var coverPhotoURL: String?
