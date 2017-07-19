@@ -99,11 +99,7 @@ class SubmitPhotoViewController: UIViewController {
     @IBAction func editingDone(_ sender: UITextField) {
         
         let set = NSCharacterSet(charactersIn: "ABCDEFGHIJKLMONPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ").inverted
-        
-        //return string.rangeOfCharacterFromSet(set) == nil
-        
-        
-        
+   
         let stringToReturn = sender.text?.rangeOfCharacter(from: set)
         if stringToReturn != nil {
             

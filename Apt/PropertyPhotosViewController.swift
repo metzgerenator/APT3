@@ -54,7 +54,6 @@ class PropertyPhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("here is current refernce \(propertyReference!)")
         
         let width = collectionView.frame.width / 3
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -191,18 +190,22 @@ extension PropertyPhotosViewController: photoDictionaryCreateDelegate {
         let caption = photo.photoCaption
         let downloadPath = photo.downLoadPath
         
+
         if photo.isCoverPhoto {
             
             let coverPhoto = [caption : downloadPath]
-            delegate?.appender(key: .CoverPhoto, value: coverPhoto)
-            
+            propertyPhotosDictionary.updateValue(coverPhoto, forKey: PropertyKeys.CoverPhoto.rawValue)
+ 
             
         }
         
         propertyPhotosDictionary.updateValue(downloadPath, forKey: caption)
         
         delegate?.appender(key: .PropertyPhotos, value: propertyPhotosDictionary)
-       
+        
+        //problem area
+        
+        
         
     }
     

@@ -62,17 +62,19 @@ class PropertyDetailsTableViewController: UITableViewController {
         
         if let url = propertyID {
             
-            url.observe(.value, with: { (snapshot) in
+           let listenURL = url.child(PropertyKeys.CoverPhoto.rawValue)
+            
+            listenURL.observe(.value, with: { (snapshot) in
                 
                 let valueDictionary = snapshot.value as? [String : Any] ?? [:]
 
                 let photoURLS = ObserveCoverPhoto.init(dictionary: valueDictionary)
  
-                guard let bacgroundURL = photoURLS.coverPhotoURL else {return}
+                if let bacgroundURL = photoURLS.coverPhotoURL {
+                    self.loadCoverPhotDelegate?.loadPhoto(image: bacgroundURL)
+                    
+                }
                 
-                self.loadCoverPhotDelegate?.loadPhoto(image: bacgroundURL)
-                
-                //load photo function
                 
             })
             

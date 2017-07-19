@@ -23,10 +23,7 @@ struct PropertyPhoto {
 struct ObServedPhotos {
     
     var photos: [PropertyPhoto]?
-    var coverPhotoURL: String?
-    var coverPhotoCaption: String?
-    
-    
+
     init(dictionary: [String : Any]) {
         
         let json = JSON(dictionary)
