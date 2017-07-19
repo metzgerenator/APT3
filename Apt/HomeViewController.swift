@@ -21,6 +21,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set automatic dimension for table view 
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 190
+        
         
        let propertyEndPoint = Endpoints.currentUSerProperties.url
         
@@ -78,6 +83,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configureCell(unit: unit)
         
         return cell
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableViewAutomaticDimension
+        
     }
     
     
