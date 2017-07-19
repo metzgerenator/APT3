@@ -1092,10 +1092,10 @@
             </objects>
             <point key="canvasLocation" x="2839" y="1155"/>
         </scene>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="uSg-NW-ZbF">
             <objects>
-                <viewController id="Ac7-tK-Uyr" sceneMemberID="viewController">
+                <viewController id="Ac7-tK-Uyr" customClass="HomeViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v4h-dE-tmg"/>
                         <viewControllerLayoutGuide type="bottom" id="Td8-ER-WIk"/>
@@ -1108,7 +1108,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="192" id="u7b-h3-8Y5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="192" id="u7b-h3-8Y5" customClass="HomeTableViewCell" customModule="Apt" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="192"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u7b-h3-8Y5" id="cth-DG-ALY">
@@ -1158,6 +1158,9 @@
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBJ-5r-guW">
                                                             <rect key="frame" x="337" y="0.0" width="22" height="42"/>
+                                                            <connections>
+                                                                <action selector="apartmentLikeButton:" destination="u7b-h3-8Y5" eventType="touchUpInside" id="8qW-9q-JCZ"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -1176,8 +1179,18 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="apartmentImage" destination="CpT-l8-FBF" id="ngh-N3-QGy"/>
+                                            <outlet property="apartmentLocation" destination="6ll-wU-hz8" id="szF-AX-qdX"/>
+                                            <outlet property="apartmentName" destination="EVW-Gs-9G9" id="4PP-fp-FVQ"/>
+                                            <outlet property="apartmentPrice" destination="6sK-H5-8BV" id="Inl-bL-EFz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ac7-tK-Uyr" id="Q7w-Oe-vmC"/>
+                                    <outlet property="delegate" destination="Ac7-tK-Uyr" id="TTJ-lr-WKc"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1188,9 +1201,12 @@
                             <constraint firstItem="Xhp-zL-veT" firstAttribute="leading" secondItem="jp7-ah-cRz" secondAttribute="leading" id="xCZ-uf-EVe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="JNC-uB-mvE">
+                    <navigationItem key="navigationItem" title="Home" id="JNC-uB-mvE">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="jwS-Jx-XxJ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Xhp-zL-veT" id="8LD-72-pIM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdt-lP-CPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1274,10 +1290,10 @@
             </objects>
             <point key="canvasLocation" x="8690.3999999999996" y="1915.5922038980511"/>
         </scene>
-        <!--HOME-->
+        <!--Home -->
         <scene sceneID="HRg-xN-Kde">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zll-Yy-EB2" sceneMemberID="viewController">
+                <navigationController title="Home " automaticallyAdjustsScrollViewInsets="NO" id="Zll-Yy-EB2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="HOME" id="h86-Ls-Wa3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aff-B9-NDp">
