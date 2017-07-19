@@ -17,6 +17,7 @@ struct Apartment {
     var coverPhotoURL: String?
     var price: String?
     var isFavorite: Bool?
+    var location: String?
     
     
    
@@ -59,6 +60,9 @@ struct ApartmentArray {
             if let unitPrice = subJSon[PropertyKeys.RentPrice.rawValue].string{
                 newUnit.price = unitPrice
             }
+            
+            //need method for location
+            
             
             arrayForReturn.append(newUnit)
             

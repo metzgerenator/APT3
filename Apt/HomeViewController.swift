@@ -25,8 +25,7 @@ class HomeViewController: UIViewController {
        let propertyEndPoint = Endpoints.currentUSerProperties.url
         
         propertyEndPoint.observe(.value, with: { (snapshot) in
-            
-            
+
             let valueDictionary = snapshot.value as? [String : Any] ?? [:]
             
             let arrayOfUnites = ApartmentArray.init(dictionary: valueDictionary)
@@ -73,6 +72,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! HomeTableViewCell
+        
+        let unit = properties[indexPath.row]
+        
+        cell.configureCell(unit: unit)
         
         return cell
     }

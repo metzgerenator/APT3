@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeTableViewCell: UITableViewCell {
     
@@ -36,5 +37,33 @@ class HomeTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    
+    func configureCell(unit: Apartment) {
+        
+        if let price = unit.price {
+            apartmentPrice.text = price
+        }
+        
+        if let name = unit.apartmentName {
+            apartmentName.text = name
+            
+        }
+        
+        
+        if let imageURL = unit.coverPhotoURL {
+            
+            let url = URL(string: imageURL)
+            let placeholderImage = #imageLiteral(resourceName: "test")
+            
+            apartmentImage.sd_setImage(with: url, placeholderImage: placeholderImage)
+       
+            
+        }
+        
+        //add location
+        
+        
+    }
+    
 
 }
