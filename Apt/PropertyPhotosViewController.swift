@@ -14,6 +14,8 @@ class PropertyPhotosViewController: UIViewController {
     
     var propertyReference: DatabaseReference?
     
+    var coverPhotoDictionary = [String : Any]()
+    
     var propertyPhotosDictionary = [String : Any]()
 
     var delegate: appendToDictionaryDelegate?
@@ -49,7 +51,18 @@ class PropertyPhotosViewController: UIViewController {
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if coverPhotoDictionary.count > 0 {
+            
+            delegate?.appender(key: .CoverPhoto, value: coverPhotoDictionary)
+            
+        }
+        
+    }
     
+    
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +92,15 @@ class PropertyPhotosViewController: UIViewController {
                 if let photoArray = photoURLS.photos {
                     self.propertyPhotos = photoArray
                     self.collectionView.reloadData()
+                    
+                    for photoOBject in photoArray {
+                        
+                        self.propertyPhotosDictionary.updateValue(photoOBject.downLoadPath, forKey: photoOBject.photoCaption)
+                        
+                    }
                 }
+                
+                
   
             })
             
@@ -189,22 +210,18 @@ extension PropertyPhotosViewController: photoDictionaryCreateDelegate {
         
         let caption = photo.photoCaption
         let downloadPath = photo.downLoadPath
-        
-
-        if photo.isCoverPhoto {
-            
-            let coverPhoto = [caption : downloadPath]
-            propertyPhotosDictionary.updateValue(coverPhoto, forKey: PropertyKeys.CoverPhoto.rawValue)
- 
-            
-        }
-        
+     
         propertyPhotosDictionary.updateValue(downloadPath, forKey: caption)
         
         delegate?.appender(key: .PropertyPhotos, value: propertyPhotosDictionary)
         
-        //problem area
-        
+        if photo.isCoverPhoto {
+            
+            let coverPhotoDic = [caption : downloadPath]
+            
+            coverPhotoDictionary.updateValue(coverPhotoDic, forKey: PropertyKeys.CoverPhoto.rawValue)
+            
+        }
         
         
     }
