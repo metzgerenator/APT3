@@ -1115,7 +1115,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CpT-l8-FBF">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CpT-l8-FBF">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="141.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="141.5" id="OPr-7E-gZh"/>
@@ -1166,9 +1166,13 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="37.5" id="Jyl-V6-5t1"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="nJ9-YA-QlY" firstAttribute="top" secondItem="CpT-l8-FBF" secondAttribute="bottom" constant="4.5" id="60P-l2-v0N"/>
                                                 <constraint firstAttribute="trailing" secondItem="CpT-l8-FBF" secondAttribute="trailing" id="DhL-fp-FnI"/>
                                                 <constraint firstItem="CpT-l8-FBF" firstAttribute="leading" secondItem="cth-DG-ALY" secondAttribute="leading" id="FkO-Lf-0zI"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="nJ9-YA-QlY" secondAttribute="trailing" id="Jv2-Jd-cjU"/>
