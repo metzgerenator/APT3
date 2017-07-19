@@ -132,14 +132,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		275D265D1F1F9C2C009B5AD4 /* Home tap */ = {
+		275D265D1F1F9C2C009B5AD4 /* Home tab */ = {
 			isa = PBXGroup;
 			children = (
 				275D265E1F1F9C49009B5AD4 /* HomeViewController.swift */,
 				275D26601F1F9C6B009B5AD4 /* HomeTableViewCell.swift */,
 				275D26621F1FA646009B5AD4 /* ApartmentType.swift */,
 			);
-			name = "Home tap";
+			name = "Home tab";
 			sourceTree = "<group>";
 		};
 		275F6FED1F0D1EBF00F9B2C2 /* New Property  */ = {
@@ -191,7 +191,7 @@
 		279745911F03E9FF00ED5D34 /* Apt */ = {
 			isa = PBXGroup;
 			children = (
-				275D265D1F1F9C2C009B5AD4 /* Home tap */,
+				275D265D1F1F9C2C009B5AD4 /* Home tab */,
 				275F6FED1F0D1EBF00F9B2C2 /* New Property  */,
 				27F84F4A1F053BF700693945 /* Apt.entitlements */,
 				279745C81F03F08900ED5D34 /* formatextensions */,

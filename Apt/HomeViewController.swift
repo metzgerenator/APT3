@@ -26,9 +26,14 @@ class HomeViewController: UIViewController {
         
         propertyEndPoint.observe(.value, with: { (snapshot) in
             
+            
             let valueDictionary = snapshot.value as? [String : Any] ?? [:]
             
-            print("home properties \(valueDictionary)")
+            let arrayOfUnites = ApartmentArray.init(dictionary: valueDictionary)
+            
+            self.properties = arrayOfUnites.apartments
+            self.tableView.reloadData()
+            
         })
         
       
