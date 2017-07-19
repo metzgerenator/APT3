@@ -23,10 +23,13 @@ struct PropertyPhoto {
 struct ObServedPhotos {
     
     var photos: [PropertyPhoto]?
+    var coverPhotoURL: String?
+    var coverPhotoCaption: String?
 
     init(dictionary: [String : Any]) {
         
         let json = JSON(dictionary)
+        print("here is json \(json)")
         
         if let photos = json[PropertyKeys.PropertyPhotos.rawValue].dictionaryObject {
             var returnArray = [PropertyPhoto]()
@@ -37,16 +40,31 @@ struct ObServedPhotos {
                     returnArray.append(propertyPhoto)
                 }
                 
+                
+                if let propetyCover = url as? Dictionary<String, Any> {
+                    
+                    for (caption, url) in propetyCover {
+                        print("here is caption \(caption),  here is url \(url)")
+                        
+                        if let photoURL = url as? String {
+                            
+                            self.coverPhotoCaption = caption
+                            self.coverPhotoURL = photoURL
+                        }
+                        
+                        
+                        
+                    }
+                }
+                
             }
             
             
             self.photos = returnArray
             
         }
-        
-       
-        
-        
+
+ 
         
     }
     
@@ -55,38 +73,6 @@ struct ObServedPhotos {
 }
 
 
-struct ObserveCoverPhoto {
-    
-    var coverPhotoURL: String?
-    var coverPhotoCaption: String?
-    
-     init(dictionary: [String : Any]) {
-        
-        let json = JSON(dictionary)
-        
-        if let coverPhoto = json[PropertyKeys.CoverPhoto.rawValue].dictionaryObject {
-            
-            for (caption, url) in coverPhoto {
-                
-                
-                if let photoURL = url as? String {
-                    
-                    self.coverPhotoCaption = caption
-                    self.coverPhotoURL = photoURL
-                }
-                
-                
-                
-            }
-            
-        }
-        
-    }
-    
-    
-   
-    
-}
 
 
 
