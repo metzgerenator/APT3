@@ -27,6 +27,8 @@ enum UserAuthType: String {
 enum Childs: String {
     
     case Properties
+    case Users
+    case Authtype
     
 }
 
@@ -48,12 +50,17 @@ enum PropertyKeys: String {
 enum Endpoints {
     
     case users
+    case currentUSerProperties
     
     var url: DatabaseReference {
         switch self {
             
         case .users:
-            return  Database.database().reference().child("Users")
+            return  Database.database().reference().child(Childs.Users.rawValue)
+            
+        case .currentUSerProperties:
+            return Database.database().reference().child(Childs.Users.rawValue).child("\(currentUSer?.uid ?? "")").child(Childs.Properties.rawValue)
+    
 
         }
     }
@@ -63,7 +70,8 @@ enum Endpoints {
         
         let uid = user.uid
         
-        self.users.url.child(uid).setValue(["Authtype" : authType.rawValue])
+        
+        self.users.url.child(uid).setValue([Childs.Authtype.rawValue : authType.rawValue])
         
         
         
@@ -83,7 +91,8 @@ enum Endpoints {
     static func appendPropertyValues(_ values: [String : Any])-> DatabaseReference? {
         
         if let user = currentUSer {
-            let autoID = self.users.url.child(user.uid).child("Properties").childByAutoId()
+            
+            let autoID = self.users.url.child(user.uid).child(Childs.Properties.rawValue).childByAutoId()
             
           autoID.setValue(values)
          return autoID
