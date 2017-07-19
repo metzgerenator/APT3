@@ -14,8 +14,6 @@ class PropertyPhotosViewController: UIViewController {
     
     var propertyReference: DatabaseReference?
     
-    var coverPhotoDictionary = [String : Any]()
-    
     var propertyPhotosDictionary = [String : Any]()
 
     var delegate: appendToDictionaryDelegate?
@@ -53,11 +51,7 @@ class PropertyPhotosViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        if coverPhotoDictionary.count > 0 {
-            
-            delegate?.appender(key: .CoverPhoto, value: coverPhotoDictionary)
-            
-        }
+    
         
     }
     
@@ -219,7 +213,8 @@ extension PropertyPhotosViewController: photoDictionaryCreateDelegate {
             
             let coverPhotoDic = [caption : downloadPath]
             
-            coverPhotoDictionary.updateValue(coverPhotoDic, forKey: PropertyKeys.CoverPhoto.rawValue)
+            delegate?.appender(key: .CoverPhoto, value: coverPhotoDic)
+            
             
         }
         
