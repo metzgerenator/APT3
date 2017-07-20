@@ -1132,6 +1132,7 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Cozy apartment in the suburbs " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVW-Gs-9G9">
                                                                             <rect key="frame" x="0.0" y="0.0" width="241" height="20.5"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" red="0.15319481492042542" green="0.52981960773468018" blue="0.97835761308670044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -1146,6 +1147,7 @@
                                                                 </stackView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBJ-5r-guW">
                                                                     <rect key="frame" x="353" y="0.0" width="22" height="37.5"/>
+                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <connections>
                                                                         <action selector="apartmentLikeButton:" destination="u7b-h3-8Y5" eventType="touchUpInside" id="8qW-9q-JCZ"/>
                                                                     </connections>
@@ -1188,6 +1190,7 @@
                                             <outlet property="apartmentLocation" destination="6ll-wU-hz8" id="szF-AX-qdX"/>
                                             <outlet property="apartmentName" destination="EVW-Gs-9G9" id="4PP-fp-FVQ"/>
                                             <outlet property="apartmentPrice" destination="6sK-H5-8BV" id="Inl-bL-EFz"/>
+                                            <outlet property="likeButtonOutlet" destination="gBJ-5r-guW" id="8Cb-Af-IFu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
             
             let valueDictionary = snapShot.value as? [String : Any] ?? [:]
             self.propertyFavorites = CurrentApartmentFavorites(dictionary: valueDictionary).currentFavoriets
-            
+            self.tableView.reloadData()
             
         })
        
@@ -97,6 +97,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! HomeTableViewCell
         
         let unit = properties[indexPath.row]
+        
+        if let unitKey = unit.itemKey {
+            let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
+            cell.changeButton(isFavorite: unitSaved)
+            
+        }
+        
         
         cell.delegate = self
         

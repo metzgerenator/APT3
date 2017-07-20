@@ -24,6 +24,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet var apartmentLocation: UILabel!
     
     
+    @IBOutlet var likeButtonOutlet: UIButton!
     
     @IBAction func apartmentLikeButton(_ sender: UIButton) {
         
@@ -45,6 +46,16 @@ class HomeTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    func changeButton(isFavorite: Bool) {
+        
+        if isFavorite {
+            apartmentName.backgroundColor = UIColor.yellow
+        } else {
+            apartmentName.backgroundColor = UIColor.white
+        }
+        
     }
     
     func configureCell(unit: Apartment) {
