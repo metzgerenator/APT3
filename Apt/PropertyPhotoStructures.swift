@@ -29,8 +29,9 @@ class ObServedPhotos {
     init(dictionary: [String : Any]) {
         
         let json = JSON(dictionary)
-        print("here is json \(json)")
         
+        
+        //Property photo area
         if let photos = json[PropertyKeys.PropertyPhotos.rawValue].dictionaryObject {
             var returnArray = [PropertyPhoto]()
             for (caption, url) in photos {
@@ -39,15 +40,15 @@ class ObServedPhotos {
                     let propertyPhoto = PropertyPhoto(photoCaption: caption, isCoverPhoto: false, downLoadPath: photoURL)
                     returnArray.append(propertyPhoto)
                 }
-                
-                
-                
+    
             }
             
             
             self.photos = returnArray
             
         }
+        
+        //check for cover photo
         
          if let coverPhoto = json[PropertyKeys.CoverPhoto.rawValue].dictionaryObject {
             
@@ -65,9 +66,7 @@ class ObServedPhotos {
  
         
     }
-    
- 
-    
+
 }
 
 
