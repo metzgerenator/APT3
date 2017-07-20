@@ -52,6 +52,8 @@ class HomeTableViewCell: UITableViewCell {
         
         if let imageURL = unit.coverPhotoURL {
             
+            apartmentImage.clipsToBounds = true
+            
             let url = URL(string: imageURL)
             let placeholderImage = #imageLiteral(resourceName: "test")
             
