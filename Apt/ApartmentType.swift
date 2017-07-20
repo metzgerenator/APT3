@@ -18,11 +18,7 @@ struct Apartment {
     var price: String?
     var isFavorite: Bool?
     var location: String?
-    
-    
-   
- 
-    
+
 }
 
 struct ApartmentArray {
@@ -71,6 +67,51 @@ struct ApartmentArray {
         self.apartments = arrayForReturn
     }
 }
+
+
+
+//MARK: parse current favorites
+
+struct ApartmentFavorites {
+    
+    var urlKey: String
+    var propertyKey: String
+    
+}
+
+
+
+struct CurrentApartmentFavorites {
+    
+    var currentFavoriets = [ApartmentFavorites]()
+    
+    init(dictionary: [String : Any]) {
+        
+        let json = JSON(dictionary)
+        
+        var arrayToReturn = [ApartmentFavorites]()
+        
+        for (key, subJSon) in json {
+            
+            if let propKey = subJSon[PropertyKeys.PropertyKey.rawValue].string {
+                arrayToReturn.append(ApartmentFavorites(urlKey: key, propertyKey: propKey))
+            }
+
+        }
+        
+        self.currentFavoriets = arrayToReturn
+        
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 

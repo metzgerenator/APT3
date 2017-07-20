@@ -13,6 +13,11 @@ class HomeViewController: UIViewController {
     
     var properties = [Apartment]()
     var ref: DatabaseReference?
+    
+    var propertyEndpoint: DatabaseReference {
+
+        return Endpoints.favoriteProperties.url
+    }
 
 
     @IBOutlet var tableView: UITableView!
@@ -41,10 +46,18 @@ class HomeViewController: UIViewController {
         })
         
       
+        //listener for duplicate properties 
         
+        propertyEndpoint.observe(.value, with: { (snapShot) in
+            
+            let valueDictionary = snapShot.value as? [String : Any] ?? [:]
+            let arrayOffavorites = CurrentApartmentFavorites(dictionary: valueDictionary)
+            
+            print("print fav dictionary \(arrayOffavorites)")
+            
+        })
        
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,7 +121,7 @@ extension HomeViewController: likeButtonDelegate {
     
     func unitisLiked (unitLiked: Bool, unit: Apartment) {
         
-        let url = Endpoints.favoriteProperties.url.childByAutoId()
+        let url = propertyEndpoint.childByAutoId()
         guard let itemKey = unit.itemKey else {return}
         
         let inputDictionary = [PropertyKeys.PropertyKey.rawValue : itemKey]
