@@ -11,6 +11,10 @@ import SDWebImage
 
 class HomeTableViewCell: UITableViewCell {
     
+    var delegate: likeButtonDelegate?
+    
+    var currentUnit: Apartment?
+    
     @IBOutlet var apartmentImage: UIImageView!
     
     @IBOutlet var apartmentPrice: UILabel!
@@ -22,6 +26,11 @@ class HomeTableViewCell: UITableViewCell {
     
     
     @IBAction func apartmentLikeButton(_ sender: UIButton) {
+        
+        if let delagateCheck = delegate, let selectedUnit = currentUnit {
+            
+            delagateCheck.unitisLiked(unitLiked: true, unit: selectedUnit)
+        }
         
         
         
@@ -39,6 +48,8 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func configureCell(unit: Apartment) {
+        
+        currentUnit = unit
         
         if let price = unit.price {
             apartmentPrice.text = price
@@ -59,6 +70,10 @@ class HomeTableViewCell: UITableViewCell {
             
             apartmentImage.sd_setImage(with: url, placeholderImage: placeholderImage)
        
+            
+        } else {
+            //add something letting them know no cover
+            apartmentImage.image = #imageLiteral(resourceName: "test")
             
         }
         

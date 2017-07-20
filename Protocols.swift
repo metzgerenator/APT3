@@ -30,5 +30,10 @@ protocol loadCoverPhotoProtocol {
 }
 
 
+protocol likeButtonDelegate {
+    func unitisLiked (unitLiked: Bool, unit: Apartment)
+}
+
+
 
 

@@ -59,7 +59,7 @@ class HomeViewController: UIViewController {
 
 
 
-//MAK: tableViewMethods 
+//MARK: tableViewMethods
 
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -80,6 +80,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let unit = properties[indexPath.row]
         
+        cell.delegate = self
+        
         cell.configureCell(unit: unit)
         
         return cell
@@ -97,3 +99,27 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+//MARK: protocols 
+
+extension HomeViewController: likeButtonDelegate {
+    
+    //first read once then unlike
+    
+    func unitisLiked (unitLiked: Bool, unit: Apartment) {
+        
+        let url = Endpoints.favoriteProperties.url.childByAutoId()
+        guard let itemKey = unit.itemKey else {return}
+        
+        let inputDictionary = [PropertyKeys.PropertyKey.rawValue : itemKey]
+        
+        Endpoints.appendToExisting(with: url, values: inputDictionary)
+        
+        
+        
+    }
+    
+}
+
+
+
