@@ -14,9 +14,17 @@ class HomeViewController: UIViewController {
     var properties = [Apartment]()
     var ref: DatabaseReference?
     
-    var propertyEndpoint: DatabaseReference {
+    var propertyFavorites = [ApartmentFavorites]()
+    
+    var propertyFavoriteEndpoint: DatabaseReference {
 
         return Endpoints.favoriteProperties.url
+    }
+    
+    var propertyEndPoint: DatabaseReference {
+        
+        return Endpoints.currentUSerProperties.url
+        
     }
 
 
@@ -31,9 +39,7 @@ class HomeViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 190
         
-        
-       let propertyEndPoint = Endpoints.currentUSerProperties.url
-        
+    
         propertyEndPoint.observe(.value, with: { (snapshot) in
 
             let valueDictionary = snapshot.value as? [String : Any] ?? [:]
@@ -48,12 +54,11 @@ class HomeViewController: UIViewController {
       
         //listener for duplicate properties 
         
-        propertyEndpoint.observe(.value, with: { (snapShot) in
+        propertyFavoriteEndpoint.observe(.value, with: { (snapShot) in
             
             let valueDictionary = snapShot.value as? [String : Any] ?? [:]
-            let arrayOffavorites = CurrentApartmentFavorites(dictionary: valueDictionary)
+            self.propertyFavorites = CurrentApartmentFavorites(dictionary: valueDictionary).currentFavoriets
             
-            print("print fav dictionary \(arrayOffavorites)")
             
         })
        
@@ -117,18 +122,35 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: likeButtonDelegate {
     
-    //first read once then unlike
     
     func unitisLiked (unitLiked: Bool, unit: Apartment) {
-        
-        let url = propertyEndpoint.childByAutoId()
         guard let itemKey = unit.itemKey else {return}
+        let url = propertyFavoriteEndpoint.childByAutoId()
         
-        let inputDictionary = [PropertyKeys.PropertyKey.rawValue : itemKey]
-        
-        Endpoints.appendToExisting(with: url, values: inputDictionary)
+        let isAlreadyFavorite = propertyFavorites.contains{$0.propertyKey == itemKey}
         
         
+        if isAlreadyFavorite {
+            
+            
+            for subUnit in propertyFavorites {
+                
+                if subUnit.propertyKey == itemKey {
+                
+                    let removeURL = propertyFavoriteEndpoint.child(subUnit.urlKey)
+                    Endpoints.removeFromExisting(with: removeURL)
+                }
+                
+            }
+    
+        } else {
+            
+            let inputDictionary = [PropertyKeys.PropertyKey.rawValue : itemKey]
+            
+            Endpoints.appendToExisting(with: url, values: inputDictionary)
+            
+        }
+    
         
     }
     

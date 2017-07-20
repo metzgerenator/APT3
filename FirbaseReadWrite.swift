@@ -92,6 +92,12 @@ enum Endpoints {
  
     }
     
+    static func removeFromExisting(with reference: DatabaseReference) {
+        
+        reference.removeValue()
+        
+    }
+    
     
 
     
