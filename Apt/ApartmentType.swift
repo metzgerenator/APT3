@@ -16,8 +16,13 @@ struct Apartment {
     var apartmentName: String?
     var coverPhotoURL: String?
     var price: String?
-    var isFavorite: Bool?
     var location: String?
+    
+    //missing 
+    
+    //pets 
+    //washer 
+    //dryer 
 
 }
 

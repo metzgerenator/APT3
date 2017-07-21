@@ -13,7 +13,7 @@ import Firebase
 class PropertyDetailsTableViewController: UITableViewController {
     
     var dictionaryToSave: Dictionary = [String : Any]()
-    
+    var propertyPhotosDictionary = [String : Any]()
  
     var propertyID: DatabaseReference?
     
@@ -67,13 +67,11 @@ class PropertyDetailsTableViewController: UITableViewController {
             url.observe(.value, with: { (snapshot) in
                 
                 let valueDictionary = snapshot.value as? [String : Any] ?? [:]
+                
+                self.updatePhotoValues(dictionary: valueDictionary)
+                
+                //observe photos
 
-                let photoURLS = ObServedPhotos.init(dictionary: valueDictionary)
- 
-                if let bacgroundURL = photoURLS.coverPhotoURL {
-                    self.loadCoverPhotDelegate?.loadPhoto(image: bacgroundURL)
-                    
-                }
                 
                 
             })
@@ -352,6 +350,44 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
         self.performSegue(withIdentifier: "cameraControl", sender: self)
         
     }
+    
+}
+
+
+
+
+//MARK: update dictionary values
+
+extension PropertyDetailsTableViewController {
+    
+    func updatePhotoValues(dictionary: [String : Any]) {
+        
+        let photoURLS = ObServedPhotos.init(dictionary: dictionary)
+        
+        if let photoArray = photoURLS.photos {
+            
+            for photoOBject in photoArray {
+                
+                self.propertyPhotosDictionary.updateValue(photoOBject.downLoadPath, forKey: photoOBject.photoCaption)
+                
+            }
+            self.appender(key: .PropertyPhotos, value: self.propertyPhotosDictionary)
+        }
+        
+        
+        
+        if let bacgroundURL = photoURLS.coverPhotoURL, let caption = photoURLS.coverPhotoCaption {
+            self.loadCoverPhotDelegate?.loadPhoto(image: bacgroundURL)
+            
+            let coverPhotoDic = [caption : bacgroundURL]
+            
+            self.appender(key: .CoverPhoto, value: coverPhotoDic)
+            
+        }
+
+        
+    }
+    
     
 }
 
