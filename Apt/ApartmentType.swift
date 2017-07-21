@@ -28,14 +28,13 @@ struct Apartment {
     var numberOfBathrooms: String?
     
     
-    init() {
-        
-    }
+ 
 
 
 }
 
 func newApartmentType(key: String, json: JSON) -> Apartment {
+    
     
     var newUnit = Apartment.init()
     newUnit.itemKey = key
@@ -63,9 +62,15 @@ func newApartmentType(key: String, json: JSON) -> Apartment {
     
     //need method for location
     
-    if let petsAllowed = json[PropertyKeys.PetsAllowed.rawValue].bool {
+    if let petsAllowed = json[PropertyKeys.PetsAllowed.rawValue].string {
         
-        newUnit.petsAllowed = petsAllowed
+        switch petsAllowed {
+        case "true":
+            newUnit.petsAllowed = true
+        default:
+            newUnit.petsAllowed = false
+        }
+        
         
     }
     
@@ -124,71 +129,7 @@ struct ApartmentArray {
             
             let newUnit = newApartmentType(key: key, json: subJSon)
             
-//            var newUnit = Apartment.init()
-//            newUnit.itemKey = key
-//            
-//           
-//            if let name = subJSon[PropertyKeys.PropertyName.rawValue].string{
-//                
-//                newUnit.apartmentName = name
-//            }
-//            
-//            if let coverPhoto = subJSon[PropertyKeys.CoverPhoto.rawValue].dictionaryObject {
-//                
-//                for (_, url) in coverPhoto {
-//                    
-//                    if let photoURL = url as? String {
-//                        newUnit.coverPhotoURL = photoURL
-//                    }
-//                }
-//           
-//            }
-//            
-//            if let unitPrice = subJSon[PropertyKeys.RentPrice.rawValue].string{
-//                newUnit.price = unitPrice
-//            }
-//            
-//            //need method for location
-//            
-//            if let petsAllowed = subJSon[PropertyKeys.PetsAllowed.rawValue].bool {
-//                
-//                newUnit.petsAllowed = petsAllowed
-//                
-//            }
-//            
-//            
-//            if let washingMachineType = subJSon[PropertyKeys.PetsAllowed.rawValue].string {
-//                
-//                newUnit.washingMachineType = washingMachineType
-//            }
-//            
-//            
-//            if let rentPrice = subJSon[PropertyKeys.RentPrice.rawValue].string {
-//                
-//                newUnit.RentPrice = rentPrice
-//                
-//            }
-//            
-//            
-//            if let rentFrequency = subJSon[PropertyKeys.RentFrequency.rawValue].string {
-//                
-//                newUnit.RentFrequency = rentFrequency
-//                
-//            }
-//            
-//            
-//            if let numberOfBedrooms = subJSon[PropertyKeys.BedroomNumber.rawValue].string {
-//                
-//                newUnit.numberOfBedrooms = numberOfBedrooms
-//                
-//            }
-//            
-//            if let numberOfBathrooms = subJSon[PropertyKeys.BathroomNumber.rawValue].string {
-//                
-//                newUnit.numberOfBathrooms = numberOfBathrooms
-//                
-//            }
-            
+
             
             arrayForReturn.append(newUnit)
             

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftyJSON
 
 
 class PropertyDetailsTableViewController: UITableViewController {
@@ -69,6 +70,9 @@ class PropertyDetailsTableViewController: UITableViewController {
                 let valueDictionary = snapshot.value as? [String : Any] ?? [:]
                 
                 self.updatePhotoValues(dictionary: valueDictionary)
+                
+                self.updateGeneralValues(key: snapshot.key, dictionary: valueDictionary)
+                
                 
       
             })
@@ -389,9 +393,17 @@ extension PropertyDetailsTableViewController {
     }
     
     
-    func updateGeneralValues(dictionary: [String : Any]) {
+    func updateGeneralValues(key: String,dictionary: [String : Any]) {
         
         //need single init 
+        let json = JSON(dictionary)
+        
+        
+           let singleUnite = newApartmentType(key: key, json: json)
+            
+            print("here is singleUnit \(singleUnite)")
+        
+        
         
         
     }
