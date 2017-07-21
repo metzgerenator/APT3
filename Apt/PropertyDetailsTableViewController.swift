@@ -70,10 +70,7 @@ class PropertyDetailsTableViewController: UITableViewController {
                 
                 self.updatePhotoValues(dictionary: valueDictionary)
                 
-                //observe photos
-
-                
-                
+      
             })
             
             
@@ -371,7 +368,8 @@ extension PropertyDetailsTableViewController {
                 self.propertyPhotosDictionary.updateValue(photoOBject.downLoadPath, forKey: photoOBject.photoCaption)
                 
             }
-            self.appender(key: .PropertyPhotos, value: self.propertyPhotosDictionary)
+            self.dictionaryToSave.updateValue(self.propertyPhotosDictionary, forKey: PropertyKeys.PropertyPhotos.rawValue)
+            //self.appender(key: .PropertyPhotos, value: self.propertyPhotosDictionary)
         }
         
         
@@ -381,10 +379,20 @@ extension PropertyDetailsTableViewController {
             
             let coverPhotoDic = [caption : bacgroundURL]
             
-            self.appender(key: .CoverPhoto, value: coverPhotoDic)
+            self.dictionaryToSave.updateValue(coverPhotoDic, forKey: PropertyKeys.CoverPhoto.rawValue)
+            
+            //self.appender(key: .CoverPhoto, value: coverPhotoDic)
             
         }
 
+        
+    }
+    
+    
+    func updateGeneralValues(dictionary: [String : Any]) {
+        
+        //need single init 
+        
         
     }
     
