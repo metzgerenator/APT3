@@ -62,6 +62,7 @@ class PropertyDetailsTableViewController: UITableViewController {
         
         if let url = propertyID {
             
+           // MARK: init other property details here
             
             url.observe(.value, with: { (snapshot) in
                 

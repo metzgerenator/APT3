@@ -93,6 +93,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+         let propertyKey = properties[indexPath.row]
+
+        self.performSegue(withIdentifier: "propertyDetail", sender: propertyKey)
+        
+    }
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! HomeTableViewCell
         
@@ -124,6 +135,29 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+
+//Mark: navigation 
+
+extension HomeViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "propertyDetail" {
+            
+            guard let vc = segue.destination as? PropertyDetailsViewController, let property = sender as? Apartment, let propKey = property.itemKey, let unitName = property.apartmentName else {return}
+            
+            vc.refernceFromHomeView = propKey
+            vc.propertyName = unitName
+            
+            //add if let for load photo
+            
+        }
+    }
+    
+    
+}
+
+
 
 //MARK: protocols 
 

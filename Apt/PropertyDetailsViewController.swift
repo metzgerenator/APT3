@@ -13,6 +13,8 @@ class PropertyDetailsViewController: UIViewController {
     
     
     var childDelegate: remoteSegue?
+    
+    var refernceFromHomeView: String?
 
     
     @IBOutlet var mainBackGroundImage: UIImageView!
@@ -31,6 +33,8 @@ class PropertyDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         //rentPrice
+        
+        print("herer is reference key \(String(describing: refernceFromHomeView))")
     
         super.viewDidLoad()
         self.navigationController?.title = "ADD DETAILS"
@@ -57,7 +61,19 @@ class PropertyDetailsViewController: UIViewController {
                 childDelegate = vc
                 
                 vc.loadCoverPhotDelegate = self
-                vc.appender(key: .PropertyName, value: name)
+                
+                
+                // Create a data referenc if this is coming from the home view
+                
+                if let refernceKey = refernceFromHomeView {
+                    vc.propertyID = Endpoints.currentUSerProperties.url.child(refernceKey)
+                    
+                } else {
+                   vc.appender(key: .PropertyName, value: name)
+                }
+                
+                
+                
             }
             
             
@@ -81,12 +97,7 @@ extension PropertyDetailsViewController: loadCoverPhotoProtocol {
             //cellLabel.text = propertyPhoto.photoCaption
             
             mainBackGroundImage.sd_setImage(with: url, placeholderImage: placeholderImage)
-            
-            
-            
-        
-        
-        print("loading photo")
+ 
         
     }
     

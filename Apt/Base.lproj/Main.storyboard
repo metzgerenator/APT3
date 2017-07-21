@@ -831,7 +831,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5o-Cn-Nrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6820.8000000000002" y="1115.8920539730136"/>
+            <point key="canvasLocation" x="6709" y="1154"/>
         </scene>
         <!--Rent Table View Controller-->
         <scene sceneID="vvB-zA-eZw">
@@ -1090,7 +1090,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1l-Ws-iNv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2839" y="1155"/>
+            <point key="canvasLocation" x="3194" y="1138"/>
         </scene>
         <!--Home-->
         <scene sceneID="uSg-NW-ZbF">
@@ -1213,6 +1213,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Xhp-zL-veT" id="8LD-72-pIM"/>
+                        <segue destination="idc-yB-k3n" kind="show" identifier="propertyDetail" id="sHP-Ln-hV1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdt-lP-CPP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1295,7 +1296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9W-hh-v5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8690.3999999999996" y="1915.5922038980511"/>
+            <point key="canvasLocation" x="8414" y="1890"/>
         </scene>
         <!--Home -->
         <scene sceneID="HRg-xN-Kde">
@@ -1429,6 +1430,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="sHP-Ln-hV1"/>
         <segue reference="qSC-MX-tZX"/>
     </inferredMetricsTieBreakers>
 </document>
