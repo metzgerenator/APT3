@@ -515,7 +515,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apartment Name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uMf-Mb-oEh">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apartment Name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uMf-Mb-oEh" userLabel="Apartment Name">
                                                     <rect key="frame" x="8" y="8" width="359.5" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -815,6 +815,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375.5" height="1000"/>
                     <connections>
+                        <outlet property="apartmentNameOutlet" destination="uMf-Mb-oEh" id="vpg-JX-Vd0"/>
                         <outlet property="bathRoomSelectionRow" destination="Eqz-0q-v2z" id="qNU-Dd-kpa"/>
                         <outlet property="bathroomNumber" destination="uK2-w0-uKi" id="9bq-WW-nTD"/>
                         <outlet property="bathroomSelectionPicker" destination="s1J-m2-XMQ" id="8H8-Z0-sWG"/>

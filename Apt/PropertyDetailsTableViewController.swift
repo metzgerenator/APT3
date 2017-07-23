@@ -21,6 +21,9 @@ class PropertyDetailsTableViewController: UITableViewController {
     var loadCoverPhotDelegate: loadCoverPhotoProtocol?
     
     
+    @IBOutlet var apartmentNameOutlet: UITextField!
+    
+    
     @IBOutlet var petsSwitch: UISwitch!
 
     @IBOutlet var bedRoomSelection: UIPickerView!
@@ -319,6 +322,8 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
         
         if segue.identifier == "rent" {
             
+            //pass dictionary to update rent values and frequency  here
+            
             guard let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? RentTableViewController else {return}
             
             vc.delegate = self
@@ -395,13 +400,66 @@ extension PropertyDetailsTableViewController {
     
     func updateGeneralValues(key: String,dictionary: [String : Any]) {
         
-        //need single init 
         let json = JSON(dictionary)
+  
         
-        
-           let singleUnite = newApartmentType(key: key, json: json)
+        let singleUnite = newApartmentType(key: key, json: json)
             
-            print("here is singleUnit \(singleUnite)")
+        
+        if let unitName = singleUnite.apartmentName {
+            
+            dictionaryToSave.updateValue(unitName, forKey: PropertyKeys.PropertyName.rawValue)
+            
+            apartmentNameOutlet.text = unitName
+            
+            
+        }
+        
+        if let rentPrice = singleUnite.price, let frequency = singleUnite.RentFrequency {
+            
+            dictionaryToSave.updateValue(rentPrice, forKey: PropertyKeys.RentPrice.rawValue)
+            dictionaryToSave.updateValue(frequency, forKey: PropertyKeys.RentFrequency.rawValue)
+            
+        }
+        
+        
+        if let bedrooms = singleUnite.numberOfBedrooms {
+            dictionaryToSave.updateValue(bedrooms, forKey: PropertyKeys.BedroomNumber.rawValue)
+            
+            bedroomNumber.text = bedrooms
+            
+            
+        }
+        
+        if let bathrooms = singleUnite.numberOfBathrooms {
+            dictionaryToSave.updateValue(bathrooms, forKey: PropertyKeys.BathroomNumber.rawValue)
+            
+            bathroomNumber.text = bathrooms
+            
+            
+        }
+        
+        
+        if let pets = singleUnite.petsAllowed {
+            
+            dictionaryToSave.updateValue("\(pets)", forKey: PropertyKeys.PetsAllowed.rawValue)
+            
+            petsSwitch.isOn = pets
+            
+        }
+        
+        
+        if let washer = singleUnite.washingMachineType {
+            
+            washerDryerType.text = washer
+            dictionaryToSave.updateValue(washer, forKey: PropertyKeys.WasherDryerType.rawValue)
+            
+        }
+        
+       
+        
+        //finish address 
+        
         
         
         

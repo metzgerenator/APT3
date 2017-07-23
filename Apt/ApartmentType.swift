@@ -23,7 +23,6 @@ struct Apartment {
     var petsAllowed: Bool?
     var washingMachineType: String?
     var RentFrequency: String?
-    var RentPrice: String?
     var numberOfBedrooms: String?
     var numberOfBathrooms: String?
     
@@ -81,11 +80,7 @@ func newApartmentType(key: String, json: JSON) -> Apartment {
     }
     
     
-    if let rentPrice = json[PropertyKeys.RentPrice.rawValue].string {
-        
-        newUnit.RentPrice = rentPrice
-        
-    }
+  
     
     
     if let rentFrequency = json[PropertyKeys.RentFrequency.rawValue].string {
