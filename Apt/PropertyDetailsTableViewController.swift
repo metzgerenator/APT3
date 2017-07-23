@@ -8,16 +8,20 @@
 
 import UIKit
 import Firebase
+import SwiftyJSON
 
 
 class PropertyDetailsTableViewController: UITableViewController {
     
     var dictionaryToSave: Dictionary = [String : Any]()
-    
+    var propertyPhotosDictionary = [String : Any]()
  
     var propertyID: DatabaseReference?
     
     var loadCoverPhotDelegate: loadCoverPhotoProtocol?
+    
+    
+    @IBOutlet var apartmentNameOutlet: UITextField!
     
     
     @IBOutlet var petsSwitch: UISwitch!
@@ -56,25 +60,17 @@ class PropertyDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //listen for coverphotos and other details 
-        
-        
-        
+
         if let url = propertyID {
             
+           // MARK: init other property details here
             
             url.observe(.value, with: { (snapshot) in
                 
                 let valueDictionary = snapshot.value as? [String : Any] ?? [:]
-
-                let photoURLS = ObServedPhotos.init(dictionary: valueDictionary)
- 
-                if let bacgroundURL = photoURLS.coverPhotoURL {
-                    self.loadCoverPhotDelegate?.loadPhoto(image: bacgroundURL)
-                    
-                }
                 
-                
+                self.updatePhotoValues(dictionary: valueDictionary)
+       
             })
             
             
@@ -319,6 +315,8 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
         
         if segue.identifier == "rent" {
             
+            //pass dictionary to update rent values and frequency  here
+            
             guard let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? RentTableViewController else {return}
             
             vc.delegate = self
@@ -331,6 +329,8 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
     func appender(key: PropertyKeys, value: Any) {
         
         dictionaryToSave.updateValue(value, forKey: key.rawValue)
+        
+        print("appending value \(value) for key \(key)")
         
         // print("here is current dictionary \(dictionaryToSave)")
         
@@ -351,6 +351,138 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
         self.performSegue(withIdentifier: "cameraControl", sender: self)
         
     }
+    
+}
+
+
+
+
+//MARK: update dictionary values
+
+extension PropertyDetailsTableViewController {
+    
+    func updatePhotoValues(dictionary: [String : Any]) {
+        
+        let photoURLS = ObServedPhotos.init(dictionary: dictionary)
+        
+        if let photoArray = photoURLS.photos {
+            
+            for photoOBject in photoArray {
+                
+                self.propertyPhotosDictionary.updateValue(photoOBject.downLoadPath, forKey: photoOBject.photoCaption)
+                
+            }
+            self.dictionaryToSave.updateValue(self.propertyPhotosDictionary, forKey: PropertyKeys.PropertyPhotos.rawValue)
+            //self.appender(key: .PropertyPhotos, value: self.propertyPhotosDictionary)
+        }
+        
+        
+        
+        if let bacgroundURL = photoURLS.coverPhotoURL, let caption = photoURLS.coverPhotoCaption {
+            self.loadCoverPhotDelegate?.loadPhoto(image: bacgroundURL)
+            
+            let coverPhotoDic = [caption : bacgroundURL]
+            
+            self.dictionaryToSave.updateValue(coverPhotoDic, forKey: PropertyKeys.CoverPhoto.rawValue)
+            
+            //self.appender(key: .CoverPhoto, value: coverPhotoDic)
+            
+        }
+
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    func listenOnceForCurrentValues() {
+        
+        if let url = propertyID {
+            
+            
+            url.observeSingleEvent(of: .value, with: { (snapshot) in
+                let valueDictionary = snapshot.value as? [String : Any] ?? [:]
+
+                self.updateGeneralValues(key: snapshot.key, dictionary: valueDictionary)
+            })
+         
+            
+        }
+        
+    }
+    
+    
+    func updateGeneralValues(key: String,dictionary: [String : Any]) {
+        
+        let json = JSON(dictionary)
+  
+        
+        let singleUnite = newApartmentType(key: key, json: json)
+            
+        
+        if let unitName = singleUnite.apartmentName {
+            
+            dictionaryToSave.updateValue(unitName, forKey: PropertyKeys.PropertyName.rawValue)
+            
+            apartmentNameOutlet.text = unitName
+            
+            
+        }
+        
+        if let rentPrice = singleUnite.price, let frequency = singleUnite.RentFrequency {
+            
+            dictionaryToSave.updateValue(rentPrice, forKey: PropertyKeys.RentPrice.rawValue)
+            dictionaryToSave.updateValue(frequency, forKey: PropertyKeys.RentFrequency.rawValue)
+            
+        }
+        
+        
+        if let bedrooms = singleUnite.numberOfBedrooms {
+            dictionaryToSave.updateValue(bedrooms, forKey: PropertyKeys.BedroomNumber.rawValue)
+            
+            bedroomNumber.text = bedrooms
+            
+            
+        }
+        
+        if let bathrooms = singleUnite.numberOfBathrooms {
+            dictionaryToSave.updateValue(bathrooms, forKey: PropertyKeys.BathroomNumber.rawValue)
+            
+            bathroomNumber.text = bathrooms
+            
+            
+        }
+        
+        
+        if let pets = singleUnite.petsAllowed {
+            
+            dictionaryToSave.updateValue("\(pets)", forKey: PropertyKeys.PetsAllowed.rawValue)
+            
+            petsSwitch.isOn = pets
+            
+        }
+        
+        
+        if let washer = singleUnite.washingMachineType {
+            
+            washerDryerType.text = washer
+            dictionaryToSave.updateValue(washer, forKey: PropertyKeys.WasherDryerType.rawValue)
+            
+        }
+        
+       
+        
+        //finish address 
+        
+        
+        
+        
+        
+    }
+    
     
 }
 

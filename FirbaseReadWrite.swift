@@ -60,7 +60,7 @@ enum Endpoints {
             
         case .users:
             return  Database.database().reference().child(Childs.Users.rawValue)
-            
+            //be sure to add listener for user so nill collesing doesn't happen
         case .currentUSerProperties:
             return Database.database().reference().child(Childs.Users.rawValue).child("\(currentUSer?.uid ?? "")").child(Childs.Properties.rawValue)
             

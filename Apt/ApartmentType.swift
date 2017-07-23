@@ -16,10 +16,99 @@ struct Apartment {
     var apartmentName: String?
     var coverPhotoURL: String?
     var price: String?
-    var isFavorite: Bool?
     var location: String?
+    
+    //missing 
+    
+    var petsAllowed: Bool?
+    var washingMachineType: String?
+    var RentFrequency: String?
+    var numberOfBedrooms: String?
+    var numberOfBathrooms: String?
+    
+    
+ 
+
 
 }
+
+func newApartmentType(key: String, json: JSON) -> Apartment {
+    
+    
+    var newUnit = Apartment.init()
+    newUnit.itemKey = key
+    
+    
+    if let name = json[PropertyKeys.PropertyName.rawValue].string{
+        
+        newUnit.apartmentName = name
+    }
+    
+    if let coverPhoto = json[PropertyKeys.CoverPhoto.rawValue].dictionaryObject {
+        
+        for (_, url) in coverPhoto {
+            
+            if let photoURL = url as? String {
+                newUnit.coverPhotoURL = photoURL
+            }
+        }
+        
+    }
+    
+    if let unitPrice = json[PropertyKeys.RentPrice.rawValue].string{
+        newUnit.price = unitPrice
+    }
+    
+    //need method for location
+    
+    if let petsAllowed = json[PropertyKeys.PetsAllowed.rawValue].string {
+        
+        switch petsAllowed {
+        case "true":
+            newUnit.petsAllowed = true
+        default:
+            newUnit.petsAllowed = false
+        }
+        
+        
+    }
+    
+    
+    if let washingMachineType = json[PropertyKeys.WasherDryerType.rawValue].string {
+        
+        newUnit.washingMachineType = washingMachineType
+    }
+    
+    
+  
+    
+    
+    if let rentFrequency = json[PropertyKeys.RentFrequency.rawValue].string {
+        
+        newUnit.RentFrequency = rentFrequency
+        
+    }
+    
+    
+    if let numberOfBedrooms = json[PropertyKeys.BedroomNumber.rawValue].string {
+        
+        newUnit.numberOfBedrooms = numberOfBedrooms
+        
+    }
+    
+    if let numberOfBathrooms = json[PropertyKeys.BathroomNumber.rawValue].string {
+        
+        newUnit.numberOfBathrooms = numberOfBathrooms
+        
+    }
+    
+    return newUnit
+    
+    
+}
+
+
+//for array of all units
 
 struct ApartmentArray {
     var apartments = [Apartment]()
@@ -33,32 +122,9 @@ struct ApartmentArray {
 
         for (key, subJSon) in json {
             
-            var newUnit = Apartment.init()
-            newUnit.itemKey = key
+            let newUnit = newApartmentType(key: key, json: subJSon)
             
-           
-            if let name = subJSon[PropertyKeys.PropertyName.rawValue].string{
-                
-                newUnit.apartmentName = name
-            }
-            
-            if let coverPhoto = subJSon[PropertyKeys.CoverPhoto.rawValue].dictionaryObject {
-                
-                for (_, url) in coverPhoto {
-                    
-                    if let photoURL = url as? String {
-                        newUnit.coverPhotoURL = photoURL
-                    }
-                }
-           
-            }
-            
-            if let unitPrice = subJSon[PropertyKeys.RentPrice.rawValue].string{
-                newUnit.price = unitPrice
-            }
-            
-            //need method for location
-            
+
             
             arrayForReturn.append(newUnit)
             
@@ -67,6 +133,13 @@ struct ApartmentArray {
         self.apartments = arrayForReturn
     }
 }
+
+
+
+
+
+
+
 
 
 
