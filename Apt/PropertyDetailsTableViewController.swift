@@ -60,10 +60,7 @@ class PropertyDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //listen for coverphotos and other details 
-        
-        
-        
+
         if let url = propertyID {
             
            // MARK: init other property details here
@@ -73,11 +70,7 @@ class PropertyDetailsTableViewController: UITableViewController {
                 let valueDictionary = snapshot.value as? [String : Any] ?? [:]
                 
                 self.updatePhotoValues(dictionary: valueDictionary)
-                
-                self.updateGeneralValues(key: snapshot.key, dictionary: valueDictionary)
-                
-                
-      
+       
             })
             
             
@@ -337,6 +330,8 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
         
         dictionaryToSave.updateValue(value, forKey: key.rawValue)
         
+        print("appending value \(value) for key \(key)")
+        
         // print("here is current dictionary \(dictionaryToSave)")
         
         if let endPointID = propertyID {
@@ -394,6 +389,28 @@ extension PropertyDetailsTableViewController {
             
         }
 
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    func listenOnceForCurrentValues() {
+        
+        if let url = propertyID {
+            
+            
+            url.observeSingleEvent(of: .value, with: { (snapshot) in
+                let valueDictionary = snapshot.value as? [String : Any] ?? [:]
+
+                self.updateGeneralValues(key: snapshot.key, dictionary: valueDictionary)
+            })
+         
+            
+        }
         
     }
     

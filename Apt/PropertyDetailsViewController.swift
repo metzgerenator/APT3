@@ -67,6 +67,7 @@ class PropertyDetailsViewController: UIViewController {
                 
                 if let refernceKey = refernceFromHomeView {
                     vc.propertyID = Endpoints.currentUSerProperties.url.child(refernceKey)
+                    vc.listenOnceForCurrentValues()
                     
                 } else {
                    vc.appender(key: .PropertyName, value: name)

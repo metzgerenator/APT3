@@ -74,7 +74,7 @@ func newApartmentType(key: String, json: JSON) -> Apartment {
     }
     
     
-    if let washingMachineType = json[PropertyKeys.PetsAllowed.rawValue].string {
+    if let washingMachineType = json[PropertyKeys.WasherDryerType.rawValue].string {
         
         newUnit.washingMachineType = washingMachineType
     }
