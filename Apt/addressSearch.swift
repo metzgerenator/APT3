@@ -21,7 +21,7 @@ class SelectLocationViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     
-    var locatons = [String]()
+    var locatons = [CLPlacemark]()
     var cLocations = [CLLocationCoordinate2D]()
 
     
@@ -75,31 +75,32 @@ extension SelectLocationViewController: UISearchBarDelegate {
             localSearch.start(completionHandler: { (response, error) in
                 guard let results = response else { return }
                 
-                var forLocations = [String]()
-                var currentCLocations = [CLLocationCoordinate2D]()
+                var forLocations = [CLPlacemark]()
+                //var currentCLocations = [CLLocationCoordinate2D]()
                 
                 for mapItem in results.mapItems {
                     
                     let cpMark = mapItem.placemark as CLPlacemark
-                    let addressAtributes = cpMark.addressDictionary
-                    let currentCoordinate = mapItem.placemark.coordinate
+//                    let addressAtributes = cpMark.addressDictionary
+//                    let currentCoordinate = mapItem.placemark.coordinate
+                    
+                    forLocations.append(cpMark)
                     
                     
-                    
-                    if let city = addressAtributes?["City"], let state = addressAtributes?["State"] {
-                        
-                        let locationToAdd = "\(city), \(state)"
-                        let alreadyIn = forLocations.contains{$0 == locationToAdd}
-                        if !alreadyIn {
-                            currentCLocations.append(currentCoordinate)
-                            forLocations.append(locationToAdd)
-                        }
-                        
-                    }
+//                    if let city = addressAtributes?["City"], let state = addressAtributes?["State"] {
+//                        
+//                        let locationToAdd = "\(city), \(state)"
+//                        let alreadyIn = forLocations.contains{$0 == locationToAdd}
+//                        if !alreadyIn {
+//                            currentCLocations.append(currentCoordinate)
+//                            forLocations.append(locationToAdd)
+//                        }
+//                        
+//                    }
                     
                 }
                 
-                self.cLocations = currentCLocations
+                //self.cLocations = currentCLocations
                 self.locatons = forLocations
                 self.tableView.reloadData()
                 
@@ -126,9 +127,11 @@ extension SelectLocationViewController: UITableViewDataSource, UITableViewDelega
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let location = locatons[indexPath.row]
+        let location = locatons[indexPath.row].addressDictionary
+        let fullAddress = postalAddressFromAddressDictionary(location as! Dictionary<NSObject, AnyObject>)
         
-        cell.textLabel?.text = location
+        
+        cell.textLabel?.text = fullAddress
         
         return cell
         
@@ -145,6 +148,27 @@ extension SelectLocationViewController: UITableViewDataSource, UITableViewDelega
         
         // apend locaton here
         
+        
+    }
+    
+    
+}
+
+
+
+//MARK: retrive address
+
+extension SelectLocationViewController {
+    
+    func postalAddressFromAddressDictionary(_ addressdictionary: Dictionary<NSObject,AnyObject>) -> String {
+        
+        let street = addressdictionary["Street" as NSObject] as? String ?? ""
+        let state = addressdictionary["State" as NSObject] as? String ?? ""
+        let city = addressdictionary["City" as NSObject] as? String ?? ""
+        //let country = addressdictionary["Country" as NSObject] as? String ?? ""
+        let postalCode = addressdictionary["ZIP" as NSObject] as? String ?? ""
+        
+        return "\(street), \(state), \(city), \(postalCode)"
         
     }
     
