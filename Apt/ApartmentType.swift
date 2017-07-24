@@ -16,7 +16,6 @@ struct Apartment {
     var apartmentName: String?
     var coverPhotoURL: String?
     var price: String?
-    var location: String?
     
     //missing 
     
@@ -25,11 +24,9 @@ struct Apartment {
     var RentFrequency: String?
     var numberOfBedrooms: String?
     var numberOfBathrooms: String?
-    
+    var location: MapPoints?
     
  
-
-
 }
 
 func newApartmentType(key: String, json: JSON) -> Apartment {
@@ -99,6 +96,16 @@ func newApartmentType(key: String, json: JSON) -> Apartment {
     if let numberOfBathrooms = json[PropertyKeys.BathroomNumber.rawValue].string {
         
         newUnit.numberOfBathrooms = numberOfBathrooms
+        
+    }
+    
+    
+    
+    
+    if let locationDetails = json[PropertyKeys.UserLocation.rawValue].dictionary {
+        
+        print("location details \(locationDetails)")
+        
         
     }
     

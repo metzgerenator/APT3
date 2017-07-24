@@ -1239,10 +1239,10 @@
             </objects>
             <point key="canvasLocation" x="3775" y="1879"/>
         </scene>
-        <!--View Controller-->
+        <!--Main Map View Controller-->
         <scene sceneID="BHq-f2-sR3">
             <objects>
-                <viewController id="OiS-NC-bVf" sceneMemberID="viewController">
+                <viewController id="OiS-NC-bVf" customClass="MainMapViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CiH-Qe-jKk"/>
                         <viewControllerLayoutGuide type="bottom" id="VS5-PS-H6C"/>
@@ -1250,11 +1250,28 @@
                     <view key="view" contentMode="scaleToFill" id="JOF-o7-18v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NC6-BW-tm0">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <connections>
+                                    <outlet property="delegate" destination="OiS-NC-bVf" id="UbW-GK-i5N"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NC6-BW-tm0" secondAttribute="trailing" id="663-AT-LI4"/>
+                            <constraint firstItem="VS5-PS-H6C" firstAttribute="top" secondItem="NC6-BW-tm0" secondAttribute="bottom" id="8nu-2M-pSE"/>
+                            <constraint firstItem="NC6-BW-tm0" firstAttribute="top" secondItem="CiH-Qe-jKk" secondAttribute="bottom" id="I0g-xy-yGJ"/>
+                            <constraint firstItem="NC6-BW-tm0" firstAttribute="leading" secondItem="JOF-o7-18v" secondAttribute="leading" id="jEi-UP-KhC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="B0b-Ob-4X1">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="Psy-vk-7Og"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="NC6-BW-tm0" id="aNM-Hz-p8C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4X-X1-lG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

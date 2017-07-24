@@ -20,6 +20,8 @@
 		275F6FF11F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FF01F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift */; };
 		275F6FF31F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FF21F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift */; };
 		275F6FF51F0D7BAD00F9B2C2 /* RentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */; };
+		27655A601F26AA5C007406C1 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27655A5F1F26AA5C007406C1 /* MainMapViewController.swift */; };
+		27655A621F26ADE8007406C1 /* Annotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27655A611F26ADE8007406C1 /* Annotations.swift */; };
 		27693E4E1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */; };
 		27693E571F1408D2005D891F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27693E561F1408D2005D891F /* GradientView.swift */; };
 		27693E5E1F164822005D891F /* PropertyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27693E5D1F164822005D891F /* PropertyPhotosViewController.swift */; };
@@ -70,6 +72,8 @@
 		275F6FF01F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailsViewController.swift; sourceTree = "<group>"; };
 		275F6FF21F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailsTableViewController.swift; sourceTree = "<group>"; };
 		275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentTableViewController.swift; sourceTree = "<group>"; };
+		27655A5F1F26AA5C007406C1 /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
+		27655A611F26ADE8007406C1 /* Annotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotations.swift; sourceTree = "<group>"; };
 		27693E4D1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		27693E561F1408D2005D891F /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		27693E5D1F164822005D891F /* PropertyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotosViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,15 @@
 			name = "New Property ";
 			sourceTree = "<group>";
 		};
+		27655A5E1F26AA1F007406C1 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				27655A5F1F26AA5C007406C1 /* MainMapViewController.swift */,
+				27655A611F26ADE8007406C1 /* Annotations.swift */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
 		27693E5C1F1647E4005D891F /* propertyPhotos */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +207,7 @@
 		279745911F03E9FF00ED5D34 /* Apt */ = {
 			isa = PBXGroup;
 			children = (
+				27655A5E1F26AA1F007406C1 /* MapView */,
 				275D265D1F1F9C2C009B5AD4 /* Home tab */,
 				275F6FED1F0D1EBF00F9B2C2 /* New Property  */,
 				27F84F4A1F053BF700693945 /* Apt.entitlements */,
@@ -470,6 +484,7 @@
 			files = (
 				279745CA1F03F0B000ED5D34 /* UibuttonFormats.swift in Sources */,
 				274108DE1F06BCEC00B60BBA /* CurrentUserViewController.swift in Sources */,
+				27655A621F26ADE8007406C1 /* Annotations.swift in Sources */,
 				275D265F1F1F9C49009B5AD4 /* HomeViewController.swift in Sources */,
 				27693E571F1408D2005D891F /* GradientView.swift in Sources */,
 				271731881F18A9AF0044BA27 /* PropertyPhotoStructures.swift in Sources */,
@@ -482,6 +497,7 @@
 				279745CE1F04283D00ED5D34 /* alertViews.swift in Sources */,
 				275F6FF31F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift in Sources */,
 				279745CC1F04039400ED5D34 /* NewUserViewController.swift in Sources */,
+				27655A601F26AA5C007406C1 /* MainMapViewController.swift in Sources */,
 				275F6FF51F0D7BAD00F9B2C2 /* RentTableViewController.swift in Sources */,
 				273686731F0E96DE002E9F93 /* Protocols.swift in Sources */,
 				27693E4E1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift in Sources */,
