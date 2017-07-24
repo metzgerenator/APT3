@@ -549,9 +549,6 @@
                                                 <constraint firstItem="CA2-9N-5fv" firstAttribute="top" secondItem="26e-iP-wAp" secondAttribute="topMargin" id="9hP-xI-fqu"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="rOn-ZS-Two" kind="show" identifier="Address" id="5tE-fX-bHF"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="Arc-fZ-WxI">
                                         <rect key="frame" x="0.0" y="116" width="375.5" height="44"/>
@@ -829,6 +826,7 @@
                         <outlet property="washerPicker" destination="fOb-bT-rgB" id="OjY-ti-ndg"/>
                         <segue destination="bms-nl-h37" kind="presentation" identifier="rent" id="iet-Qy-zUO"/>
                         <segue destination="R9Z-wJ-aLL" kind="presentation" identifier="cameraControl" id="5rm-6Z-ltx"/>
+                        <segue destination="rOn-ZS-Two" kind="show" identifier="addressSearch" id="ZnX-Zb-j43"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5o-Cn-Nrw" userLabel="First Responder" sceneMemberID="firstResponder"/>

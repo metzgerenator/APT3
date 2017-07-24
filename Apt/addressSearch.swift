@@ -15,6 +15,9 @@ import MapKit
 
 class SelectLocationViewController: UIViewController {
     
+    
+    var delegate: appendToDictionaryDelegate?
+    
 
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -22,7 +25,6 @@ class SelectLocationViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var locatons = [CLPlacemark]()
-    var cLocations = [CLLocationCoordinate2D]()
 
     
     
@@ -78,26 +80,16 @@ extension SelectLocationViewController: UISearchBarDelegate {
                 var forLocations = [CLPlacemark]()
                 //var currentCLocations = [CLLocationCoordinate2D]()
                 
+                
                 for mapItem in results.mapItems {
                     
+                  
+                    
                     let cpMark = mapItem.placemark as CLPlacemark
-//                    let addressAtributes = cpMark.addressDictionary
-//                    let currentCoordinate = mapItem.placemark.coordinate
+
                     
                     forLocations.append(cpMark)
-                    
-                    
-//                    if let city = addressAtributes?["City"], let state = addressAtributes?["State"] {
-//                        
-//                        let locationToAdd = "\(city), \(state)"
-//                        let alreadyIn = forLocations.contains{$0 == locationToAdd}
-//                        if !alreadyIn {
-//                            currentCLocations.append(currentCoordinate)
-//                            forLocations.append(locationToAdd)
-//                        }
-//                        
-//                    }
-                    
+        
                 }
                 
                 //self.cLocations = currentCLocations
@@ -128,7 +120,7 @@ extension SelectLocationViewController: UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         let location = locatons[indexPath.row].addressDictionary
-        let fullAddress = postalAddressFromAddressDictionary(location as! Dictionary<NSObject, AnyObject>)
+        let fullAddress = postalAddressFromAddressDictionary(location!)
         
         
         cell.textLabel?.text = fullAddress
@@ -141,13 +133,19 @@ extension SelectLocationViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let location = locatons[indexPath.row]
-        let cordinate = cLocations[indexPath.row]
         
-        let latitude = cordinate.latitude
-        let longitude = cordinate.longitude
         
-        // apend locaton here
+        let fullAddress = postalAddressFromAddressDictionary(location.addressDictionary!)
+        let lattitude = location.location?.coordinate.latitude.description
+        let longitude = location.location?.coordinate.longitude.description
         
+        let locationDic =  [PropertyKeys.Address.rawValue : fullAddress, PropertyKeys.Latitude.rawValue : lattitude, PropertyKeys.Longitude.rawValue : longitude]
+        
+        
+        delegate?.appender(key: .UserLocation, value: locationDic)
+        
+        self.navigationController?.popViewController(animated: true)
+
         
     }
     
@@ -160,7 +158,7 @@ extension SelectLocationViewController: UITableViewDataSource, UITableViewDelega
 
 extension SelectLocationViewController {
     
-    func postalAddressFromAddressDictionary(_ addressdictionary: Dictionary<NSObject,AnyObject>) -> String {
+    func postalAddressFromAddressDictionary(_ addressdictionary: [AnyHashable : Any]) -> String {
         
         let street = addressdictionary["Street" as NSObject] as? String ?? ""
         let state = addressdictionary["State" as NSObject] as? String ?? ""
@@ -168,11 +166,10 @@ extension SelectLocationViewController {
         //let country = addressdictionary["Country" as NSObject] as? String ?? ""
         let postalCode = addressdictionary["ZIP" as NSObject] as? String ?? ""
         
-        return "\(street), \(state), \(city), \(postalCode)"
+        return "\(street), \(state), \(city) \(postalCode)"
         
     }
-    
-    
+
 }
 
 
