@@ -45,6 +45,10 @@ enum PropertyKeys: String {
     case PropertyPhotos = "Property_Photos"
     case CoverPhoto = "Cover_Photo"
     case PropertyKey = "Property_key"
+    case Longitude = "Longitude"
+    case Latitude = "Latitude"
+    case Address = "Address"
+    case UserLocation = "User_Location"
 
     
 }

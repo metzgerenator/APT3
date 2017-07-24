@@ -109,8 +109,13 @@ class PropertyDetailsTableViewController: UITableViewController {
 extension PropertyDetailsTableViewController  {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        if indexPath.row == 1 && indexPath.section == 0 {
+            
+            self.performSegue(withIdentifier: "addressSearch", sender: nil)
+            
+        }
         
-//print("row \(indexPath.row), section \(indexPath.section)")
         
         if indexPath.row == 2 && indexPath.section == 0 {
             
@@ -299,6 +304,16 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        
+        
+        if segue.identifier == "addressSearch" {
+            
+            guard let vc = segue.destination as? SelectLocationViewController else {return}
+            vc.delegate = self
+            
+        }
+        
+        
         if segue.identifier == "cameraControl" {
             
             guard let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? PropertyPhotosViewController else {return}
@@ -330,9 +345,7 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
         
         dictionaryToSave.updateValue(value, forKey: key.rawValue)
         
-        print("appending value \(value) for key \(key)")
         
-        // print("here is current dictionary \(dictionaryToSave)")
         
         if let endPointID = propertyID {
             
@@ -385,7 +398,6 @@ extension PropertyDetailsTableViewController {
             
             self.dictionaryToSave.updateValue(coverPhotoDic, forKey: PropertyKeys.CoverPhoto.rawValue)
             
-            //self.appender(key: .CoverPhoto, value: coverPhotoDic)
             
         }
 
