@@ -110,7 +110,7 @@ extension PropertyDetailsTableViewController  {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//print("row \(indexPath.row), section \(indexPath.section)")
+        //print("row \(indexPath.row), section \(indexPath.section)")
         
         if indexPath.row == 2 && indexPath.section == 0 {
             
