@@ -102,9 +102,16 @@ func newApartmentType(key: String, json: JSON) -> Apartment {
     
     
     
-    if let locationDetails = json[PropertyKeys.UserLocation.rawValue].dictionary {
+    if let locationDetails = json[PropertyKeys.UserLocation.rawValue].dictionaryObject {
         
-        print("location details \(locationDetails)")
+        
+        let locationJSON = JSON(locationDetails)
+        
+        if let address = locationJSON[PropertyKeys.Address.rawValue].string,  let longitude = locationJSON[PropertyKeys.Longitude.rawValue].string, let latitude = locationJSON[PropertyKeys.Latitude.rawValue].string  {
+            
+            newUnit.location = MapPoints(longitude: Double(longitude)!, latitude: Double(latitude)!, address: address)
+            
+        }
         
         
     }
@@ -131,7 +138,7 @@ struct ApartmentArray {
             
             let newUnit = newApartmentType(key: key, json: subJSon)
             
-
+            print("here is apartment array \(newUnit.location)")
             
             arrayForReturn.append(newUnit)
             

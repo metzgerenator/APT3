@@ -13,7 +13,7 @@ import MapKit
 struct MapPoints {
     var longitude: Double
     var latitude: Double
-    var Title: String
+    var address: String
 }
 
 
