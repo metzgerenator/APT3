@@ -42,6 +42,7 @@ class MainMapViewController: UIViewController {
             
             self.unitsForMap = ApartmentArray.init(dictionary: valueDictionary).apartments
             self.addPins()
+            self.centerOnMap()
             
             
       
@@ -79,15 +80,10 @@ extension MainMapViewController: MKMapViewDelegate {
         for unit in self.unitsForMap {
             
             if let logitude = unit.location?.longitude, let latitude = unit.location?.latitude {
+                let unitToAdd = PropertyView.init(unit: unit, latitude: latitude, longitude: logitude)
                 
-                let cllocation = CLLocationCoordinate2D(latitude: latitude, longitude: logitude)
-                
-                 let annotation = MKPointAnnotation()
-                annotation.coordinate = cllocation
-                
-                
-                mapView.addAnnotation(annotation)
-                
+                mapView.addAnnotation(unitToAdd)
+               
                 
             }
             
@@ -97,6 +93,29 @@ extension MainMapViewController: MKMapViewDelegate {
     
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if let annotation = annotation as? PropertyView {
+            
+            let identifier = "pin"
+            var view: MKPinAnnotationView
+            
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView {
+                
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -3, y: 5)
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+                
+                
+            }
+            
+            
+        }
+        
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")
         
         return view
@@ -110,6 +129,15 @@ extension MainMapViewController: MKMapViewDelegate {
 
 
 extension MainMapViewController {
+    
+    
+    func centerOnMap() {
+        let unit = unitsForMap[0]
+        guard let location = unit.location else {return}
+        
+        let initialLocation = CLLocation(latitude: location.latitude , longitude: location.longitude)
+        centerMapOnLocation(location: initialLocation)
+    }
     
     
     

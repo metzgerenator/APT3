@@ -17,7 +17,7 @@ struct MapPoints {
 }
 
 
-class Units: NSObject, MKAnnotation {
+class PropertyView: NSObject, MKAnnotation {
     
   
     let title: String?
@@ -27,12 +27,12 @@ class Units: NSObject, MKAnnotation {
     init(unit: Apartment, latitude: Double, longitude: Double){
         
        
-         let title = unit.apartmentName ?? "no title"
+        let title = unit.apartmentName ?? "no title"
         let addressString = unit.location?.address ?? "no addresss"
         
         self.title = title
         self.subtitle = addressString
-        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: latitude)
+        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
         super.init()
         
