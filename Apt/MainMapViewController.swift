@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Firebase
+import Foundation
 
 class MainMapViewController: UIViewController {
     
@@ -34,6 +35,7 @@ class MainMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         
         
         propertyEndPoint.observe(.value, with: { (snapshot) in
@@ -107,18 +109,19 @@ extension MainMapViewController: MKMapViewDelegate {
                 
                 view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -3, y: 5)
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+               
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
                 
                 
             }
             
-            
+             return view
         }
         
-        let view = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")
         
-        return view
+        
+       return nil
         
     }
     
