@@ -12,6 +12,10 @@ import Firebase
 
 class MainMapViewController: UIViewController {
     
+    let regionRadius: CLLocationDistance = 1000
+    
+    var locationManager = CLLocationManager()
+    
     
     var unitsForMap = [Apartment]()
     
@@ -23,7 +27,6 @@ class MainMapViewController: UIViewController {
     }
     
     
-    let regionRadius: CLLocationDistance = 1000
    
 
     @IBOutlet var mapView: MKMapView!
@@ -38,7 +41,6 @@ class MainMapViewController: UIViewController {
             let valueDictionary = snapshot.value as? [String : Any] ?? [:]
             
             self.unitsForMap = ApartmentArray.init(dictionary: valueDictionary).apartments
-            print("units for mappoint \(self.unitsForMap)")
             self.addPins()
             
             
@@ -46,6 +48,13 @@ class MainMapViewController: UIViewController {
         })
 
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkLocationAuthorizaitonStatus()
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -97,3 +106,30 @@ extension MainMapViewController: MKMapViewDelegate {
     
     
 }
+
+
+
+extension MainMapViewController {
+    
+    
+    
+    func checkLocationAuthorizaitonStatus() {
+        
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            mapView.showsUserLocation = true
+        } else {
+            
+            locationManager.requestWhenInUseAuthorization()
+            mapView.showsUserLocation = true
+        }
+        
+    }
+    
+    
+}
+
+
+
+
+
+
