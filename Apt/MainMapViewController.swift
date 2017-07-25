@@ -113,6 +113,13 @@ extension MainMapViewController: MKMapViewDelegate {
                
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
                 
+                let customLeftView = UIView.init(frame: CGRect(x: 2, y: 2, width: 40, height: 40))
+                let carImage = UIImageView(image: #imageLiteral(resourceName: "test"))
+                carImage.frame = CGRect(x: 2, y: 2, width: 40, height: 40)
+                customLeftView.addSubview(carImage)
+                view.leftCalloutAccessoryView = customLeftView
+
+             
                 
             }
             
