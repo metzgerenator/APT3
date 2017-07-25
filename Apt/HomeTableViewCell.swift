@@ -71,6 +71,15 @@ class HomeTableViewCell: UITableViewCell {
             
         }
         
+        if let location = unit.location {
+            
+            apartmentLocation.text = location.address
+            
+        } else {
+            
+            apartmentLocation.text = "no address"
+        }
+        
         
         if let imageURL = unit.coverPhotoURL {
             

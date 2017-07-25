@@ -138,7 +138,6 @@ struct ApartmentArray {
             
             let newUnit = newApartmentType(key: key, json: subJSon)
             
-            print("here is apartment array \(newUnit.location)")
             
             arrayForReturn.append(newUnit)
             

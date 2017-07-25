@@ -8,8 +8,19 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 class MainMapViewController: UIViewController {
+    
+    
+    var unitsForMap = [Apartment]()
+    
+    
+    var propertyEndPoint: DatabaseReference {
+        
+        return Endpoints.currentUSerProperties.url
+        
+    }
     
     
     let regionRadius: CLLocationDistance = 1000
@@ -20,8 +31,20 @@ class MainMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        propertyEndPoint.observe(.value, with: { (snapshot) in
+            
+            let valueDictionary = snapshot.value as? [String : Any] ?? [:]
+            
+            self.unitsForMap = ApartmentArray.init(dictionary: valueDictionary).apartments
+            print("units for mappoint \(self.unitsForMap)")
+            self.addPins()
+            
+            
+      
+        })
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +64,28 @@ class MainMapViewController: UIViewController {
 
 
 extension MainMapViewController: MKMapViewDelegate {
+    
+    func addPins() {
+        
+        for unit in self.unitsForMap {
+            
+            if let logitude = unit.location?.longitude, let latitude = unit.location?.latitude {
+                
+                let cllocation = CLLocationCoordinate2D(latitude: latitude, longitude: logitude)
+                
+                 let annotation = MKPointAnnotation()
+                annotation.coordinate = cllocation
+                
+                
+                mapView.addAnnotation(annotation)
+                
+                
+            }
+            
+        }
+        
+    }
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: "pin")
