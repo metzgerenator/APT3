@@ -1268,6 +1268,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="NC6-BW-tm0" id="aNM-Hz-p8C"/>
+                        <segue destination="idc-yB-k3n" kind="show" identifier="unitDetail" id="MHV-dZ-u6E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4X-X1-lG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
