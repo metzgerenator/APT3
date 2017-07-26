@@ -386,7 +386,6 @@ extension PropertyDetailsTableViewController {
                 
             }
             self.dictionaryToSave.updateValue(self.propertyPhotosDictionary, forKey: PropertyKeys.PropertyPhotos.rawValue)
-            //self.appender(key: .PropertyPhotos, value: self.propertyPhotosDictionary)
         }
         
         
@@ -484,10 +483,14 @@ extension PropertyDetailsTableViewController {
             dictionaryToSave.updateValue(washer, forKey: PropertyKeys.WasherDryerType.rawValue)
             
         }
+    
         
-       
-        
-        //finish address 
+        if let address = singleUnite.location {
+
+            let locationDic =  [PropertyKeys.Address.rawValue : address.address, PropertyKeys.Latitude.rawValue : String(address.latitude), PropertyKeys.Longitude.rawValue : String(address.longitude)]
+            dictionaryToSave.updateValue(locationDic, forKey: PropertyKeys.UserLocation.rawValue)
+            
+        }
         
         
         
