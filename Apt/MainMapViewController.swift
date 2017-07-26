@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import Firebase
 import Foundation
+import SDWebImage
 
 class MainMapViewController: UIViewController {
     
@@ -97,6 +98,7 @@ extension MainMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if let annotation = annotation as? PropertyView {
+    
             
             let identifier = "pin"
             var view: MKPinAnnotationView
@@ -112,9 +114,20 @@ extension MainMapViewController: MKMapViewDelegate {
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                
                 view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
-                
+            
+                //set the annotation image here
                 let customLeftView = UIView.init(frame: CGRect(x: 2, y: 2, width: 40, height: 40))
                 let carImage = UIImageView(image: #imageLiteral(resourceName: "test"))
+              
+                
+                if let imageURL = annotation.otherAtributes.coverPhotoURL {
+                    
+                    let url = URL(string: imageURL)
+                    
+                    carImage.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "test"))
+                    
+                }
+                
                 carImage.frame = CGRect(x: 2, y: 2, width: 40, height: 40)
                 customLeftView.addSubview(carImage)
                 view.leftCalloutAccessoryView = customLeftView
