@@ -38,7 +38,11 @@ class SubmitPhotoViewController: UIViewController {
 
             let storageRef = storage.reference().child("propertyImages").child("\(caption).jpg")
             
-            storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
+            
+            
+         let photoUpload = storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
+            
+                
                 
                 self.loadingIndicator.stopAnimating()
                 self.loadingIndicator.isHidden = true
@@ -57,6 +61,13 @@ class SubmitPhotoViewController: UIViewController {
                 
                 }
                 
+            })
+            
+            photoUpload.observe(.progress, handler: { (snapshot) in
+                let currentProgress = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                    / Double(snapshot.progress!.totalUnitCount)
+                
+                print("here is the progress \(currentProgress)")
             })
             
         } else {
