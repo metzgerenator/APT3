@@ -395,9 +395,9 @@
                                 <action selector="cancelButton:" destination="5HA-PY-qUy" id="R16-Hq-iHA"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="c0E-nz-GEL">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="c0E-nz-GEL">
                             <connections>
-                                <action selector="addButton:" destination="5HA-PY-qUy" id="4U6-b2-ChX"/>
+                                <action selector="doneButton:" destination="5HA-PY-qUy" id="1zW-tO-6tE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

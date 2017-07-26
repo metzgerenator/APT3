@@ -18,6 +18,9 @@ class PropertyPhotosViewController: UIViewController {
 
     var delegate: appendToDictionaryDelegate?
     
+    let camerActionText = "add photo"
+    
+    
     @IBOutlet var loadingIndicator: UIActivityIndicatorView!
     
     var propertyPhotos = [PropertyPhoto]()
@@ -25,29 +28,28 @@ class PropertyPhotosViewController: UIViewController {
     let resuseIdentifier = "photoCell"
     
     let picker = UIImagePickerController()
+    
+    
+    
+    @IBAction func doneButton(_ sender: UIBarButtonItem) {
+        
+         self.dismiss(animated: true, completion: nil)
+        
+    }
       
     
     @IBOutlet var collectionView: UICollectionView!
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         
+        //need to delete photos somehow that are not already added
         self.dismiss(animated: true, completion: nil)
         
         
     }
     
     
-    
-    
-    @IBAction func addButton(_ sender: UIBarButtonItem) {
-        //add dropdown to choose camera picker 
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        self.present(picker, animated: true, completion: nil)
-        
-        
-        
-    }
+
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -60,6 +62,7 @@ class PropertyPhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         let width = collectionView.frame.width / 3
@@ -85,8 +88,7 @@ class PropertyPhotosViewController: UIViewController {
                 
                 if let photoArray = photoURLS.photos {
                     self.propertyPhotos = photoArray
-                    self.collectionView.reloadData()
-                    
+            
                     for photoOBject in photoArray {
                         
                         self.propertyPhotosDictionary.updateValue(photoOBject.downLoadPath, forKey: photoOBject.photoCaption)
@@ -95,6 +97,8 @@ class PropertyPhotosViewController: UIViewController {
                 }
                 
                 
+                self.addCameraButton()
+        
   
             })
             
@@ -123,6 +127,18 @@ class PropertyPhotosViewController: UIViewController {
         }
         
     }
+    
+    
+    func addCameraButton() {
+        
+        
+        let cameraAction = PropertyPhoto.init(photoCaption: self.camerActionText, isCoverPhoto: false, downLoadPath: "")
+        let lastIndex = self.propertyPhotos.count
+        self.propertyPhotos.insert(cameraAction, at: lastIndex)
+        self.collectionView.reloadData()
+        
+        
+    }
 
 
 
@@ -147,14 +163,38 @@ extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionVi
         
         if let photoCell = cell as? PropertyPhotoCollectionViewCell {
             
-            let cureentPhoto = propertyPhotos[indexPath.row]
-            photoCell.setupCell(propertyPhoto: cureentPhoto)
+            let currentPhoto = propertyPhotos[indexPath.row]
+            
+            if currentPhoto.photoCaption == camerActionText {
+                photoCell.cameraAction()
+           
+            } else {
+                
+                photoCell.setupCell(propertyPhoto: currentPhoto)
+            }
+            
+            
             
             return photoCell
         }
         
         return cell
         
+        
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let photo = propertyPhotos[indexPath.row]
+        
+        if photo.photoCaption == camerActionText {
+            picker.allowsEditing = false
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: true, completion: nil)
+        }
+     
         
     }
     
@@ -184,7 +224,6 @@ extension PropertyPhotosViewController: UIImagePickerControllerDelegate, UINavig
         
         dismiss(animated: true, completion: nil)
         
-        //transition to next vc here
     }
     
     

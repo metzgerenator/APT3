@@ -33,8 +33,19 @@ class PropertyPhotoCollectionViewCell: UICollectionViewCell {
   
     }
     
+    
+    
+    func cameraAction(){
+
+        cellImage.isHidden = true
+        cellLabel.textColor = .black
+        cellLabel.text = "Add Photo"
+    }
+    
+    
     func setupCell(propertyPhoto: PropertyPhoto ) {
-        
+        cellImage.isHidden = false
+        cellLabel.textColor = .white
         let url = URL(string: propertyPhoto.downLoadPath)
         let placeholderImage = #imageLiteral(resourceName: "test")
         cellLabel.text = propertyPhoto.photoCaption
