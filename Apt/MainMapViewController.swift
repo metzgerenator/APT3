@@ -44,6 +44,7 @@ class MainMapViewController: UIViewController {
             let valueDictionary = snapshot.value as? [String : Any] ?? [:]
             
             self.unitsForMap = ApartmentArray.init(dictionary: valueDictionary).apartments
+            self.mapView.removeAnnotations(self.mapView.annotations)
             self.addPins()
             self.centerOnMap()
             
@@ -119,7 +120,7 @@ extension MainMapViewController: MKMapViewDelegate {
                 let customLeftView = UIView.init(frame: CGRect(x: 2, y: 2, width: 40, height: 40))
                 let carImage = UIImageView(image: #imageLiteral(resourceName: "test"))
               
-                
+                //load image from firebase if one exists
                 if let imageURL = annotation.otherAtributes.coverPhotoURL {
                     
                     let url = URL(string: imageURL)
@@ -127,7 +128,7 @@ extension MainMapViewController: MKMapViewDelegate {
                     carImage.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "test"))
                     
                 }
-                
+                //set frame for image and view
                 carImage.frame = CGRect(x: 2, y: 2, width: 40, height: 40)
                 customLeftView.addSubview(carImage)
                 view.leftCalloutAccessoryView = customLeftView
