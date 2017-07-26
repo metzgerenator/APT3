@@ -190,9 +190,7 @@ extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionVi
         let photo = propertyPhotos[indexPath.row]
         
         if photo.photoCaption == camerActionText {
-            picker.allowsEditing = false
-            picker.sourceType = .photoLibrary
-            self.present(picker, animated: true, completion: nil)
+           photoPickAlert()
         }
      
         
@@ -259,6 +257,53 @@ extension PropertyPhotosViewController: photoDictionaryCreateDelegate {
         
         
     }
+    
+}
+
+
+
+extension PropertyPhotosViewController {
+    
+    func photoPickAlert() {
+        let alert = UIAlertController(title: "Pick Camera", message: "Image from camera or Library", preferredStyle: .actionSheet)
+        
+        // add an action (button)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+            
+            
+            self.picker.allowsEditing = false
+            self.picker.sourceType = .camera
+            self.present(self.picker, animated: true, completion: nil)
+            
+            
+        }
+        
+        alert.addAction(cameraAction)
+        
+        
+        let libraryAction = UIAlertAction(title: "Library", style: .default) { (action) in
+            
+            
+            self.picker.allowsEditing = false
+            self.picker.sourceType = .photoLibrary
+            self.present(self.picker, animated: true, completion: nil)
+            
+            
+        }
+        
+       
+        
+         alert.addAction(libraryAction)
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    
+    }
+    
+
+
+    
     
 }
 
