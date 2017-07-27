@@ -14,6 +14,8 @@ class PropertyPhotosViewController: UIViewController {
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     
+    var currentCoverURL: String?
+    
     var propertyReference: DatabaseReference?
     
     var propertyPhotosDictionary = [String : Any]()
@@ -51,8 +53,27 @@ class PropertyPhotosViewController: UIViewController {
         
         for indexPath in indexPaths {
             
+            let propetyPhoto = propertyPhotos[indexPath.row]
+            let key = propetyPhoto.photoCaption
+            let value = propetyPhoto.downLoadPath
+            let isCoverPhoto = propetyPhoto.isCoverPhoto
+            
+            if let coverUrlString = currentCoverURL {
+                
+                if coverUrlString == value {
+                    // remove and append
+                }
+                //delegate?.appender(key: .CoverPhoto, value: coverPhotoDic)
+                
+            }
+            
+            
+            //propertyPhotosDictionary.updateValue(<#T##value: Any##Any#>, forKey: <#T##String#>)
+            
             propertyPhotos.remove(at: indexPath.row)
         }
+        
+       
         
         //loop through and delete from firebase
         
@@ -82,21 +103,31 @@ class PropertyPhotosViewController: UIViewController {
         collectionView.collectionViewLayout = layout
     
         
-        //download photos here
         
         loadingIndicator.isHidden = true
        
         picker.delegate = self
         
+        //listen for coverPhoto 
+        
+        
+        
         
         if let url = propertyReference {
             
+        
             url.observe(.value, with: { (snapshot) in
                 
                 let valueDictionary = snapshot.value as? [String : Any] ?? [:]
                 
                 
                  let photoURLS = ObServedPhotos.init(dictionary: valueDictionary)
+                
+                //check for cover url
+                if let coverURL = photoURLS.coverPhotoURL {
+                    
+                    self.currentCoverURL = coverURL
+                }
                 
                 if let photoArray = photoURLS.photos {
                     self.propertyPhotos = photoArray
