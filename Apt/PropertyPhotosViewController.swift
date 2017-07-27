@@ -51,11 +51,7 @@ class PropertyPhotosViewController: UIViewController {
     
 
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    
-        
-    }
+  
     
     
   
@@ -65,9 +61,11 @@ class PropertyPhotosViewController: UIViewController {
         
         
         
-        let width = collectionView.frame.width / 3
+        
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: width, height: width)
+        let width = UIScreen.main.bounds.width
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: width/3, height: width/3)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         collectionView.collectionViewLayout = layout
