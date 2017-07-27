@@ -59,7 +59,6 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         if let url = propertyID {
             
@@ -108,6 +107,10 @@ class PropertyDetailsTableViewController: UITableViewController {
 
 extension PropertyDetailsTableViewController  {
     
+
+    
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if indexPath.row == 1 && indexPath.section == 0 {
@@ -131,11 +134,19 @@ extension PropertyDetailsTableViewController  {
             switch washerDryerSelectionRow.isHidden {
             case (true):
                 washerDryerSelectionRow.isHidden = false
-                
                 tableView.reloadData()
+                let path = IndexPath(item: 7, section: 1)
+                tableView.scrollToRow(at: path, at: .top, animated: true)
+               
+                
             default:
                 washerDryerSelectionRow.isHidden = true
+                
                 tableView.reloadData()
+                let path = IndexPath(item: 7, section: 1)
+                tableView.scrollToRow(at: path, at: .top, animated: true)
+               
+                
             }
             
         case (0, 1):
@@ -148,6 +159,7 @@ extension PropertyDetailsTableViewController  {
             default:
                 bedRoomSelectionRow.isHidden = true
                 tableView.reloadData()
+                
             }
             
         case (2,1):
@@ -167,6 +179,9 @@ extension PropertyDetailsTableViewController  {
    
     }
     
+    
+    
+   
     
     
     
@@ -196,12 +211,16 @@ extension PropertyDetailsTableViewController  {
             
             switch washerDryerSelectionRow.isHidden {
             case true:
-                return 0
+                
+               return 0
+                
             case false:
+               
                 return UITableViewAutomaticDimension
+     
             }
-
             
+        
         }
         else {
             return UITableViewAutomaticDimension

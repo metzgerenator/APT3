@@ -20,7 +20,7 @@ class SubmitPhotoViewController: UIViewController {
     let storage = Storage.storage()
     
     
-    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet var progressView: UIProgressView!
     
     
     @IBOutlet var currentImage: UIImageView!
@@ -31,8 +31,7 @@ class SubmitPhotoViewController: UIViewController {
         
         if let caption = currentCaption {
             
-            loadingIndicator.startAnimating()
-            loadingIndicator.isHidden = false
+           
             
             guard let image = selectedImage, let data = UIImageJPEGRepresentation(image, 0.4) else {return}
 
@@ -42,10 +41,6 @@ class SubmitPhotoViewController: UIViewController {
             
          let photoUpload = storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
             
-                
-                
-                self.loadingIndicator.stopAnimating()
-                self.loadingIndicator.isHidden = true
      
                 if let error = error {
                     
@@ -67,7 +62,10 @@ class SubmitPhotoViewController: UIViewController {
                 let currentProgress = 100.0 * Double(snapshot.progress!.completedUnitCount)
                     / Double(snapshot.progress!.totalUnitCount)
                 
-                print("here is the progress \(currentProgress)")
+                self.progressView.isHidden = false
+                
+                self.progressView.progress = Float(currentProgress)
+                
             })
             
         } else {
@@ -126,8 +124,7 @@ class SubmitPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        loadingIndicator.isHidden = true
+        progressView.isHidden = true
         
         if let image = selectedImage {
             

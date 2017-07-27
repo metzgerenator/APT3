@@ -68,6 +68,9 @@ class PropertyPhotosViewController: UIViewController {
         let width = collectionView.frame.width / 3
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView.collectionViewLayout = layout
     
         
         //download photos here
@@ -147,6 +150,9 @@ class PropertyPhotosViewController: UIViewController {
 //MARK: collection cell methods
 
 extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+  
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
