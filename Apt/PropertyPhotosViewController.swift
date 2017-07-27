@@ -56,20 +56,20 @@ class PropertyPhotosViewController: UIViewController {
             let propetyPhoto = propertyPhotos[indexPath.row]
             let key = propetyPhoto.photoCaption
             let value = propetyPhoto.downLoadPath
-            let isCoverPhoto = propetyPhoto.isCoverPhoto
             
             if let coverUrlString = currentCoverURL {
                 
                 if coverUrlString == value {
-                    // remove and append
+              
+                    if let url = propertyReference?.child(PropertyKeys.CoverPhoto.rawValue) {
+                        
+                        url.removeValue()
+                    }
                 }
-                //delegate?.appender(key: .CoverPhoto, value: coverPhotoDic)
                 
             }
             
-            
-            //propertyPhotosDictionary.updateValue(<#T##value: Any##Any#>, forKey: <#T##String#>)
-            
+            propertyPhotosDictionary.removeValue(forKey: key)
             propertyPhotos.remove(at: indexPath.row)
         }
         
@@ -78,6 +78,7 @@ class PropertyPhotosViewController: UIViewController {
         //loop through and delete from firebase
         
         collectionView.deleteItems(at: indexPaths)
+        delegate?.appender(key: .PropertyPhotos, value: propertyPhotosDictionary)
         
         
         
