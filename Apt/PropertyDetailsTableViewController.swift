@@ -18,6 +18,7 @@ class PropertyDetailsTableViewController: UITableViewController {
  
     var propertyID: DatabaseReference?
     
+    
     var loadCoverPhotDelegate: loadCoverPhotoProtocol?
     
     
@@ -111,16 +112,7 @@ extension PropertyDetailsTableViewController  {
     
 
     
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        if velocity.y > 0 {
-            print("draggin up")  // hide here
-            
-        } else {
-            print("dragging down ")
-            
-        }
-    }
+   
     
   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

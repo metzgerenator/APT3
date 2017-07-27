@@ -17,6 +17,7 @@ class PropertyPhotoCollectionViewCell: UICollectionViewCell {
  
     @IBOutlet var cellImage: UIImageView!
     
+    @IBOutlet var checkedImageView: UIImageView!
     
     @IBOutlet var cellLabel: UILabel!
     
@@ -31,6 +32,30 @@ class PropertyPhotoCollectionViewCell: UICollectionViewCell {
         image = nil
         label = nil
   
+    }
+    
+    var editing: Bool = false {
+        
+        didSet {
+            cellLabel.isHidden = editing
+            checkedImageView.isHidden = !editing
+        }
+        
+        
+    }
+    
+    override var isSelected: Bool {
+        
+        didSet {
+            
+            if editing {
+                
+                checkedImageView.image = UIImage(named: isSelected ? "Checked" : "Unchecked")
+            }
+            
+        }
+        
+        
     }
     
     

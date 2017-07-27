@@ -12,6 +12,8 @@ import Firebase
 
 class PropertyPhotosViewController: UIViewController {
     
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
     var propertyReference: DatabaseReference?
     
     var propertyPhotosDictionary = [String : Any]()
@@ -39,18 +41,26 @@ class PropertyPhotosViewController: UIViewController {
       
     
     @IBOutlet var collectionView: UICollectionView!
-    
-    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
-        
-        //need to delete photos somehow that are not already added
-        self.dismiss(animated: true, completion: nil)
-        
-        
-    }
-    
+
     
 
     
+    @IBAction func uiBarButtonTapped(_ sender: UIBarButtonItem) {
+        
+        let indexPaths = collectionView.indexPathsForSelectedItems! as [IndexPath]
+        
+        for indexPath in indexPaths {
+            
+            propertyPhotos.remove(at: indexPath.row)
+        }
+        
+        //loop through and delete from firebase
+        
+        collectionView.deleteItems(at: indexPaths)
+        
+        
+        
+    }
   
     
     
@@ -58,8 +68,9 @@ class PropertyPhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isToolbarHidden = true
         
-        
+        navigationItem.leftBarButtonItem = editButtonItem
         
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -175,6 +186,7 @@ extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionVi
             } else {
                 
                 photoCell.setupCell(propertyPhoto: currentPhoto)
+                photoCell.editing = isEditing
             }
             
             
@@ -193,11 +205,29 @@ extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionVi
         
         let photo = propertyPhotos[indexPath.row]
         
+        if !isEditing {
+            
+            //perfom segue to photo here
+        }else {
+            navigationController?.setToolbarHidden(false, animated: true)
+        }
+        
+        
         if photo.photoCaption == camerActionText {
            photoPickAlert()
         }
      
         
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if isEditing {
+            if collectionView.indexPathsForSelectedItems!.count == 0 {
+                navigationController?.setToolbarHidden(true, animated: true)
+            }
+            
+        }
     }
     
     
@@ -267,6 +297,25 @@ extension PropertyPhotosViewController: photoDictionaryCreateDelegate {
 
 
 extension PropertyPhotosViewController {
+    
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        collectionView.allowsMultipleSelection = editing
+        let indexPaths = collectionView.indexPathsForVisibleItems as [IndexPath]
+        
+        for indexPath in indexPaths {
+            
+            collectionView.deselectItem(at: indexPath, animated: false)
+            let cell = collectionView.cellForItem(at: indexPath) as? PropertyPhotoCollectionViewCell
+            cell?.editing = editing
+            
+        }
+        
+        if !editing {
+            navigationController?.setToolbarHidden(true, animated: animated)
+        }
+    }
     
     func photoPickAlert() {
         let alert = UIAlertController(title: "Pick Camera", message: "Image from camera or Library", preferredStyle: .actionSheet)

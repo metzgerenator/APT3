@@ -308,6 +308,7 @@
                     </view>
                     <connections>
                         <outlet property="CameraButtonOutlet" destination="UCb-FR-asw" id="01W-Gu-WnA"/>
+                        <outlet property="backgroundImageView" destination="bXf-KK-o8T" id="vrc-Zj-y7b"/>
                         <outlet property="mainBackGroundImage" destination="2ej-N3-iJG" id="zrC-is-iL7"/>
                     </connections>
                 </viewController>
@@ -328,7 +329,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eNo-5n-e5Z">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Jyf-yI-YOA">
                                     <size key="itemSize" width="200" height="200"/>
@@ -356,6 +357,13 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="p8O-xu-h5t" userLabel="checkmark">
+                                                            <rect key="frame" x="88.5" y="174" width="22" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="22" id="FBE-Xk-I9F"/>
+                                                                <constraint firstAttribute="width" constant="22" id="JTE-cA-eug"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -363,6 +371,8 @@
                                                         <constraint firstAttribute="bottom" secondItem="4bm-Ld-MJs" secondAttribute="bottom" constant="2" id="9U7-rS-rpX"/>
                                                         <constraint firstAttribute="bottom" secondItem="GMV-wk-85b" secondAttribute="bottom" id="GJx-xq-wZV"/>
                                                         <constraint firstItem="GMV-wk-85b" firstAttribute="leading" secondItem="1pW-vh-7vz" secondAttribute="leading" id="Mkj-MT-T5O"/>
+                                                        <constraint firstAttribute="bottom" secondItem="p8O-xu-h5t" secondAttribute="bottom" constant="4" id="SJ9-eX-VhL"/>
+                                                        <constraint firstItem="p8O-xu-h5t" firstAttribute="centerX" secondItem="1pW-vh-7vz" secondAttribute="centerX" id="TJJ-RO-paQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="GMV-wk-85b" secondAttribute="trailing" id="gYS-ug-ySP"/>
                                                         <constraint firstAttribute="trailing" secondItem="4bm-Ld-MJs" secondAttribute="trailing" constant="8" id="lT4-Ax-aOo"/>
                                                         <constraint firstItem="4bm-Ld-MJs" firstAttribute="leading" secondItem="1pW-vh-7vz" secondAttribute="leading" constant="8" id="pBN-fK-gB3"/>
@@ -380,6 +390,7 @@
                                         <connections>
                                             <outlet property="cellImage" destination="GMV-wk-85b" id="kCE-mg-0zc"/>
                                             <outlet property="cellLabel" destination="4bm-Ld-MJs" id="jMR-PI-UHm"/>
+                                            <outlet property="checkedImageView" destination="p8O-xu-h5t" id="xC1-z0-itl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -402,12 +413,17 @@
                             <constraint firstItem="mGJ-l4-qEs" firstAttribute="centerY" secondItem="MxA-rX-JYf" secondAttribute="centerY" id="oTQ-uY-O4q"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="z15-RQ-eS7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9AZ-nW-dQa">
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dK1-9c-a5S"/>
+                        <barButtonItem systemItem="trash" id="xCG-Nq-1PV">
                             <connections>
-                                <action selector="cancelButton:" destination="5HA-PY-qUy" id="R16-Hq-iHA"/>
+                                <action selector="uiBarButtonTapped:" destination="5HA-PY-qUy" id="z8B-gh-iSf"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="0H3-Q7-Urs"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="z15-RQ-eS7">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9AZ-nW-dQa"/>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="c0E-nz-GEL">
                             <connections>
                                 <action selector="doneButton:" destination="5HA-PY-qUy" id="1zW-tO-6tE"/>
@@ -1446,13 +1462,17 @@
         <!--Navigation Controller-->
         <scene sceneID="ApE-dz-ELq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R9Z-wJ-aLL" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="R9Z-wJ-aLL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hs0-2n-H7M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Dzo-31-smn">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="5HA-PY-qUy" kind="relationship" relationship="rootViewController" id="MZ2-0I-fEC"/>
                     </connections>
@@ -1519,6 +1539,9 @@
             <point key="canvasLocation" x="8414" y="469"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Unchecked" width="22" height="22"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qSC-MX-tZX"/>
         <segue reference="sHP-Ln-hV1"/>

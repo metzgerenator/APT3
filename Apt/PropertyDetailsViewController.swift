@@ -16,6 +16,7 @@ class PropertyDetailsViewController: UIViewController {
     
     var refernceFromHomeView: String?
 
+    @IBOutlet var backgroundImageView: UIView!
     
     @IBOutlet var mainBackGroundImage: UIImageView!
 
@@ -32,6 +33,7 @@ class PropertyDetailsViewController: UIViewController {
     
 
     override func viewDidLoad() {
+        
         //rentPrice
         
         print("herer is reference key \(String(describing: refernceFromHomeView))")
@@ -88,7 +90,7 @@ class PropertyDetailsViewController: UIViewController {
 
 extension PropertyDetailsViewController: loadCoverPhotoProtocol {
     
-    
+ 
     func loadPhoto(image: String) {
         
         
