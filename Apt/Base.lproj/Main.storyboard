@@ -909,7 +909,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <connections>
-                                                        <action selector="priceChangeEdit:" destination="94N-Gw-3Wn" eventType="editingDidEnd" id="oKQ-l2-Lga"/>
+                                                        <action selector="priceChangeEdit:" destination="94N-Gw-3Wn" eventType="editingChanged" id="x4J-xn-rpj"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

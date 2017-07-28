@@ -19,6 +19,8 @@ class RentTableViewController: UITableViewController {
     var currentPrice: String?
     var rentTerms:String?
     
+    var textTimer: Timer?
+    
     
     @IBOutlet var priceField: UITextField!
     
@@ -48,30 +50,40 @@ class RentTableViewController: UITableViewController {
                 
                 delegateCheck.appender(key: .RentFrequency, value: terms)
             }
-            
-           
-            
+        
             
         }
         
-        
+        self.dismiss(animated: true, completion: nil)
         
     }
     
     
     
     @IBAction func priceChangeEdit(_ sender: UITextField) {
-
-        guard let textIn = sender.text?.digitsOnly, let double = Int(textIn) else {return}
+        
+        
+        textTimer?.invalidate()
+        textTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(currencyFormat), userInfo: nil, repeats: false)
+        
+        
+     
+    }
+    
+    
+    
+    func currencyFormat() {
+        
+        
+        guard let textIn = priceField.text?.digitsOnly, let double = Int(textIn) else {return}
         
         let nsnumberDouble = NSNumber(value: double)
         
-       let currencyFormat = NumberFormatter.localizedString(from: nsnumberDouble , number: .currency)
+        let currencyFormat = NumberFormatter.localizedString(from: nsnumberDouble , number: .currency)
         
         priceField.text = currencyFormat
         currentPrice = currencyFormat
         
-    
     }
     
   
