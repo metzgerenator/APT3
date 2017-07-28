@@ -43,6 +43,16 @@ class PropertyPhotosViewController: UIViewController {
          self.dismiss(animated: true, completion: nil)
         
     }
+    
+    
+    @IBAction func cameraButton(_ sender: UIBarButtonItem) {
+        
+        photoPickAlert()
+        
+    }
+    
+    
+    @IBOutlet var cameraButton: UIBarButtonItem!
       
     
     @IBOutlet var collectionView: UICollectionView!
@@ -54,51 +64,7 @@ class PropertyPhotosViewController: UIViewController {
         
         let indexPaths = collectionView.indexPathsForSelectedItems! as [IndexPath]
         
-        for indexPath in indexPaths {
-            
-            let propetyPhoto = propertyPhotos[indexPath.row]
-            let key = propetyPhoto.photoCaption
-            let value = propetyPhoto.downLoadPath
-            
-            if let coverUrlString = currentCoverURL {
-                
-                if coverUrlString == value {
-                    
-                    //MARK: fix clearing coverPhoto
-              
-                    if let url = propertyReference?.child(PropertyKeys.CoverPhoto.rawValue) {
-                        
-                        removeDictonaryValuesDelagate?.clearDitionary(key: PropertyKeys.CoverPhoto.rawValue)
-                        
-                        
-                        url.removeValue()
-                  
-                    }
-                }
-                
-            }
-            
-            let photoFileReference = storage.reference(forURL: value)
-            photoFileReference.delete(completion: { (error) in
-                if error != nil {
-                    print("something went wrong\(error.debugDescription)")
-                    
-                }else {
-                    print("file deleted successfully")
-                }
-            })
-            
-            propertyPhotosDictionary.removeValue(forKey: key)
-            propertyPhotos.remove(at: indexPath.row)
-        }
-        
-       
-        
-        //loop through and delete from firebase
-        
-        collectionView.deleteItems(at: indexPaths)
-        delegate?.appender(key: .PropertyPhotos, value: propertyPhotosDictionary)
-        
+       deletePhotos(indexPaths: indexPaths)
         
         
     }
@@ -130,9 +96,6 @@ class PropertyPhotosViewController: UIViewController {
         
         //listen for coverPhoto 
         
-        
-        
-        
         if let url = propertyReference {
             
         
@@ -159,9 +122,7 @@ class PropertyPhotosViewController: UIViewController {
                     }
                 }
                 
-                
-                self.addCameraButton()
-        
+                self.collectionView.reloadData()
   
             })
             
@@ -192,16 +153,16 @@ class PropertyPhotosViewController: UIViewController {
     }
     
     
-    func addCameraButton() {
-        
-        
-        let cameraAction = PropertyPhoto.init(photoCaption: self.camerActionText, isCoverPhoto: false, downLoadPath: "")
-        let lastIndex = self.propertyPhotos.count
-        self.propertyPhotos.insert(cameraAction, at: lastIndex)
-        self.collectionView.reloadData()
-        
-        
-    }
+//    func addCameraButton() {
+//        
+//        
+//        let cameraAction = PropertyPhoto.init(photoCaption: self.camerActionText, isCoverPhoto: false, downLoadPath: "")
+//        let lastIndex = self.propertyPhotos.count
+//        self.propertyPhotos.insert(cameraAction, at: lastIndex)
+//        self.collectionView.reloadData()
+//        
+//        
+//    }
 
 
 
@@ -231,16 +192,11 @@ extension PropertyPhotosViewController: UICollectionViewDelegate, UICollectionVi
             
             let currentPhoto = propertyPhotos[indexPath.row]
             
-            if currentPhoto.photoCaption == camerActionText {
-                photoCell.cameraAction()
            
-            } else {
                 
                 photoCell.setupCell(propertyPhoto: currentPhoto)
                 photoCell.editing = isEditing
-            }
-            
-            
+    
             
             return photoCell
         }
@@ -348,6 +304,7 @@ extension PropertyPhotosViewController: photoDictionaryCreateDelegate {
 
 
 extension PropertyPhotosViewController {
+
     
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -410,6 +367,63 @@ extension PropertyPhotosViewController {
     
 }
 
+
+//MARK: DeletePhotos 
+
+extension PropertyPhotosViewController {
+    
+    
+    func deletePhotos(indexPaths: [IndexPath]) {
+        
+        for indexPath in indexPaths {
+            
+            let propetyPhoto = propertyPhotos[indexPath.row]
+            let key = propetyPhoto.photoCaption
+            let value = propetyPhoto.downLoadPath
+            
+            if let coverUrlString = currentCoverURL {
+                
+                if coverUrlString == value {
+                    
+                    
+                    if let url = propertyReference?.child(PropertyKeys.CoverPhoto.rawValue) {
+                        
+                        removeDictonaryValuesDelagate?.clearDitionary(key: PropertyKeys.CoverPhoto.rawValue)
+                        
+                        
+                        url.removeValue()
+                        
+                    }
+                }
+                
+            }
+            
+            let photoFileReference = storage.reference(forURL: value)
+            photoFileReference.delete(completion: { (error) in
+                if error != nil {
+                    print("something went wrong\(error.debugDescription)")
+                    
+                }else {
+                    print("file deleted successfully")
+                }
+            })
+            
+            propertyPhotosDictionary.removeValue(forKey: key)
+            propertyPhotos.remove(at: indexPath.row)
+        }
+        
+        
+        
+        //loop through and delete from firebase
+        
+        collectionView.deleteItems(at: indexPaths)
+        delegate?.appender(key: .PropertyPhotos, value: propertyPhotosDictionary)
+        
+        
+    }
+    
+    
+}
 
 
 

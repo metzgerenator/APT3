@@ -60,12 +60,7 @@ class PropertyPhotoCollectionViewCell: UICollectionViewCell {
     
     
     
-    func cameraAction(){
-
-        cellImage.isHidden = true
-        cellLabel.textColor = .black
-        cellLabel.text = "Add Photo"
-    }
+    
     
     
     func setupCell(propertyPhoto: PropertyPhoto ) {
