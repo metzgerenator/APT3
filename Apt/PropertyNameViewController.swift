@@ -20,10 +20,7 @@ class PropertyNameViewController: UIViewController {
         guard let name = propertyName.text else { return }
         
         if name.characters.count > 0 {
-            
-            //let dictionary = [PropertyKeys.PropertyName.rawValue : name ]
-            
-           //let autoID =  Endpoints.appendValues(child: .Properties, values: dictionary)
+      
             
             self.performSegue(withIdentifier: "property_details", sender: name)
             

@@ -17,6 +17,7 @@ class PropertyPhotoCollectionViewCell: UICollectionViewCell {
  
     @IBOutlet var cellImage: UIImageView!
     
+    @IBOutlet var checkedImageView: UIImageView!
     
     @IBOutlet var cellLabel: UILabel!
     
@@ -33,8 +34,38 @@ class PropertyPhotoCollectionViewCell: UICollectionViewCell {
   
     }
     
-    func setupCell(propertyPhoto: PropertyPhoto ) {
+    var editing: Bool = false {
         
+        didSet {
+            cellLabel.isHidden = editing
+            checkedImageView.isHidden = !editing
+        }
+        
+        
+    }
+    
+    override var isSelected: Bool {
+        
+        didSet {
+            
+            if editing {
+                
+                checkedImageView.image = UIImage(named: isSelected ? "Checked" : "Unchecked")
+            }
+            
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    func setupCell(propertyPhoto: PropertyPhoto ) {
+        cellImage.isHidden = false
+        cellLabel.textColor = .white
         let url = URL(string: propertyPhoto.downLoadPath)
         let placeholderImage = #imageLiteral(resourceName: "test")
         cellLabel.text = propertyPhoto.photoCaption

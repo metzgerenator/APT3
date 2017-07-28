@@ -20,7 +20,7 @@ class SubmitPhotoViewController: UIViewController {
     let storage = Storage.storage()
     
     
-    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet var progressView: UIProgressView!
     
     
     @IBOutlet var currentImage: UIImageView!
@@ -31,17 +31,16 @@ class SubmitPhotoViewController: UIViewController {
         
         if let caption = currentCaption {
             
-            loadingIndicator.startAnimating()
-            loadingIndicator.isHidden = false
+           
             
             guard let image = selectedImage, let data = UIImageJPEGRepresentation(image, 0.4) else {return}
 
             let storageRef = storage.reference().child("propertyImages").child("\(caption).jpg")
             
-            storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
-                
-                self.loadingIndicator.stopAnimating()
-                self.loadingIndicator.isHidden = true
+            
+            
+         let photoUpload = storageRef.putData(data, metadata: nil, completion: { (metaData, error) in
+            
      
                 if let error = error {
                     
@@ -56,6 +55,16 @@ class SubmitPhotoViewController: UIViewController {
                     self.navigationController?.popViewController(animated: true)
                 
                 }
+                
+            })
+            
+            photoUpload.observe(.progress, handler: { (snapshot) in
+                let currentProgress = 100.0 * Double(snapshot.progress!.completedUnitCount)
+                    / Double(snapshot.progress!.totalUnitCount)
+                
+                self.progressView.isHidden = false
+                
+                self.progressView.progress = Float(currentProgress)
                 
             })
             
@@ -115,8 +124,7 @@ class SubmitPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        loadingIndicator.isHidden = true
+        progressView.isHidden = true
         
         if let image = selectedImage {
             

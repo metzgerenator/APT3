@@ -30,6 +30,8 @@ enum Childs: String {
     case Users
     case Authtype
     case Favorite_Properties
+    //hack to fix 
+    case clearCover
     
 }
 

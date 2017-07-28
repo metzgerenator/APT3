@@ -18,10 +18,29 @@ class PropertyDetailsTableViewController: UITableViewController {
  
     var propertyID: DatabaseReference?
     
+    
     var loadCoverPhotDelegate: loadCoverPhotoProtocol?
     
     
     @IBOutlet var apartmentNameOutlet: UITextField!
+    
+    
+    @IBAction func ApartmentNameChange(_ sender: UITextField) {
+        
+        
+        if let nameUpdate = sender.text {
+            
+            if nameUpdate.characters.count > 0 {
+                
+                appender(key: .PropertyName, value: nameUpdate)
+                
+            }
+            
+        }
+        
+        
+        
+    }
     
     
     @IBOutlet var petsSwitch: UISwitch!
@@ -59,7 +78,6 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         if let url = propertyID {
             
@@ -103,11 +121,13 @@ class PropertyDetailsTableViewController: UITableViewController {
 
 
 
+
+
 //MARK: tableview Methods 
 
 
 extension PropertyDetailsTableViewController  {
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if indexPath.row == 1 && indexPath.section == 0 {
@@ -131,11 +151,19 @@ extension PropertyDetailsTableViewController  {
             switch washerDryerSelectionRow.isHidden {
             case (true):
                 washerDryerSelectionRow.isHidden = false
-                
                 tableView.reloadData()
+                let path = IndexPath(item: 7, section: 1)
+                tableView.scrollToRow(at: path, at: .top, animated: true)
+               
+                
             default:
                 washerDryerSelectionRow.isHidden = true
+                
                 tableView.reloadData()
+                let path = IndexPath(item: 7, section: 1)
+                tableView.scrollToRow(at: path, at: .top, animated: true)
+               
+                
             }
             
         case (0, 1):
@@ -148,6 +176,7 @@ extension PropertyDetailsTableViewController  {
             default:
                 bedRoomSelectionRow.isHidden = true
                 tableView.reloadData()
+                
             }
             
         case (2,1):
@@ -167,6 +196,9 @@ extension PropertyDetailsTableViewController  {
    
     }
     
+    
+    
+   
     
     
     
@@ -196,12 +228,16 @@ extension PropertyDetailsTableViewController  {
             
             switch washerDryerSelectionRow.isHidden {
             case true:
-                return 0
+                
+               return 0
+                
             case false:
+               
                 return UITableViewAutomaticDimension
+     
             }
-
             
+        
         }
         else {
             return UITableViewAutomaticDimension
@@ -299,7 +335,9 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
 
 // protocal extensions
 
-extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remoteSegue {
+extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remoteSegue, ClearPhotoDictionaryDelegate {
+    
+
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -319,6 +357,7 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
             guard let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? PropertyPhotosViewController else {return}
      
             vc.delegate = self
+            vc.removeDictonaryValuesDelagate = self
             
             if let refernce = propertyID {
     
@@ -365,6 +404,14 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
         
     }
     
+    
+    func clearDitionary(key: String) {
+        
+        loadCoverPhotDelegate?.loadPhoto(image: Childs.clearCover.rawValue)
+        dictionaryToSave.removeValue(forKey: key)
+        propertyPhotosDictionary.removeValue(forKey: key)
+        
+    }
 }
 
 

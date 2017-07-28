@@ -16,6 +16,7 @@ class PropertyDetailsViewController: UIViewController {
     
     var refernceFromHomeView: String?
 
+    @IBOutlet var backgroundImageView: UIView!
     
     @IBOutlet var mainBackGroundImage: UIImageView!
 
@@ -28,10 +29,21 @@ class PropertyDetailsViewController: UIViewController {
         
     }
     
+    
+    
+    @IBAction func doneButton(_ sender: UIBarButtonItem) {
+        
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    
     var propertyName: String?
     
 
     override func viewDidLoad() {
+        
         //rentPrice
         
         print("herer is reference key \(String(describing: refernceFromHomeView))")
@@ -88,16 +100,24 @@ class PropertyDetailsViewController: UIViewController {
 
 extension PropertyDetailsViewController: loadCoverPhotoProtocol {
     
-    
+ 
     func loadPhoto(image: String) {
-        
-        
-        
+
+        if image == Childs.clearCover.rawValue {
+            
+            mainBackGroundImage.image = nil
+            
+        } else {
+            
             let url = URL(string: image)
             let placeholderImage = #imageLiteral(resourceName: "test")
             //cellLabel.text = propertyPhoto.photoCaption
             
             mainBackGroundImage.sd_setImage(with: url, placeholderImage: placeholderImage)
+            
+        }
+        
+        
  
         
     }

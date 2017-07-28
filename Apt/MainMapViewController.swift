@@ -77,6 +77,8 @@ class MainMapViewController: UIViewController {
 
 
 
+//MARK: adding pins and custom annotations
+
 extension MainMapViewController: MKMapViewDelegate {
     
     func addPins() {
@@ -146,7 +148,18 @@ extension MainMapViewController: MKMapViewDelegate {
         
     }
     
-    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        guard let selectedUnit = view.annotation as? PropertyView else {return}
+        
+       let unitTOPass = selectedUnit.otherAtributes
+        
+        self.performSegue(withIdentifier: "unitDetail", sender: unitTOPass)
+        
+        
+        
+        
+    }
     
 }
 
@@ -177,6 +190,28 @@ extension MainMapViewController {
         
     }
     
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //unitDetail
+        
+        if segue.identifier == "unitDetail" {
+
+            guard let vc = segue.destination as? PropertyDetailsViewController, let property = sender as? Apartment, let propKey = property.itemKey, let unitName = property.apartmentName else {return}
+            
+            vc.refernceFromHomeView = propKey
+            vc.propertyName = unitName
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+    }
+ 
     
 }
 
