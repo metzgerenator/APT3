@@ -29,6 +29,16 @@ class PropertyDetailsViewController: UIViewController {
         
     }
     
+    
+    
+    @IBAction func doneButton(_ sender: UIBarButtonItem) {
+        
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    
     var propertyName: String?
     
 

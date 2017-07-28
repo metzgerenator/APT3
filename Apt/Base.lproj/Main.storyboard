@@ -248,7 +248,7 @@
             </objects>
             <point key="canvasLocation" x="5004" y="1074.5127436281859"/>
         </scene>
-        <!--Property Details View Controller-->
+        <!--Add Details-->
         <scene sceneID="LpG-zA-yJ7">
             <objects>
                 <viewController id="idc-yB-k3n" customClass="PropertyDetailsViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
@@ -307,6 +307,13 @@
                             <constraint firstItem="PR9-UA-tCm" firstAttribute="leading" secondItem="lWZ-Vd-e1k" secondAttribute="leading" id="wpQ-wv-BcO"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Details" id="8gt-kI-ska">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="l1M-om-zgT">
+                            <connections>
+                                <action selector="doneButton:" destination="idc-yB-k3n" id="NDC-Sa-X8D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="CameraButtonOutlet" destination="UCb-FR-asw" id="01W-Gu-WnA"/>
                         <outlet property="backgroundImageView" destination="bXf-KK-o8T" id="vrc-Zj-y7b"/>
@@ -562,6 +569,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="ApartmentNameChange:" destination="A8z-Fx-6oj" eventType="editingDidEnd" id="F7P-Xc-yhY"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>

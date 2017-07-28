@@ -25,6 +25,24 @@ class PropertyDetailsTableViewController: UITableViewController {
     @IBOutlet var apartmentNameOutlet: UITextField!
     
     
+    @IBAction func ApartmentNameChange(_ sender: UITextField) {
+        
+        
+        if let nameUpdate = sender.text {
+            
+            if nameUpdate.characters.count > 0 {
+                
+                appender(key: .PropertyName, value: nameUpdate)
+                
+            }
+            
+        }
+        
+        
+        
+    }
+    
+    
     @IBOutlet var petsSwitch: UISwitch!
 
     @IBOutlet var bedRoomSelection: UIPickerView!
@@ -109,12 +127,7 @@ class PropertyDetailsTableViewController: UITableViewController {
 
 
 extension PropertyDetailsTableViewController  {
-    
 
-    
-   
-    
-  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if indexPath.row == 1 && indexPath.section == 0 {
