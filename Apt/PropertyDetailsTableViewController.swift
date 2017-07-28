@@ -322,7 +322,9 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
 
 // protocal extensions
 
-extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remoteSegue {
+extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remoteSegue, ClearPhotoDictionaryDelegate {
+    
+
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -342,6 +344,7 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
             guard let nav = segue.destination as? UINavigationController, let vc = nav.topViewController as? PropertyPhotosViewController else {return}
      
             vc.delegate = self
+            vc.removeDictonaryValuesDelagate = self
             
             if let refernce = propertyID {
     
@@ -388,6 +391,14 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
         
     }
     
+    
+    func clearDitionary(key: String) {
+        
+        loadCoverPhotDelegate?.loadPhoto(image: Childs.clearCover.rawValue)
+        dictionaryToSave.removeValue(forKey: key)
+        propertyPhotosDictionary.removeValue(forKey: key)
+        
+    }
 }
 
 

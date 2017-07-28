@@ -92,14 +92,22 @@ extension PropertyDetailsViewController: loadCoverPhotoProtocol {
     
  
     func loadPhoto(image: String) {
-        
-        
-        
+
+        if image == Childs.clearCover.rawValue {
+            
+            mainBackGroundImage.image = nil
+            
+        } else {
+            
             let url = URL(string: image)
             let placeholderImage = #imageLiteral(resourceName: "test")
             //cellLabel.text = propertyPhoto.photoCaption
             
             mainBackGroundImage.sd_setImage(with: url, placeholderImage: placeholderImage)
+            
+        }
+        
+        
  
         
     }

@@ -35,4 +35,9 @@ protocol likeButtonDelegate {
 }
 
 
+protocol ClearPhotoDictionaryDelegate {
+    func clearDitionary(key: String)
+}
+
+
 

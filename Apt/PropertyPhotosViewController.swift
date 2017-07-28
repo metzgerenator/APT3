@@ -18,9 +18,12 @@ class PropertyPhotosViewController: UIViewController {
     
     var propertyReference: DatabaseReference?
     
+    let storage = Storage.storage()
+    
     var propertyPhotosDictionary = [String : Any]()
 
     var delegate: appendToDictionaryDelegate?
+    var removeDictonaryValuesDelagate: ClearPhotoDictionaryDelegate?
     
     let camerActionText = "add photo"
     
@@ -46,7 +49,7 @@ class PropertyPhotosViewController: UIViewController {
 
     
 
-    
+   //MARK: delete photos from collection view
     @IBAction func uiBarButtonTapped(_ sender: UIBarButtonItem) {
         
         let indexPaths = collectionView.indexPathsForSelectedItems! as [IndexPath]
@@ -60,14 +63,30 @@ class PropertyPhotosViewController: UIViewController {
             if let coverUrlString = currentCoverURL {
                 
                 if coverUrlString == value {
+                    
+                    //MARK: fix clearing coverPhoto
               
                     if let url = propertyReference?.child(PropertyKeys.CoverPhoto.rawValue) {
                         
+                        removeDictonaryValuesDelagate?.clearDitionary(key: PropertyKeys.CoverPhoto.rawValue)
+                        
+                        
                         url.removeValue()
+                  
                     }
                 }
                 
             }
+            
+            let photoFileReference = storage.reference(forURL: value)
+            photoFileReference.delete(completion: { (error) in
+                if error != nil {
+                    print("something went wrong\(error.debugDescription)")
+                    
+                }else {
+                    print("file deleted successfully")
+                }
+            })
             
             propertyPhotosDictionary.removeValue(forKey: key)
             propertyPhotos.remove(at: indexPath.row)
@@ -352,7 +371,6 @@ extension PropertyPhotosViewController {
     func photoPickAlert() {
         let alert = UIAlertController(title: "Pick Camera", message: "Image from camera or Library", preferredStyle: .actionSheet)
         
-        // add an action (button)
         
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
             
