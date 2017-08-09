@@ -129,6 +129,8 @@ class PropertyDetailsTableViewController: UITableViewController {
 extension PropertyDetailsTableViewController  {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+       // print("rown \(indexPath.row), section \(indexPath.section)")
 
         if indexPath.row == 1 && indexPath.section == 0 {
             
@@ -204,8 +206,12 @@ extension PropertyDetailsTableViewController  {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-
+        //here is row 6,   here is section 1
         
+        
+        
+     
+
         if indexPath.row == 1 && indexPath.section == 1 {
             
             switch bedRoomSelectionRow.isHidden {
@@ -236,18 +242,27 @@ extension PropertyDetailsTableViewController  {
                 return UITableViewAutomaticDimension
      
             }
+                
+            
             
         
+        }
+            //fix this to dynamicRowHeight
+        else if indexPath.row == 7 && indexPath.section == 1 {
+            
+             return 190
         }
         else {
             return UITableViewAutomaticDimension
         }
+        
+        
+
 
         
     }
 
-    
-    
+   
     
 }
 
