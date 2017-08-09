@@ -12,9 +12,14 @@ class AddCustomAmmenityTableViewController: UITableViewController {
     
     var customAmenities = [String]()
     
+    let buttonCheck = "buttonON"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        customAmenities.insert(buttonCheck, at: customAmenities.count)
+        
 
     }
 
@@ -30,15 +35,25 @@ class AddCustomAmmenityTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return customAmenities.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! AddAmenityTableViewCell
-        cell.hideTextField()
+        
+        let turnButtonOn = customAmenities[indexPath.row]
+        
+        switch turnButtonOn {
+        case buttonCheck:
+            cell.hideTextField(isHidden: true)
+        default:
+            cell.hideTextField(isHidden: false)
+        }
+        
         
         cell.delegate = self
+        cell.insertCellDelegate = self
 
         return cell
     }
@@ -49,16 +64,26 @@ class AddCustomAmmenityTableViewController: UITableViewController {
 }
 
 
-extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate {
+extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, insertNewCellDelegate {
     
     func addAmenity(with amenity: String, for cell: UITableViewCell) {
         
         
-      let index = tableView.indexPath(for: cell)
+        guard let index = tableView.indexPath(for: cell)?.row else {return}
         
-        // add and remove then reload table view
-        print("here is the index \(index?.row)")
         
+        customAmenities.remove(at: index)
+        customAmenities.insert(amenity, at: index)
+        tableView.reloadData()
+ 
+
+    }
+    
+    
+    func insertCell() {
+        
+        customAmenities.insert("", at: 0)
+        tableView.reloadData()
         
         
     }

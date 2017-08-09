@@ -12,6 +12,7 @@ class AddAmenityTableViewCell: UITableViewCell {
     
     
     var delegate: addToCustomAmenitiesDelegate?
+    var insertCellDelegate: insertNewCellDelegate?
     
     
     @IBOutlet var newAmenityTextField: UITextField!
@@ -21,18 +22,16 @@ class AddAmenityTableViewCell: UITableViewCell {
     
     @IBAction func amenityTextDidChange(_ sender: UITextField) {
         
-        print("started change")
         
-        delegate?.addAmenity(with: "poo", for: self)
+        delegate?.addAmenity(with: sender.text!, for: self)
     
-        // add nstimer
+        
         
     }
     
     @IBAction func addAmenityAction(_ sender: UIButton) {
         
-        
-        delegate?.addAmenity(with: "poo", for: self)
+        insertCellDelegate?.insertCell()
         
         
     }
@@ -46,10 +45,16 @@ class AddAmenityTableViewCell: UITableViewCell {
 
     }
     
-    
-    func hideTextField() {
+    func configureCell(text: String)  {
         
-        newAmenityTextField.isHidden = true
+        newAmenityTextField.text = text
+        
+    }
+    
+    
+    func hideTextField(isHidden: Bool) {
+        
+        newAmenityTextField.isHidden = isHidden
         
     }
 
