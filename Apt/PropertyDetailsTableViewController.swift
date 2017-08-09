@@ -358,6 +358,15 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
+        if segue.identifier == "amenities" {
+            
+            guard let vc = segue.destination as? AddCustomAmmenityTableViewController else {return}
+            vc.appenderDelegate = self
+            
+            
+        }
+        
+        
         
         if segue.identifier == "addressSearch" {
             

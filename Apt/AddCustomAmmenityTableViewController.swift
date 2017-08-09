@@ -12,6 +12,8 @@ class AddCustomAmmenityTableViewController: UITableViewController {
     
     var customAmenities = [String]()
     
+    var appenderDelegate: appendToDictionaryDelegate?
+    
     let buttonCheck = "buttonON"
     
 
@@ -72,15 +74,22 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
         guard let index = tableView.indexPath(for: cell)?.row else {return}
         
         customAmenities.remove(at: index)
+        
         customAmenities.insert(amenity, at: index)
- 
+        
+        
+        let filteredArray = customAmenities.filter{$0 != buttonCheck && $0 != ""}
+        
+        
+        appenderDelegate?.appender(key: .ExtraAmenities, value: filteredArray)
+
 
     }
     
     
     func insertCell() {
-        
-        customAmenities.insert("", at: 0)
+  
+        customAmenities.insert("", at: customAmenities.count - 1)
         tableView.reloadData()
         
         

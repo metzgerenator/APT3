@@ -844,7 +844,7 @@
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HT-CE-eJJ">
                                                     <rect key="frame" x="0.0" y="0.0" width="375.5" height="100.5"/>
                                                     <connections>
-                                                        <segue destination="Iep-Tg-ZYh" kind="embed" id="yZy-kV-ui2"/>
+                                                        <segue destination="Iep-Tg-ZYh" kind="embed" identifier="amenities" id="yZy-kV-ui2"/>
                                                     </connections>
                                                 </containerView>
                                             </subviews>

@@ -51,6 +51,7 @@ enum PropertyKeys: String {
     case Latitude = "Latitude"
     case Address = "Address"
     case UserLocation = "User_Location"
+    case ExtraAmenities = "Extra_Amenities"
 
     
 }
