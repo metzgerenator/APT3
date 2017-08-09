@@ -11,6 +11,9 @@ import UIKit
 class AddAmenityTableViewCell: UITableViewCell {
     
     
+    var delegate: addToCustomAmenitiesDelegate?
+    
+    
     @IBOutlet var newAmenityTextField: UITextField!
     
     @IBOutlet var addAmenityButton: UIButton!
@@ -19,13 +22,18 @@ class AddAmenityTableViewCell: UITableViewCell {
     @IBAction func amenityTextDidChange(_ sender: UITextField) {
         
         print("started change")
+        
+        delegate?.addAmenity(with: "poo", for: self)
+    
         // add nstimer
         
     }
     
     @IBAction func addAmenityAction(_ sender: UIButton) {
         
-        print("hit button")
+        
+        delegate?.addAmenity(with: "poo", for: self)
+        
         
     }
 
