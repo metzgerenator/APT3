@@ -14,6 +14,10 @@ class AddAmenityTableViewCell: UITableViewCell {
     var delegate: addToCustomAmenitiesDelegate?
     var insertCellDelegate: insertNewCellDelegate?
     
+     var textTimer: Timer?
+    
+    var textToSend: String?
+    
     
     @IBOutlet var newAmenityTextField: UITextField!
     
@@ -22,9 +26,22 @@ class AddAmenityTableViewCell: UITableViewCell {
     
     @IBAction func amenityTextDidChange(_ sender: UITextField) {
         
+        textToSend = sender.text
+        textTimer?.invalidate()
+        textTimer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(editAmenity), userInfo: nil, repeats: false)
         
-        delegate?.addAmenity(with: sender.text!, for: self)
+        
+       
+
+        
+    }
     
+    
+    func editAmenity() {
+        if let textCheck = textToSend {
+            delegate?.addAmenity(with:textCheck, for: self)
+        }
+        
         
         
     }

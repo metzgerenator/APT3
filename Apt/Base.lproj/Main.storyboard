@@ -1012,7 +1012,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTl-hg-DI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8680.7999999999993" y="1154.5727136431785"/>
+            <point key="canvasLocation" x="8486" y="1264"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fp1-o9-LpR">
@@ -1473,7 +1473,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
-                                                <action selector="amenityTextDidChange:" destination="6Jv-RQ-TCJ" eventType="editingDidBegin" id="guj-kf-ka5"/>
+                                                <action selector="amenityTextDidChange:" destination="6Jv-RQ-TCJ" eventType="editingChanged" id="tZl-l6-aTe"/>
                                             </connections>
                                         </textField>
                                     </subviews>

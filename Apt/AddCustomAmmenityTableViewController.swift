@@ -71,10 +71,8 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
         
         guard let index = tableView.indexPath(for: cell)?.row else {return}
         
-        
         customAmenities.remove(at: index)
         customAmenities.insert(amenity, at: index)
-        tableView.reloadData()
  
 
     }
