@@ -22,6 +22,9 @@ class PropertyDetailsViewController: UIViewController {
 
     @IBOutlet var CameraButtonOutlet: UIButton!
     
+    @IBOutlet var heightForImageView: NSLayoutConstraint!
+    
+    
     @IBAction func cameraButtonAction(_ sender: UIButton) {
         
         
@@ -67,6 +70,8 @@ class PropertyDetailsViewController: UIViewController {
                 childDelegate = vc
                 
                 vc.loadCoverPhotDelegate = self
+                vc.adjustParentHeadHeightDelegate = self
+                vc.animateParentHeight = self
                 
                 
                 // Create a data referenc if this is coming from the home view
@@ -92,7 +97,7 @@ class PropertyDetailsViewController: UIViewController {
 
 }
 
-extension PropertyDetailsViewController: loadCoverPhotoProtocol {
+extension PropertyDetailsViewController: loadCoverPhotoProtocol, adJustParentHeaderHeight, scrollViewResetAndAnimateHeight {
     
  
     func loadPhoto(image: String) {
@@ -113,6 +118,48 @@ extension PropertyDetailsViewController: loadCoverPhotoProtocol {
         
         
  
+        
+    }
+    
+    
+    
+    func headerHeightAdjust(cgFloat: CGFloat, add: Bool) {
+        
+        if add {
+            backgroundImageView.isHidden = false
+            heightForImageView.constant += cgFloat
+            
+        } else {
+            if cgFloat == 65 {
+                heightForImageView.constant = 65
+                backgroundImageView.isHidden = true
+                
+            } else{
+                backgroundImageView.isHidden = false
+                heightForImageView.constant -= cgFloat
+            }
+            
+        }
+        
+        
+    }
+    
+    
+    func hideAnimation() {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    
+    
+    func animateHeader() {
+        
+        heightForImageView.constant = 137
+        
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: { 
+            self.view.layoutIfNeeded()
+        }, completion: nil)
         
     }
     

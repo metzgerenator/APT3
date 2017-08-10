@@ -25,6 +25,10 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     var loadCoverPhotDelegate: loadCoverPhotoProtocol?
     
+    var parentViewInitialHeight: CGFloat = 137
+    var adjustParentHeadHeightDelegate: adJustParentHeaderHeight?
+    var animateParentHeight: scrollViewResetAndAnimateHeight?
+    
     
     @IBOutlet var apartmentNameOutlet: UITextField!
     
@@ -134,7 +138,6 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       // print("rown \(indexPath.row), section \(indexPath.section)")
 
         if indexPath.row == 1 && indexPath.section == 0 {
             
@@ -157,18 +160,16 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
             switch washerDryerSelectionRow.isHidden {
             case (true):
                 washerDryerSelectionRow.isHidden = false
-                tableView.reloadData()
-                let path = IndexPath(item: 7, section: 1)
-                tableView.scrollToRow(at: path, at: .top, animated: true)
-               
+                
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at:.top , animated: true)
                 
             default:
                 washerDryerSelectionRow.isHidden = true
-                
-                tableView.reloadData()
-                let path = IndexPath(item: 7, section: 1)
-                tableView.scrollToRow(at: path, at: .top, animated: true)
-               
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at: .top, animated: true)
                 
             }
             
@@ -177,11 +178,15 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
             switch bedRoomSelectionRow.isHidden {
             case (true):
                 bedRoomSelectionRow.isHidden = false
-
-                tableView.reloadData()
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at:.top , animated: true)
+                
             default:
                 bedRoomSelectionRow.isHidden = true
-                tableView.reloadData()
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at:.top , animated: true)
                 
             }
             
@@ -189,10 +194,14 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
             switch bathRoomSelectionRow.isHidden {
             case true:
                 bathRoomSelectionRow.isHidden = false
-               tableView.reloadData()
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at:.top , animated: true)
             default:
                 bathRoomSelectionRow.isHidden = true
-               tableView.reloadData()
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at:.top , animated: true)
             }
             
             
@@ -268,7 +277,11 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
     func updateHeight(newHeight: Int) {
         
         extraAmenitiesTableViewHeight = newHeight
-        tableView.reloadData()
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        //tableView.scrollToNearestSelectedRow(at: .top, animated: true)
+        let indexPath = IndexPath(row: 7, section: 1)
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         
         
     }
@@ -595,6 +608,75 @@ extension PropertyDetailsTableViewController {
         
         
     }
+    
+    
+}
+
+
+//MARK: Stretchy header method
+
+extension PropertyDetailsTableViewController {
+    
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        
+        if scrollView.contentOffset.y < 0 {
+            
+            let newHeight = abs(scrollView.contentOffset.y)
+           
+            parentViewInitialHeight += newHeight
+            adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: newHeight, add: true)
+            
+        } else if scrollView.contentOffset.y > 0 &&  parentViewInitialHeight >= 65 {
+            
+            
+            let newHeight = scrollView.contentOffset.y/100
+            parentViewInitialHeight -= newHeight
+            adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: newHeight, add: false)
+            
+            if parentViewInitialHeight < 65 {
+                
+                parentViewInitialHeight = 65
+                adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: 65, add: false)
+                
+            }
+            
+            
+            
+        }
+        
+        
+        
+    }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        if parentViewInitialHeight > 137 {
+            animateParentHeight?.animateHeader()
+            parentViewInitialHeight = 137
+            
+        }
+        
+        
+        
+    }
+    
+
+    
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        if parentViewInitialHeight > 137 {
+            animateParentHeight?.animateHeader()
+            parentViewInitialHeight = 137
+            
+        }
+        
+    }
+    
+    
+    
     
     
 }

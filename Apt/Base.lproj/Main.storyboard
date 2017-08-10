@@ -317,6 +317,7 @@
                     <connections>
                         <outlet property="CameraButtonOutlet" destination="UCb-FR-asw" id="01W-Gu-WnA"/>
                         <outlet property="backgroundImageView" destination="bXf-KK-o8T" id="vrc-Zj-y7b"/>
+                        <outlet property="heightForImageView" destination="Kio-9y-pbv" id="xaM-h7-UJy"/>
                         <outlet property="mainBackGroundImage" destination="2ej-N3-iJG" id="zrC-is-iL7"/>
                     </connections>
                 </viewController>
@@ -1448,7 +1449,7 @@
         <scene sceneID="lQW-xp-LLm">
             <objects>
                 <tableViewController id="Iep-Tg-ZYh" customClass="AddCustomAmmenityTableViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ccX-Lc-FDt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ccX-Lc-FDt">
                         <rect key="frame" x="0.0" y="0.0" width="375.5" height="100.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
