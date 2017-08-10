@@ -35,6 +35,32 @@ class AddCustomAmmenityTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+ 
+        return true
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            
+            let currentValue = customAmenities[indexPath.row]
+            
+            if currentValue != buttonCheck{
+                //update firebase index 
+                customAmenities.remove(at: indexPath.row)
+                tableView.reloadData()
+//                let indexPath = IndexPath(row: indexPath.row, section: indexPath.section)
+//                tableView.reloadRows(at: [indexPath], with: .fade)
+                
+                
+                
+            }
+            
+        }
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -53,6 +79,7 @@ class AddCustomAmmenityTableViewController: UITableViewController {
         switch turnButtonOn {
         case buttonCheck:
             cell.hideTextField(isHidden: true)
+         
         default:
             cell.hideTextField(isHidden: false)
         }

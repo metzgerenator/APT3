@@ -1468,7 +1468,7 @@
                                             </connections>
                                         </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XwW-aj-Ec7">
-                                            <rect key="frame" x="8" y="8" width="359.5" height="30"/>
+                                            <rect key="frame" x="8" y="8" width="339.5" height="30"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -1478,7 +1478,7 @@
                                         </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="XwW-aj-Ec7" secondAttribute="trailing" id="4u3-pV-xGX"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="XwW-aj-Ec7" secondAttribute="trailing" constant="20" id="4u3-pV-xGX"/>
                                         <constraint firstItem="XwW-aj-Ec7" firstAttribute="top" secondItem="SXD-5X-LFQ" secondAttribute="topMargin" id="T4H-s9-lex"/>
                                         <constraint firstItem="AVb-Ge-gQs" firstAttribute="leading" secondItem="SXD-5X-LFQ" secondAttribute="leadingMargin" id="jpq-AL-AjF"/>
                                         <constraint firstItem="XwW-aj-Ec7" firstAttribute="leading" secondItem="SXD-5X-LFQ" secondAttribute="leadingMargin" id="uFY-kb-aKE"/>
