@@ -53,6 +53,8 @@ class AddCustomAmmenityTableViewController: UITableViewController {
             cell.hideTextField(isHidden: false)
         }
         
+        cell.configureCell(text: turnButtonOn)
+        
         
         cell.delegate = self
         cell.insertCellDelegate = self
@@ -66,7 +68,7 @@ class AddCustomAmmenityTableViewController: UITableViewController {
 }
 
 
-extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, insertNewCellDelegate {
+extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, insertNewCellDelegate, extraAmenitiesDelegate {
     
     func addAmenity(with amenity: String, for cell: UITableViewCell) {
         
@@ -95,6 +97,19 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
         
     }
     
+    func updatedExtraAmenities(array: [String]) {
+        
+        
+        customAmenities = array
+        
+        customAmenities.insert(buttonCheck, at: customAmenities.count)
+        tableView.reloadData()
+    }
+    
     
     
 }
+
+
+
+

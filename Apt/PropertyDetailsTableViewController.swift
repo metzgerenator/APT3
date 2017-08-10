@@ -18,6 +18,8 @@ class PropertyDetailsTableViewController: UITableViewController {
  
     var propertyID: DatabaseReference?
     
+    var extraAmenitiesDelegate: extraAmenitiesDelegate?
+    
     
     var loadCoverPhotDelegate: loadCoverPhotoProtocol?
     
@@ -362,6 +364,7 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
             
             guard let vc = segue.destination as? AddCustomAmmenityTableViewController else {return}
             vc.appenderDelegate = self
+            extraAmenitiesDelegate = vc
             
             
         }
@@ -436,6 +439,9 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
         propertyPhotosDictionary.removeValue(forKey: key)
         
     }
+    
+    
+  
 }
 
 
@@ -503,7 +509,18 @@ extension PropertyDetailsTableViewController {
   
         
         let singleUnite = newApartmentType(key: key, json: json)
+        
+        
+        
+        if let extraAmenities = singleUnite.extraAmenities {
             
+            
+            dictionaryToSave.updateValue(extraAmenities, forKey: PropertyKeys.ExtraAmenities.rawValue)
+            
+            extraAmenitiesDelegate?.updatedExtraAmenities(array: extraAmenities)
+            
+            
+        }
         
         if let unitName = singleUnite.apartmentName {
             

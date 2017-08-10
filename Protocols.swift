@@ -50,5 +50,10 @@ protocol insertNewCellDelegate {
     
 }
 
+protocol extraAmenitiesDelegate {
+    
+    func updatedExtraAmenities(array: [String])
+}
+
 
 
