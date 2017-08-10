@@ -279,7 +279,9 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
         extraAmenitiesTableViewHeight = newHeight
         tableView.beginUpdates()
         tableView.endUpdates()
-        //reload section 
+        //tableView.scrollToNearestSelectedRow(at: .top, animated: true)
+        let indexPath = IndexPath(row: 7, section: 1)
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         
         
     }
