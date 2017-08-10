@@ -15,8 +15,12 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     var dictionaryToSave: Dictionary = [String : Any]()
     var propertyPhotosDictionary = [String : Any]()
+    
+    var extraAmenitiesTableViewHeight = 44
  
     var propertyID: DatabaseReference?
+    
+    var extraAmenitiesDelegate: extraAmenitiesDelegate?
     
     
     var loadCoverPhotDelegate: loadCoverPhotoProtocol?
@@ -126,9 +130,11 @@ class PropertyDetailsTableViewController: UITableViewController {
 //MARK: tableview Methods 
 
 
-extension PropertyDetailsTableViewController  {
+extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeelegate  {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+       // print("rown \(indexPath.row), section \(indexPath.section)")
 
         if indexPath.row == 1 && indexPath.section == 0 {
             
@@ -204,8 +210,8 @@ extension PropertyDetailsTableViewController  {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-
-        
+        //here is row 6,   here is section 1
+ 
         if indexPath.row == 1 && indexPath.section == 1 {
             
             switch bedRoomSelectionRow.isHidden {
@@ -236,18 +242,38 @@ extension PropertyDetailsTableViewController  {
                 return UITableViewAutomaticDimension
      
             }
+                
+            
             
         
+        }
+            
+            //add protocol to update total height of cells
+            //fix this to dynamicRowHeight
+        else if indexPath.row == 7 && indexPath.section == 1 {
+            
+             return CGFloat(extraAmenitiesTableViewHeight)
         }
         else {
             return UITableViewAutomaticDimension
         }
+        
+        
+
 
         
     }
+    
+    
+    func updateHeight(newHeight: Int) {
+        
+        extraAmenitiesTableViewHeight = newHeight
+        tableView.reloadData()
+        
+        
+    }
 
-    
-    
+   
     
 }
 
@@ -343,6 +369,17 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
+        if segue.identifier == "amenities" {
+            
+            guard let vc = segue.destination as? AddCustomAmmenityTableViewController else {return}
+            vc.appenderDelegate = self
+            extraAmenitiesDelegate = vc
+            vc.embededTableViewheightDelegate = self
+            
+            
+        }
+        
+        
         
         if segue.identifier == "addressSearch" {
             
@@ -412,6 +449,9 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
         propertyPhotosDictionary.removeValue(forKey: key)
         
     }
+    
+    
+  
 }
 
 
@@ -479,7 +519,18 @@ extension PropertyDetailsTableViewController {
   
         
         let singleUnite = newApartmentType(key: key, json: json)
+        
+        
+        
+        if let extraAmenities = singleUnite.extraAmenities {
             
+            
+            dictionaryToSave.updateValue(extraAmenities, forKey: PropertyKeys.ExtraAmenities.rawValue)
+            
+            extraAmenitiesDelegate?.updatedExtraAmenities(array: extraAmenities)
+            
+            
+        }
         
         if let unitName = singleUnite.apartmentName {
             

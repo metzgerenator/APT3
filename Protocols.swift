@@ -40,4 +40,24 @@ protocol ClearPhotoDictionaryDelegate {
 }
 
 
+protocol addToCustomAmenitiesDelegate {
+    func addAmenity(with amenity: String, for cell: UITableViewCell)
+}
+
+protocol insertNewCellDelegate {
+    
+    func insertCell()
+    
+}
+
+protocol extraAmenitiesDelegate {
+    
+    func updatedExtraAmenities(array: [String])
+}
+
+protocol extraAmenitiesTableViewHeightDeelegate {
+    func updateHeight(newHeight: Int)
+}
+
+
 

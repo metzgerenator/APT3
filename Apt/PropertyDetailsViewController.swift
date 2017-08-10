@@ -43,18 +43,12 @@ class PropertyDetailsViewController: UIViewController {
     
 
     override func viewDidLoad() {
-        
-        //rentPrice
-        
-        print("herer is reference key \(String(describing: refernceFromHomeView))")
+ 
     
         super.viewDidLoad()
         self.navigationController?.title = "ADD DETAILS"
         
-        
-    
-        
-    
+   
     }
 
     override func didReceiveMemoryWarning() {

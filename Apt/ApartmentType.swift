@@ -25,6 +25,7 @@ struct Apartment {
     var numberOfBedrooms: String?
     var numberOfBathrooms: String?
     var location: MapPoints?
+    var extraAmenities: [String]?
     
  
 }
@@ -34,6 +35,12 @@ func newApartmentType(key: String, json: JSON) -> Apartment {
     
     var newUnit = Apartment.init()
     newUnit.itemKey = key
+    
+    
+    if let extraAmenities = json[PropertyKeys.ExtraAmenities.rawValue].arrayObject as? [String] {
+        
+        newUnit.extraAmenities = extraAmenities
+    }
     
     
     if let name = json[PropertyKeys.PropertyName.rawValue].string{
