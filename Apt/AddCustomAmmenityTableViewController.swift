@@ -147,7 +147,7 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
     
     
     func updateHeightToParrent() {
-        let totalHeight = customAmenities.count * 44
+        let totalHeight = customAmenities.count * 60
         embededTableViewheightDelegate?.updateHeight(newHeight: totalHeight)
         
     }

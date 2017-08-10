@@ -126,15 +126,30 @@ extension PropertyDetailsViewController: loadCoverPhotoProtocol, adJustParentHea
     func headerHeightAdjust(cgFloat: CGFloat, add: Bool) {
         
         if add {
+            backgroundImageView.isHidden = false
             heightForImageView.constant += cgFloat
             
         } else {
-             heightForImageView.constant -= cgFloat
+            if cgFloat == 65 {
+                heightForImageView.constant = 65
+                backgroundImageView.isHidden = true
+                
+            } else{
+                backgroundImageView.isHidden = false
+                heightForImageView.constant -= cgFloat
+            }
+            
         }
         
         
     }
     
+    
+    func hideAnimation() {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
     
     
     

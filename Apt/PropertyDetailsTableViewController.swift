@@ -160,18 +160,16 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
             switch washerDryerSelectionRow.isHidden {
             case (true):
                 washerDryerSelectionRow.isHidden = false
-                tableView.reloadData()
-                let path = IndexPath(item: 7, section: 1)
-                tableView.scrollToRow(at: path, at: .top, animated: true)
-               
+                
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at:.top , animated: true)
                 
             default:
                 washerDryerSelectionRow.isHidden = true
-                
-                tableView.reloadData()
-                let path = IndexPath(item: 7, section: 1)
-                tableView.scrollToRow(at: path, at: .top, animated: true)
-               
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at: .top, animated: true)
                 
             }
             
@@ -180,11 +178,15 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
             switch bedRoomSelectionRow.isHidden {
             case (true):
                 bedRoomSelectionRow.isHidden = false
-
-                tableView.reloadData()
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at:.top , animated: true)
+                
             default:
                 bedRoomSelectionRow.isHidden = true
-                tableView.reloadData()
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at:.top , animated: true)
                 
             }
             
@@ -192,10 +194,14 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
             switch bathRoomSelectionRow.isHidden {
             case true:
                 bathRoomSelectionRow.isHidden = false
-               tableView.reloadData()
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at:.top , animated: true)
             default:
                 bathRoomSelectionRow.isHidden = true
-               tableView.reloadData()
+                tableView.beginUpdates()
+                tableView.endUpdates()
+                tableView.scrollToNearestSelectedRow(at:.top , animated: true)
             }
             
             
@@ -271,7 +277,9 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
     func updateHeight(newHeight: Int) {
         
         extraAmenitiesTableViewHeight = newHeight
-        tableView.reloadData()
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        //reload section 
         
         
     }
@@ -618,11 +626,19 @@ extension PropertyDetailsTableViewController {
             parentViewInitialHeight += newHeight
             adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: newHeight, add: true)
             
-        } else if scrollView.contentOffset.y > 0 {
+        } else if scrollView.contentOffset.y > 0 &&  parentViewInitialHeight >= 65 {
+            
             
             let newHeight = scrollView.contentOffset.y/100
             parentViewInitialHeight -= newHeight
             adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: newHeight, add: false)
+            
+            if parentViewInitialHeight < 65 {
+                
+                parentViewInitialHeight = 65
+                adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: 65, add: false)
+                
+            }
             
             
             
