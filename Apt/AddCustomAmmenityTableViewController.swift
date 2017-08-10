@@ -48,15 +48,12 @@ class AddCustomAmmenityTableViewController: UITableViewController {
             
             let currentValue = customAmenities[indexPath.row]
             
-            if currentValue != buttonCheck{
-                //update firebase index 
+            if currentValue != buttonCheck {
+                
                 customAmenities.remove(at: indexPath.row)
-                tableView.reloadData()
-//                let indexPath = IndexPath(row: indexPath.row, section: indexPath.section)
-//                tableView.reloadRows(at: [indexPath], with: .fade)
-                
-                
-                
+                let indexPath = IndexPath(row: indexPath.row, section: 0)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+        
             }
             
         }
