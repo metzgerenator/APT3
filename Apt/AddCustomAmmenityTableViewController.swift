@@ -53,6 +53,8 @@ class AddCustomAmmenityTableViewController: UITableViewController {
                 customAmenities.remove(at: indexPath.row)
                 let indexPath = IndexPath(row: indexPath.row, section: 0)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
+                updateHeightToParrent()
+                updateFirebase()
         
             }
             
@@ -115,11 +117,7 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
         customAmenities.insert(amenity, at: index)
         
         
-        let filteredArray = customAmenities.filter{$0 != buttonCheck && $0 != ""}
-        
-        
-        appenderDelegate?.appender(key: .ExtraAmenities, value: filteredArray)
-
+        updateFirebase()
 
     }
     
@@ -151,6 +149,15 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
     func updateHeightToParrent() {
         let totalHeight = customAmenities.count * 44
         embededTableViewheightDelegate?.updateHeight(newHeight: totalHeight)
+        
+    }
+    
+    func updateFirebase() {
+        
+        let filteredArray = customAmenities.filter{$0 != buttonCheck && $0 != ""}
+        
+        
+        appenderDelegate?.appender(key: .ExtraAmenities, value: filteredArray)
         
     }
   
