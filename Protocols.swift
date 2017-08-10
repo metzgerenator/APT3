@@ -55,5 +55,9 @@ protocol extraAmenitiesDelegate {
     func updatedExtraAmenities(array: [String])
 }
 
+protocol extraAmenitiesTableViewHeightDeelegate {
+    func updateHeight(newHeight: Int)
+}
+
 
 

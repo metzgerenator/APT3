@@ -14,6 +14,8 @@ class AddCustomAmmenityTableViewController: UITableViewController {
     
     var appenderDelegate: appendToDictionaryDelegate?
     
+    var embededTableViewheightDelegate: extraAmenitiesTableViewHeightDeelegate?
+    
     let buttonCheck = "buttonON"
     
 
@@ -21,6 +23,8 @@ class AddCustomAmmenityTableViewController: UITableViewController {
         super.viewDidLoad()
         
         customAmenities.insert(buttonCheck, at: customAmenities.count)
+  
+        updateHeightToParrent()
         
 
     }
@@ -61,11 +65,18 @@ class AddCustomAmmenityTableViewController: UITableViewController {
 
         return cell
     }
+    
+    
+    
 
 
    
 
 }
+
+
+
+
 
 
 extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, insertNewCellDelegate, extraAmenitiesDelegate {
@@ -92,7 +103,11 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
     func insertCell() {
   
         customAmenities.insert("", at: customAmenities.count - 1)
+        
+        updateHeightToParrent()
+        
         tableView.reloadData()
+        
         
         
     }
@@ -103,10 +118,18 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
         customAmenities = array
         
         customAmenities.insert(buttonCheck, at: customAmenities.count)
+        updateHeightToParrent()
         tableView.reloadData()
     }
     
     
+    
+    func updateHeightToParrent() {
+        let totalHeight = customAmenities.count * 44
+        embededTableViewheightDelegate?.updateHeight(newHeight: totalHeight)
+        
+    }
+  
     
 }
 
