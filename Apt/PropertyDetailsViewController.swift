@@ -123,9 +123,15 @@ extension PropertyDetailsViewController: loadCoverPhotoProtocol, adJustParentHea
     
     
     
-    func headerHeightAdjust(cgFloat: CGFloat) {
+    func headerHeightAdjust(cgFloat: CGFloat, add: Bool) {
         
-        heightForImageView.constant += cgFloat
+        if add {
+            heightForImageView.constant += cgFloat
+            
+        } else {
+             heightForImageView.constant -= cgFloat
+        }
+        
         
     }
     

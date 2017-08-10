@@ -62,7 +62,7 @@ protocol extraAmenitiesTableViewHeightDeelegate {
 
 protocol adJustParentHeaderHeight {
     
-    func headerHeightAdjust(cgFloat: CGFloat)
+    func headerHeightAdjust(cgFloat: CGFloat, add: Bool)
     
 }
 

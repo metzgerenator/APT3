@@ -614,8 +614,17 @@ extension PropertyDetailsTableViewController {
         if scrollView.contentOffset.y < 0 {
             
             let newHeight = abs(scrollView.contentOffset.y)
+           
             parentViewInitialHeight += newHeight
-            adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: newHeight)
+            adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: newHeight, add: true)
+            
+        } else if scrollView.contentOffset.y > 0 {
+            
+            let newHeight = scrollView.contentOffset.y/100
+            parentViewInitialHeight -= newHeight
+            adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: newHeight, add: false)
+            
+            
             
         }
         
