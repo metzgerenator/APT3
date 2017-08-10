@@ -25,6 +25,10 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     var loadCoverPhotDelegate: loadCoverPhotoProtocol?
     
+    var parentViewInitialHeight: CGFloat = 137
+    var adjustParentHeadHeightDelegate: adJustParentHeaderHeight?
+    var animateParentHeight: scrollViewResetAndAnimateHeight?
+    
     
     @IBOutlet var apartmentNameOutlet: UITextField!
     
@@ -134,7 +138,6 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       // print("rown \(indexPath.row), section \(indexPath.section)")
 
         if indexPath.row == 1 && indexPath.section == 0 {
             
@@ -595,6 +598,58 @@ extension PropertyDetailsTableViewController {
         
         
     }
+    
+    
+}
+
+
+//MARK: Stretchy header method
+
+extension PropertyDetailsTableViewController {
+    
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        
+        if scrollView.contentOffset.y < 0 {
+            
+            let newHeight = abs(scrollView.contentOffset.y)
+            parentViewInitialHeight += newHeight
+            adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: newHeight)
+            
+        }
+        
+        
+        
+    }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        if parentViewInitialHeight > 137 {
+            animateParentHeight?.animateHeader()
+            parentViewInitialHeight = 137
+            
+        }
+        
+        
+        
+    }
+    
+
+    
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        if parentViewInitialHeight > 137 {
+            animateParentHeight?.animateHeader()
+            parentViewInitialHeight = 137
+            
+        }
+        
+    }
+    
+    
+    
     
     
 }

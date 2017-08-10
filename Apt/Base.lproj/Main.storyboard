@@ -317,6 +317,7 @@
                     <connections>
                         <outlet property="CameraButtonOutlet" destination="UCb-FR-asw" id="01W-Gu-WnA"/>
                         <outlet property="backgroundImageView" destination="bXf-KK-o8T" id="vrc-Zj-y7b"/>
+                        <outlet property="heightForImageView" destination="Kio-9y-pbv" id="xaM-h7-UJy"/>
                         <outlet property="mainBackGroundImage" destination="2ej-N3-iJG" id="zrC-is-iL7"/>
                     </connections>
                 </viewController>
