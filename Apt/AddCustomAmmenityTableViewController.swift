@@ -23,9 +23,10 @@ class AddCustomAmmenityTableViewController: UITableViewController {
         super.viewDidLoad()
         
         customAmenities.insert(buttonCheck, at: customAmenities.count)
+        
   
         updateHeightToParrent()
-        
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
 
     }
 
