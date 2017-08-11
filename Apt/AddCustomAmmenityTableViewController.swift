@@ -75,6 +75,7 @@ class AddCustomAmmenityTableViewController: UITableViewController {
         
         let turnButtonOn = customAmenities[indexPath.row]
         
+        
         switch turnButtonOn {
         case buttonCheck:
             cell.hideTextField(isHidden: true)
@@ -115,22 +116,23 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
         customAmenities.remove(at: index)
         
         customAmenities.insert(amenity, at: index)
-        
-        
+
         updateFirebase()
 
     }
+
     
     
     func insertCell() {
-  
-        customAmenities.insert("", at: customAmenities.count - 1)
         
+       tableView.beginUpdates()
+        customAmenities.insert("", at: customAmenities.count-1)
         updateHeightToParrent()
+        let indexPath = IndexPath(item: customAmenities.count-2, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
         
-        tableView.reloadData()
-        
-        
+        tableView.endUpdates()
+    
         
     }
     
