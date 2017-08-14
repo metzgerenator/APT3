@@ -555,6 +555,7 @@ extension PropertyDetailsTableViewController {
             let placeholderImage = #imageLiteral(resourceName: "test")
             
             coverPhoto.sd_setImage(with: url, placeholderImage: placeholderImage)
+            coverPhoto.clipsToBounds = true
             
         }
         
