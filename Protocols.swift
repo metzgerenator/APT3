@@ -54,15 +54,7 @@ protocol extraAmenitiesTableViewHeightDeelegate {
 }
 
 
-protocol adJustParentHeaderHeight {
-    
-    func headerHeightAdjust(cgFloat: CGFloat, add: Bool)
-    
-}
 
-protocol scrollViewResetAndAnimateHeight {
-    func animateHeader()
-}
 
 
 

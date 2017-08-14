@@ -39,10 +39,7 @@ class PropertyDetailsTableViewController: UITableViewController {
     var extraAmenitiesDelegate: extraAmenitiesDelegate?
     
     
-    
-    var parentViewInitialHeight: CGFloat = 137
-    var adjustParentHeadHeightDelegate: adJustParentHeaderHeight?
-    var animateParentHeight: scrollViewResetAndAnimateHeight?
+  
     
     
     @IBOutlet var apartmentNameOutlet: UITextField!
@@ -663,20 +660,17 @@ extension PropertyDetailsTableViewController {
             
             let newHeight = abs(scrollView.contentOffset.y)
            
-            parentViewInitialHeight += newHeight
-            adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: newHeight, add: true)
+            heightForImageView.constant += newHeight
             
-        } else if scrollView.contentOffset.y > 0 &&  parentViewInitialHeight >= 65 {
+        } else if scrollView.contentOffset.y > 0 &&  heightForImageView.constant >= 65 {
             
             
             let newHeight = scrollView.contentOffset.y/100
-            parentViewInitialHeight -= newHeight
-            adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: newHeight, add: false)
+            heightForImageView.constant  -= newHeight
             
-            if parentViewInitialHeight < 65 {
+            if heightForImageView.constant  < 65 {
                 
-                parentViewInitialHeight = 65
-                adjustParentHeadHeightDelegate?.headerHeightAdjust(cgFloat: 65, add: false)
+                heightForImageView.constant  = 65
                 
             }
             
@@ -690,9 +684,10 @@ extension PropertyDetailsTableViewController {
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
-        if parentViewInitialHeight > 137 {
-            animateParentHeight?.animateHeader()
-            parentViewInitialHeight = 137
+        if heightForImageView.constant > 137 {
+            animateHeader()
+            
+            heightForImageView.constant = 137
             
         }
         
@@ -705,11 +700,21 @@ extension PropertyDetailsTableViewController {
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
-        if parentViewInitialHeight > 137 {
-            animateParentHeight?.animateHeader()
-            parentViewInitialHeight = 137
+        if heightForImageView.constant > 137 {
+           animateHeader()
+            heightForImageView.constant  = 137
             
         }
+        
+    }
+    
+    func animateHeader() {
+        
+        heightForImageView.constant = 137
+        
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
         
     }
     
