@@ -131,10 +131,8 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
         updateHeightToParrent()
         let indexPath = IndexPath(item: customAmenities.count-2, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
-        
         tableView.endUpdates()
     
-        
     }
     
     func updatedExtraAmenities(array: [String]) {

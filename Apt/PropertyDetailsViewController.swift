@@ -12,7 +12,6 @@ import SDWebImage
 class PropertyDetailsViewController: UIViewController {
     
     
-    var childDelegate: remoteSegue?
     
     var refernceFromHomeView: String?
 
@@ -28,7 +27,6 @@ class PropertyDetailsViewController: UIViewController {
     @IBAction func cameraButtonAction(_ sender: UIButton) {
         
         
-        childDelegate?.remoteSegue()
         
     }
     
@@ -67,9 +65,7 @@ class PropertyDetailsViewController: UIViewController {
             
             if let vc = segue.destination as? PropertyDetailsTableViewController, let name = propertyName {
                 
-                childDelegate = vc
                 
-                vc.loadCoverPhotDelegate = self
                 vc.adjustParentHeadHeightDelegate = self
                 vc.animateParentHeight = self
                 
@@ -97,31 +93,9 @@ class PropertyDetailsViewController: UIViewController {
 
 }
 
-extension PropertyDetailsViewController: loadCoverPhotoProtocol, adJustParentHeaderHeight, scrollViewResetAndAnimateHeight {
+extension PropertyDetailsViewController: adJustParentHeaderHeight, scrollViewResetAndAnimateHeight {
     
- 
-    func loadPhoto(image: String) {
 
-        if image == Childs.clearCover.rawValue {
-            
-            mainBackGroundImage.image = nil
-            
-        } else {
-            
-            let url = URL(string: image)
-            let placeholderImage = #imageLiteral(resourceName: "test")
-            //cellLabel.text = propertyPhoto.photoCaption
-            
-            mainBackGroundImage.sd_setImage(with: url, placeholderImage: placeholderImage)
-            
-        }
-        
-        
- 
-        
-    }
-    
-    
     
     func headerHeightAdjust(cgFloat: CGFloat, add: Bool) {
         

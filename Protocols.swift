@@ -14,10 +14,6 @@ protocol appendToDictionaryDelegate {
 }
 
 
-protocol remoteSegue {
-    func remoteSegue()
-    
-}
 
 protocol photoDictionaryCreateDelegate {
     
@@ -25,9 +21,7 @@ protocol photoDictionaryCreateDelegate {
     
 }
 
-protocol loadCoverPhotoProtocol {
-    func loadPhoto(image: String)
-}
+
 
 
 protocol likeButtonDelegate {

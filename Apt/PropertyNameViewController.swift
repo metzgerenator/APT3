@@ -24,7 +24,6 @@ class PropertyNameViewController: UIViewController {
             
             self.performSegue(withIdentifier: "property_details", sender: name)
             
-            // pass auto id to new controller
             
         } else {
             self.standardAlert(title: "Fill in Fields", message: "Please fill in Property Name ")
@@ -65,10 +64,11 @@ class PropertyNameViewController: UIViewController {
         
         if segue.identifier == "property_details" {
             
-            guard let vc = segue.destination as? PropertyDetailsViewController,
+            guard let vc = segue.destination as? PropertyDetailsTableViewController,
                 let propertyName = sender as? String  else {return}
             
-            vc.propertyName = propertyName
+            vc.appender(key: .PropertyName, value: propertyName)
+            vc.apartmentNameOutlet.text = propertyName
             
             
         }

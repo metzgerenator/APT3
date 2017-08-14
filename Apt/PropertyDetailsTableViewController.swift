@@ -13,6 +13,22 @@ import SwiftyJSON
 
 class PropertyDetailsTableViewController: UITableViewController {
     
+    ///outlets to complete
+    @IBAction func coverPhotoAction(_ sender: UIButton) {
+        
+        
+        self.performSegue(withIdentifier: "cameraControl", sender: self)
+        
+        
+    }
+    
+    
+    @IBOutlet var coverPhoto: UIImageView!
+    
+    
+    @IBOutlet var heightForImageView: NSLayoutConstraint!
+    ////
+    
     var dictionaryToSave: Dictionary = [String : Any]()
     var propertyPhotosDictionary = [String : Any]()
     
@@ -23,7 +39,6 @@ class PropertyDetailsTableViewController: UITableViewController {
     var extraAmenitiesDelegate: extraAmenitiesDelegate?
     
     
-    var loadCoverPhotDelegate: loadCoverPhotoProtocol?
     
     var parentViewInitialHeight: CGFloat = 137
     var adjustParentHeadHeightDelegate: adJustParentHeaderHeight?
@@ -86,6 +101,8 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.title = "ADD DETAILS"
 
         if let url = propertyID {
             
@@ -374,11 +391,8 @@ extension PropertyDetailsTableViewController: UIPickerViewDataSource, UIPickerVi
 
 // protocal extensions
 
-extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remoteSegue, ClearPhotoDictionaryDelegate {
-    
+extension PropertyDetailsTableViewController: appendToDictionaryDelegate, ClearPhotoDictionaryDelegate {
 
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
@@ -457,7 +471,8 @@ extension PropertyDetailsTableViewController: appendToDictionaryDelegate, remote
     
     func clearDitionary(key: String) {
         
-        loadCoverPhotDelegate?.loadPhoto(image: Childs.clearCover.rawValue)
+        loadPhoto(image: Childs.clearCover.rawValue)
+        
         dictionaryToSave.removeValue(forKey: key)
         propertyPhotosDictionary.removeValue(forKey: key)
         
@@ -491,7 +506,8 @@ extension PropertyDetailsTableViewController {
         
         
         if let bacgroundURL = photoURLS.coverPhotoURL, let caption = photoURLS.coverPhotoCaption {
-            self.loadCoverPhotDelegate?.loadPhoto(image: bacgroundURL)
+            self.loadPhoto(image: bacgroundURL)
+            
             
             let coverPhotoDic = [caption : bacgroundURL]
             
@@ -522,8 +538,30 @@ extension PropertyDetailsTableViewController {
          
             
         }
+ 
         
     }
+    
+    func loadPhoto(image: String) {
+        
+        if image == Childs.clearCover.rawValue {
+            
+            coverPhoto.image = nil
+            
+        } else {
+            
+            let url = URL(string: image)
+            let placeholderImage = #imageLiteral(resourceName: "test")
+            
+            coverPhoto.sd_setImage(with: url, placeholderImage: placeholderImage)
+            
+        }
+        
+        
+        
+        
+    }
+    
     
     
     func updateGeneralValues(key: String,dictionary: [String : Any]) {

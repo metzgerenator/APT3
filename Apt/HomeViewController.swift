@@ -144,12 +144,11 @@ extension HomeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "propertyDetail" {
             
-            guard let vc = segue.destination as? PropertyDetailsViewController, let property = sender as? Apartment, let propKey = property.itemKey, let unitName = property.apartmentName else {return}
+            guard let vc = segue.destination as? PropertyDetailsTableViewController, let property = sender as? Apartment, let propKey = property.itemKey else {return}
             
-            vc.refernceFromHomeView = propKey
-            vc.propertyName = unitName
-            
-            //add if let for load photo
+            vc.propertyID = Endpoints.currentUSerProperties.url.child(propKey)
+            vc.listenOnceForCurrentValues()
+         
             
         }
     }

@@ -152,17 +152,7 @@ class PropertyPhotosViewController: UIViewController {
         
     }
     
-    
-//    func addCameraButton() {
-//        
-//        
-//        let cameraAction = PropertyPhoto.init(photoCaption: self.camerActionText, isCoverPhoto: false, downLoadPath: "")
-//        let lastIndex = self.propertyPhotos.count
-//        self.propertyPhotos.insert(cameraAction, at: lastIndex)
-//        self.collectionView.reloadData()
-//        
-//        
-//    }
+
 
 
 
