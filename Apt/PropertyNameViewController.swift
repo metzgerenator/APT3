@@ -68,7 +68,8 @@ class PropertyNameViewController: UIViewController {
                 let propertyName = sender as? String  else {return}
             
             vc.appender(key: .PropertyName, value: propertyName)
-            vc.apartmentNameOutlet.text = propertyName
+            vc.unitName = propertyName
+           // vc.apartmentNameOutlet.text = propertyName
             
             
         }

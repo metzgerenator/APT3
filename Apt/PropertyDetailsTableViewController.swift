@@ -44,6 +44,7 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     @IBOutlet var apartmentNameOutlet: UITextField!
     
+     var unitName: String?
     
     @IBAction func ApartmentNameChange(_ sender: UITextField) {
         
@@ -98,6 +99,10 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let unitName = unitName{
+            apartmentNameOutlet.text = unitName
+        }
         
         self.navigationController?.title = "ADD DETAILS"
 

@@ -1370,7 +1370,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="NC6-BW-tm0" id="aNM-Hz-p8C"/>
-                        <segue destination="idc-yB-k3n" kind="show" identifier="unitDetail" id="MHV-dZ-u6E"/>
+                        <segue destination="A8z-Fx-6oj" kind="show" identifier="unitDetail" id="Nit-vu-FFf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4X-X1-lG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1669,6 +1669,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qSC-MX-tZX"/>
-        <segue reference="1kp-XA-YP3"/>
+        <segue reference="Nit-vu-FFf"/>
     </inferredMetricsTieBreakers>
 </document>
