@@ -26,7 +26,6 @@ class PropertyDetailsTableViewController: UITableViewController {
     @IBOutlet var coverPhoto: UIImageView!
     
     
-    @IBOutlet var heightForImageView: NSLayoutConstraint!
     ////
     
     var dictionaryToSave: Dictionary = [String : Any]()
@@ -655,79 +654,79 @@ extension PropertyDetailsTableViewController {
 
 //MARK: Stretchy header method
 
-extension PropertyDetailsTableViewController {
-    
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        
-        if scrollView.contentOffset.y < 0 {
-            
-            let newHeight = abs(scrollView.contentOffset.y)
-           
-            heightForImageView.constant += newHeight
-            
-        } else if scrollView.contentOffset.y > 0 &&  heightForImageView.constant >= 65 {
-            
-            
-            let newHeight = scrollView.contentOffset.y/100
-            heightForImageView.constant  -= newHeight
-            
-            if heightForImageView.constant  < 65 {
-                
-                heightForImageView.constant  = 65
-                
-            }
-            
-            
-            
-        }
-        
-        
-        
-    }
-    
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-        if heightForImageView.constant > 137 {
-            animateHeader()
-            
-            heightForImageView.constant = 137
-            
-        }
-        
-        
-        
-    }
-    
-
-    
-    
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-        if heightForImageView.constant > 137 {
-           animateHeader()
-            heightForImageView.constant  = 137
-            
-        }
-        
-    }
-    
-    func animateHeader() {
-        
-        heightForImageView.constant = 137
-        
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        
-    }
-    
-    
-    
-    
-    
-}
+//extension PropertyDetailsTableViewController {
+//    
+//    
+//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        
+//        
+//        if scrollView.contentOffset.y < 0 {
+//            
+//            let newHeight = abs(scrollView.contentOffset.y)
+//           
+//            heightForImageView.constant += newHeight
+//            
+//        } else if scrollView.contentOffset.y > 0 &&  heightForImageView.constant >= 65 {
+//            
+//            
+//            let newHeight = scrollView.contentOffset.y/100
+//            heightForImageView.constant  -= newHeight
+//            
+//            if heightForImageView.constant  < 65 {
+//                
+//                heightForImageView.constant  = 65
+//                
+//            }
+//            
+//            
+//            
+//        }
+//        
+//        
+//        
+//    }
+//    
+//    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        
+//        if heightForImageView.constant > 137 {
+//            animateHeader()
+//            
+//            heightForImageView.constant = 137
+//            
+//        }
+//        
+//        
+//        
+//    }
+//    
+//
+//    
+//    
+//    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        
+//        if heightForImageView.constant > 137 {
+//           animateHeader()
+//            heightForImageView.constant  = 137
+//            
+//        }
+//        
+//    }
+//    
+//    func animateHeader() {
+//        
+//        heightForImageView.constant = 137
+//        
+//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//            self.view.layoutIfNeeded()
+//        }, completion: nil)
+//        
+//    }
+//    
+//    
+//    
+//    
+//    
+//}
 
 
 

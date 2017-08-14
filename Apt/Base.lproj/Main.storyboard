@@ -248,79 +248,6 @@
             </objects>
             <point key="canvasLocation" x="5004" y="1074.5127436281859"/>
         </scene>
-        <!--Add Details-->
-        <scene sceneID="LpG-zA-yJ7">
-            <objects>
-                <viewController id="idc-yB-k3n" customClass="PropertyDetailsViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Cef-y7-VKr"/>
-                        <viewControllerLayoutGuide type="bottom" id="mL9-iu-yN7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lWZ-Vd-e1k">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="PR9-UA-tCm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXf-KK-o8T">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="137"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2ej-N3-iJG">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="137"/>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCb-FR-asw">
-                                                <rect key="frame" x="160" y="53" width="54" height="30"/>
-                                                <state key="normal" title="Camera">
-                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="cameraButtonAction:" destination="idc-yB-k3n" eventType="touchUpInside" id="2cy-lb-eXD"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.92931067943572998" green="0.92946994304656982" blue="0.92930072546005249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="2ej-N3-iJG" secondAttribute="trailing" id="6eF-jY-gpW"/>
-                                            <constraint firstItem="2ej-N3-iJG" firstAttribute="top" secondItem="bXf-KK-o8T" secondAttribute="top" id="FPq-3Y-7IU"/>
-                                            <constraint firstItem="2ej-N3-iJG" firstAttribute="leading" secondItem="bXf-KK-o8T" secondAttribute="leading" id="HQ9-bT-223"/>
-                                            <constraint firstAttribute="bottom" secondItem="2ej-N3-iJG" secondAttribute="bottom" id="HgP-WL-UkU"/>
-                                            <constraint firstAttribute="height" constant="137" id="Kio-9y-pbv"/>
-                                            <constraint firstItem="UCb-FR-asw" firstAttribute="centerY" secondItem="bXf-KK-o8T" secondAttribute="centerY" id="VGQ-25-7GM"/>
-                                            <constraint firstItem="UCb-FR-asw" firstAttribute="centerX" secondItem="bXf-KK-o8T" secondAttribute="centerX" id="uuc-6o-jVu"/>
-                                        </constraints>
-                                    </view>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4E-FQ-tJt">
-                                        <rect key="frame" x="0.0" y="137" width="375" height="466"/>
-                                        <connections>
-                                            <segue destination="A8z-Fx-6oj" kind="embed" identifier="embeded" id="1kp-XA-YP3"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="PR9-UA-tCm" secondAttribute="trailing" id="6rT-Th-67E"/>
-                            <constraint firstAttribute="bottom" secondItem="PR9-UA-tCm" secondAttribute="bottom" id="o7Z-Di-KQn"/>
-                            <constraint firstItem="PR9-UA-tCm" firstAttribute="top" secondItem="Cef-y7-VKr" secondAttribute="bottom" id="qGh-sC-SjH"/>
-                            <constraint firstItem="PR9-UA-tCm" firstAttribute="leading" secondItem="lWZ-Vd-e1k" secondAttribute="leading" id="wpQ-wv-BcO"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Add Details" id="8gt-kI-ska">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="l1M-om-zgT"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="CameraButtonOutlet" destination="UCb-FR-asw" id="01W-Gu-WnA"/>
-                        <outlet property="backgroundImageView" destination="bXf-KK-o8T" id="vrc-Zj-y7b"/>
-                        <outlet property="heightForImageView" destination="Kio-9y-pbv" id="xaM-h7-UJy"/>
-                        <outlet property="mainBackGroundImage" destination="2ej-N3-iJG" id="zrC-is-iL7"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RCE-2t-OmY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5842" y="867"/>
-        </scene>
         <!--Property Photos View Controller-->
         <scene sceneID="zPB-aS-hjc">
             <objects>
@@ -564,7 +491,6 @@
                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <action selector="cameraButtonAction:" destination="idc-yB-k3n" eventType="touchUpInside" id="GG8-pA-CBF"/>
                                         <action selector="coverPhotoAction:" destination="A8z-Fx-6oj" eventType="touchUpInside" id="Erx-VB-0k3"/>
                                     </connections>
                                 </button>
@@ -921,7 +847,6 @@
                         <outlet property="bedRoomSelectionRow" destination="aOI-Xu-PGQ" id="QnM-Av-3Co"/>
                         <outlet property="bedroomNumber" destination="OCf-kd-Bu2" id="rE4-Nv-Qm2"/>
                         <outlet property="coverPhoto" destination="doH-6Z-FTV" id="zyi-Aa-rPW"/>
-                        <outlet property="heightForImageView" destination="TB2-k1-zBt" id="jL3-pA-Nqp"/>
                         <outlet property="petsSwitch" destination="3KI-LJ-y0r" id="aTT-Qc-y1b"/>
                         <outlet property="washerDryerSelectionRow" destination="i5s-vv-Djl" id="cQp-Bh-3sR"/>
                         <outlet property="washerDryerType" destination="Eqa-zh-yEB" id="xxM-du-YBC"/>
@@ -1619,11 +1544,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="City of operations " translatesAutoresizingMaskIntoConstraints="NO" id="YV5-de-TCr">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cZF-vK-o2y">
-                                <rect key="frame" x="0.0" y="64" width="375" height="936"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="843"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="lZ0-7E-W76">
@@ -1668,7 +1593,7 @@
         <image name="Unchecked" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="qZb-Yo-VaA"/>
         <segue reference="qSC-MX-tZX"/>
-        <segue reference="Nit-vu-FFf"/>
     </inferredMetricsTieBreakers>
 </document>
