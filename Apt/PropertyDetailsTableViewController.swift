@@ -13,7 +13,6 @@ import SwiftyJSON
 
 class PropertyDetailsTableViewController: UITableViewController {
     
-    ///outlets to complete
     @IBAction func coverPhotoAction(_ sender: UIButton) {
         
         
@@ -25,8 +24,8 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     @IBOutlet var coverPhoto: UIImageView!
     
-    
-    ////
+    var headerView: UIView!
+    var newHeaderLayer: CAShapeLayer!
     
     var dictionaryToSave: Dictionary = [String : Any]()
     var propertyPhotosDictionary = [String : Any]()
@@ -98,6 +97,10 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateView()
+        
+//      coverPhoto.contentMode = .scaleAspectFill
+//    coverPhoto.clipsToBounds = true
         
         if let unitName = unitName{
             apartmentNameOutlet.text = unitName
@@ -230,9 +233,10 @@ extension PropertyDetailsTableViewController: extraAmenitiesTableViewHeightDeele
     }
     
     
-    
    
-    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -555,7 +559,7 @@ extension PropertyDetailsTableViewController {
             let placeholderImage = #imageLiteral(resourceName: "test")
             
             coverPhoto.sd_setImage(with: url, placeholderImage: placeholderImage)
-            coverPhoto.clipsToBounds = true
+            //coverPhoto.clipsToBounds = true
             
         }
         
@@ -655,79 +659,130 @@ extension PropertyDetailsTableViewController {
 
 //MARK: Stretchy header method
 
-//extension PropertyDetailsTableViewController {
-//    
-//    
-//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        
-//        
-//        if scrollView.contentOffset.y < 0 {
-//            
-//            let newHeight = abs(scrollView.contentOffset.y)
-//           
-//            heightForImageView.constant += newHeight
-//            
-//        } else if scrollView.contentOffset.y > 0 &&  heightForImageView.constant >= 65 {
+extension PropertyDetailsTableViewController {
+    
+    
+    
+    func updateView() {
+        tableView.backgroundColor = UIColor.white
+        headerView = tableView.tableHeaderView
+       // tableView.tableHeaderView = nil
+        tableView.addSubview(headerView)
+        
+        newHeaderLayer = CAShapeLayer()
+        newHeaderLayer.fillColor = UIColor.black.cgColor
+        headerView.layer.mask = newHeaderLayer
+        headerView.layer.mask = newHeaderLayer
+        
+        let newHeight = StrechyHeader().headerHeight - StrechyHeader().headerCut/2
+        
+        tableView.contentInset = UIEdgeInsets(top: newHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentOffset = CGPoint(x: 0, y: -newHeight)
+        
+        setNewHeight()
+        
+    }
+    
+    func setNewHeight(){
+        let newHeight = StrechyHeader().headerHeight - StrechyHeader().headerCut/2
+        var getHeaderFrame = CGRect(x: 0, y: -newHeight, width: tableView.bounds.width, height: StrechyHeader().headerHeight)
+        
+        if tableView.contentOffset.y < newHeight {
+            getHeaderFrame.origin.y = tableView.contentOffset.y
+            getHeaderFrame.size.height = -tableView.contentOffset.y + StrechyHeader().headerCut/2
+        }
+        
+        headerView.frame = getHeaderFrame
+//        let cutDirection = UIBezierPath()
+//        cutDirection.move(to: CGPoint(x: 0, y: 0))
+//        cutDirection.addLine(to: CGPoint(x: getHeaderFrame.width, y: 0))
+//        cutDirection.addLine(to: CGPoint(x: getHeaderFrame.width, y: getHeaderFrame.height - StrechyHeader().headerCut))
+//        cutDirection.addLine(to: CGPoint(x: getHeaderFrame.width, y: getHeaderFrame.height))
+        
+    }
+    
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        setNewHeight()
+        if scrollView.contentOffset.y < 0 {
+            
+            
+       
+            
+            
+            
+        }
+        
+//        else if scrollView.contentOffset.y > 0 &&  imageHeightConstraint.constant >= 65 {
 //            
 //            
 //            let newHeight = scrollView.contentOffset.y/100
-//            heightForImageView.constant  -= newHeight
+//            imageHeightConstraint.constant  -= newHeight
 //            
-//            if heightForImageView.constant  < 65 {
+//            if imageHeightConstraint.constant  < 65 {
 //                
-//                heightForImageView.constant  = 65
+//                imageHeightConstraint.constant  = 65
 //                
 //            }
-//            
-//            
-//            
-//        }
-//        
-//        
-//        
-//    }
-//    
-//    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        
-//        if heightForImageView.constant > 137 {
+        
+            
+            
+        }
+        
+        
+        
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+//        if imageHeightConstraint.constant > 183 {
 //            animateHeader()
 //            
-//            heightForImageView.constant = 137
+//            imageHeightConstraint.constant = 183
 //            
 //        }
 //        
-//        
-//        
-//    }
-//    
-//
-//    
-//    
-//    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        
-//        if heightForImageView.constant > 137 {
+        
+        
+    }
+    
+
+    
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+//        if imageHeightConstraint.constant > 183 {
 //           animateHeader()
-//            heightForImageView.constant  = 137
+//            imageHeightConstraint.constant  = 183
 //            
 //        }
 //        
-//    }
-//    
-//    func animateHeader() {
-//        
-//        heightForImageView.constant = 137
+    }
+    
+    func animateHeader() {
+        
+//        imageHeightConstraint.constant = 183
 //        
 //        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
 //            self.view.layoutIfNeeded()
 //        }, completion: nil)
 //        
 //    }
-//    
-//    
-//    
-//    
-//    
-//}
+    
+    
+    
+    
+    
+}
+
+
+struct StrechyHeader {
+    
+     let headerHeight: CGFloat = 350
+     let headerCut: CGFloat = 50
+    
+}
 
 
 

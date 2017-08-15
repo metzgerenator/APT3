@@ -482,6 +482,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="375.5" height="183"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="doH-6Z-FTV">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="183"/>
+                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16P-gg-tXD">
                                     <rect key="frame" x="160" y="76" width="54" height="30"/>
                                     <state key="normal" title="Camera">
@@ -491,25 +494,14 @@
                                         <action selector="coverPhotoAction:" destination="A8z-Fx-6oj" eventType="touchUpInside" id="Erx-VB-0k3"/>
                                     </connections>
                                 </button>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lQd-BW-0UC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="183"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="doH-6Z-FTV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="183"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="183" id="hxx-ei-8bg"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                </stackView>
                             </subviews>
                             <color key="backgroundColor" red="0.92931067940000001" green="0.92946994299999997" blue="0.92930072549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="lQd-BW-0UC" secondAttribute="bottom" id="25C-he-0tb"/>
                                 <constraint firstItem="16P-gg-tXD" firstAttribute="centerX" secondItem="TFR-fk-fAh" secondAttribute="centerX" id="9oI-9T-X0L"/>
-                                <constraint firstItem="lQd-BW-0UC" firstAttribute="leading" secondItem="TFR-fk-fAh" secondAttribute="leading" id="FeP-1g-Mb4"/>
-                                <constraint firstAttribute="trailing" secondItem="lQd-BW-0UC" secondAttribute="trailing" id="alE-pb-c1a"/>
-                                <constraint firstItem="lQd-BW-0UC" firstAttribute="top" secondItem="TFR-fk-fAh" secondAttribute="top" id="ttB-7a-7m7"/>
+                                <constraint firstItem="doH-6Z-FTV" firstAttribute="leading" secondItem="TFR-fk-fAh" secondAttribute="leading" id="HDB-IS-OPJ"/>
+                                <constraint firstItem="doH-6Z-FTV" firstAttribute="top" secondItem="TFR-fk-fAh" secondAttribute="top" id="QAC-IL-fam"/>
+                                <constraint firstAttribute="bottom" secondItem="doH-6Z-FTV" secondAttribute="bottom" id="knv-29-4Mf"/>
+                                <constraint firstAttribute="trailing" secondItem="doH-6Z-FTV" secondAttribute="trailing" id="mzw-WF-bc9"/>
                                 <constraint firstItem="16P-gg-tXD" firstAttribute="centerY" secondItem="TFR-fk-fAh" secondAttribute="centerY" id="ydN-bo-FBd"/>
                             </constraints>
                         </view>
