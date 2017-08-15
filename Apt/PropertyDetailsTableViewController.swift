@@ -37,6 +37,7 @@ class PropertyDetailsTableViewController: UITableViewController {
     var extraAmenitiesDelegate: extraAmenitiesDelegate?
     
     
+    @IBOutlet var headerHeightConstraint: NSLayoutConstraint!
   
     
     
@@ -97,10 +98,9 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateView()
         
-//      coverPhoto.contentMode = .scaleAspectFill
-//    coverPhoto.clipsToBounds = true
+     coverPhoto.contentMode = .scaleAspectFill
+    coverPhoto.clipsToBounds = true
         
         if let unitName = unitName{
             apartmentNameOutlet.text = unitName
@@ -657,132 +657,8 @@ extension PropertyDetailsTableViewController {
 }
 
 
-//MARK: Stretchy header method
-
-extension PropertyDetailsTableViewController {
-    
-    
-    
-    func updateView() {
-        tableView.backgroundColor = UIColor.white
-        headerView = tableView.tableHeaderView
-       // tableView.tableHeaderView = nil
-        tableView.addSubview(headerView)
-        
-        newHeaderLayer = CAShapeLayer()
-        newHeaderLayer.fillColor = UIColor.black.cgColor
-        headerView.layer.mask = newHeaderLayer
-        headerView.layer.mask = newHeaderLayer
-        
-        let newHeight = StrechyHeader().headerHeight - StrechyHeader().headerCut/2
-        
-        tableView.contentInset = UIEdgeInsets(top: newHeight, left: 0, bottom: 0, right: 0)
-        tableView.contentOffset = CGPoint(x: 0, y: -newHeight)
-        
-        setNewHeight()
-        
-    }
-    
-    func setNewHeight(){
-        let newHeight = StrechyHeader().headerHeight - StrechyHeader().headerCut/2
-        var getHeaderFrame = CGRect(x: 0, y: -newHeight, width: tableView.bounds.width, height: StrechyHeader().headerHeight)
-        
-        if tableView.contentOffset.y < newHeight {
-            getHeaderFrame.origin.y = tableView.contentOffset.y
-            getHeaderFrame.size.height = -tableView.contentOffset.y + StrechyHeader().headerCut/2
-        }
-        
-        headerView.frame = getHeaderFrame
-//        let cutDirection = UIBezierPath()
-//        cutDirection.move(to: CGPoint(x: 0, y: 0))
-//        cutDirection.addLine(to: CGPoint(x: getHeaderFrame.width, y: 0))
-//        cutDirection.addLine(to: CGPoint(x: getHeaderFrame.width, y: getHeaderFrame.height - StrechyHeader().headerCut))
-//        cutDirection.addLine(to: CGPoint(x: getHeaderFrame.width, y: getHeaderFrame.height))
-        
-    }
-    
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        setNewHeight()
-        if scrollView.contentOffset.y < 0 {
-            
-            
-       
-            
-            
-            
-        }
-        
-//        else if scrollView.contentOffset.y > 0 &&  imageHeightConstraint.constant >= 65 {
-//            
-//            
-//            let newHeight = scrollView.contentOffset.y/100
-//            imageHeightConstraint.constant  -= newHeight
-//            
-//            if imageHeightConstraint.constant  < 65 {
-//                
-//                imageHeightConstraint.constant  = 65
-//                
-//            }
-        
-            
-            
-        }
-        
-        
-        
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-//        if imageHeightConstraint.constant > 183 {
-//            animateHeader()
-//            
-//            imageHeightConstraint.constant = 183
-//            
-//        }
-//        
-        
-        
-    }
-    
-
-    
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-//        if imageHeightConstraint.constant > 183 {
-//           animateHeader()
-//            imageHeightConstraint.constant  = 183
-//            
-//        }
-//        
-    }
-    
-    func animateHeader() {
-        
-//        imageHeightConstraint.constant = 183
-//        
-//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-//            self.view.layoutIfNeeded()
-//        }, completion: nil)
-//        
-//    }
-    
-    
-    
-    
-    
-}
 
 
-struct StrechyHeader {
-    
-     let headerHeight: CGFloat = 350
-     let headerCut: CGFloat = 50
-    
-}
 
 
 

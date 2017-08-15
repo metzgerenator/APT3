@@ -18,7 +18,6 @@
 		275D26611F1F9C6B009B5AD4 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D26601F1F9C6B009B5AD4 /* HomeTableViewCell.swift */; };
 		275D26631F1FA646009B5AD4 /* ApartmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D26621F1FA646009B5AD4 /* ApartmentType.swift */; };
 		275F6FEF1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FEE1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift */; };
-		275F6FF11F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FF01F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift */; };
 		275F6FF31F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FF21F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift */; };
 		275F6FF51F0D7BAD00F9B2C2 /* RentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */; };
 		27655A601F26AA5C007406C1 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27655A5F1F26AA5C007406C1 /* MainMapViewController.swift */; };
@@ -39,6 +38,7 @@
 		279745CC1F04039400ED5D34 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745CB1F04039400ED5D34 /* NewUserViewController.swift */; };
 		279745CE1F04283D00ED5D34 /* alertViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745CD1F04283D00ED5D34 /* alertViews.swift */; };
 		279745D11F042F6200ED5D34 /* FirbaseReadWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745D01F042F6200ED5D34 /* FirbaseReadWrite.swift */; };
+		27CFBB001F430C6200A9919A /* stretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CFBAFF1F430C6200A9919A /* stretchyHeader.swift */; };
 		27D60BA71F2645CC00189686 /* addressSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D60BA61F2645CC00189686 /* addressSearch.swift */; };
 		8CEB8DC593222523527A71A3 /* Pods_Apt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C6397714E41901F2A659AF /* Pods_Apt.framework */; };
 /* End PBXBuildFile section */
@@ -72,7 +72,6 @@
 		275D26601F1F9C6B009B5AD4 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		275D26621F1FA646009B5AD4 /* ApartmentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApartmentType.swift; sourceTree = "<group>"; };
 		275F6FEE1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyNameViewController.swift; sourceTree = "<group>"; };
-		275F6FF01F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailsViewController.swift; sourceTree = "<group>"; };
 		275F6FF21F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDetailsTableViewController.swift; sourceTree = "<group>"; };
 		275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentTableViewController.swift; sourceTree = "<group>"; };
 		27655A5F1F26AA5C007406C1 /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		279745CB1F04039400ED5D34 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		279745CD1F04283D00ED5D34 /* alertViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = alertViews.swift; path = Apt/alertViews.swift; sourceTree = "<group>"; };
 		279745D01F042F6200ED5D34 /* FirbaseReadWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirbaseReadWrite.swift; sourceTree = "<group>"; };
+		27CFBAFF1F430C6200A9919A /* stretchyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stretchyHeader.swift; sourceTree = "<group>"; };
 		27D60BA61F2645CC00189686 /* addressSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addressSearch.swift; sourceTree = "<group>"; };
 		27F84F4A1F053BF700693945 /* Apt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Apt.entitlements; sourceTree = "<group>"; };
 		3CA3879DF81A39E1048246E4 /* Pods-Apt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Apt/Pods-Apt.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 				27D60BA51F26441700189686 /* Address search */,
 				27693E5C1F1647E4005D891F /* propertyPhotos */,
 				275F6FEE1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift */,
-				275F6FF01F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift */,
 				275F6FF21F0D765200F9B2C2 /* PropertyDetailsTableViewController.swift */,
+				27CFBAFF1F430C6200A9919A /* stretchyHeader.swift */,
 				275F6FF41F0D7BAD00F9B2C2 /* RentTableViewController.swift */,
 			);
 			name = "New Property ";
@@ -498,6 +498,7 @@
 			files = (
 				279745CA1F03F0B000ED5D34 /* UibuttonFormats.swift in Sources */,
 				274108DE1F06BCEC00B60BBA /* CurrentUserViewController.swift in Sources */,
+				27CFBB001F430C6200A9919A /* stretchyHeader.swift in Sources */,
 				27655A621F26ADE8007406C1 /* Annotations.swift in Sources */,
 				275D265F1F1F9C49009B5AD4 /* HomeViewController.swift in Sources */,
 				27693E571F1408D2005D891F /* GradientView.swift in Sources */,
@@ -518,7 +519,6 @@
 				27693E4E1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift in Sources */,
 				275D26631F1FA646009B5AD4 /* ApartmentType.swift in Sources */,
 				275F6FEF1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift in Sources */,
-				275F6FF11F0D3F3500F9B2C2 /* PropertyDetailsViewController.swift in Sources */,
 				279745931F03E9FF00ED5D34 /* AppDelegate.swift in Sources */,
 				273498DD1F3B478D0006DE2B /* AddCustomAmmenityTableViewController.swift in Sources */,
 				2717318A1F18D89E0044BA27 /* SubmitPhotoViewController.swift in Sources */,
