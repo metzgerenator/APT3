@@ -95,9 +95,25 @@ class AddCustomAmmenityTableViewController: UITableViewController {
     
     
     
+    //MARK: alertview controller
 
+    let alertController = UIAlertController(title: "Add New Name", message: "", preferredStyle: .alert)
+    
+    let saveAction = UIAlertAction(title: "Save", style: .default, handler: {
+        alert -> Void in
+        
 
-   
+        
+    })
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
+        (action : UIAlertAction!) -> Void in
+        
+    })
+    
+    
+
+    
 
 }
 
@@ -113,32 +129,14 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, ex
         
         guard let index = tableView.indexPath(for: cell)?.row else {return}
         
+        addTextAlert(index: index)
         
-        tableView.beginUpdates()
-        customAmenities.insert(amenity, at: index)
-        updateHeightToParrent()
-        let indexPath = IndexPath(item: index, section: 0)
-        //let indexPath = IndexPath(item: customAmenities.count-2, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
-        
-
-        updateFirebase()
+       
 
     }
 
     
     
-    func insertCell(newAmenity: String) {
-        
-       tableView.beginUpdates()
-        customAmenities.insert(newAmenity, at: customAmenities.count-1)
-        updateHeightToParrent()
-        let indexPath = IndexPath(item: customAmenities.count-2, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
-    
-    }
     
     func updatedExtraAmenities(array: [String]) {
         
@@ -169,6 +167,57 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, ex
   
     
 }
+
+// Mark: alertController 
+
+extension AddCustomAmmenityTableViewController {
+    
+    func addTextAlert(index: Int) {
+        
+        
+        let textAlert = UIAlertController(title: "Add New Amenity", message: "", preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default, handler: {
+            alert -> Void in
+            
+            let newAenity = textAlert.textFields![0] as UITextField
+            
+            let newText = newAenity.text
+            
+            if (newText?.characters.count)! > 0 {
+                
+                self.tableView.beginUpdates()
+                self.customAmenities.insert(newAenity.text!, at: index)
+                self.updateHeightToParrent()
+                let indexPath = IndexPath(item: index, section: 0)
+                self.tableView.insertRows(at: [indexPath], with: .automatic)
+                self.tableView.endUpdates()
+                self.updateFirebase()
+                
+            }
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        
+        textAlert.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Enter Amenity"
+        }
+     
+        textAlert.addAction(saveAction)
+        textAlert.addAction(cancelAction)
+        
+        self.present(textAlert, animated: true, completion: nil)
+
+    
+    }
+    
+}
+
+
+    
+
 
 
 
