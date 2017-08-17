@@ -15,7 +15,6 @@ class AddAmenityTableViewCell: UITableViewCell {
     
      var textTimer: Timer?
     
-    var textToSend: String?
     
     
     @IBOutlet var newAmenity: UILabel!
@@ -27,15 +26,9 @@ class AddAmenityTableViewCell: UITableViewCell {
     
     //don't forget to add to delegate
     func editAmenity() {
-        if let textCheck = textToSend {
-            delegate?.addAmenity(with:textCheck, for: self)
-        } else {
-            delegate?.addAmenity(with: "dicks", for: self)
-            
-        }
         
-        
-        
+        delegate?.addAmenity(for: self)
+ 
     }
     
     @IBAction func addAmenityAction(_ sender: UIButton) {

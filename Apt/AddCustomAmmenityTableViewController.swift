@@ -124,7 +124,7 @@ class AddCustomAmmenityTableViewController: UITableViewController {
 
 extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, extraAmenitiesDelegate {
     
-    func addAmenity(with amenity: String, for cell: UITableViewCell) {
+    func addAmenity(for cell: UITableViewCell) {
         
         
         guard let index = tableView.indexPath(for: cell)?.row else {return}
