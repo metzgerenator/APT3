@@ -11,7 +11,7 @@ import Firebase
 
 class ListTableViewController: UITableViewController {
     
-    var  propertyLists = [String]()
+    var  propertyLists = [ListType]()
     
   
     
@@ -57,7 +57,7 @@ class ListTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ListTableViewCell
         
-        let curentList = propertyLists[indexPath.row]
+        let curentList = propertyLists[indexPath.row].listName
         
         cell.configureCell(newName: curentList)
         
@@ -94,7 +94,9 @@ extension ListTableViewController {
 
                 self.tableView.beginUpdates()
                 
-                self.propertyLists.insert(newText!, at: 0)
+                let newListType = ListType(listName: newText!, assignedUnits: [])
+                
+                self.propertyLists.insert(newListType, at: 0)
 
                 let indexPath = IndexPath(item: 0, section: 0)
                 
@@ -128,7 +130,9 @@ extension ListTableViewController {
     
     func updateFireBase() {
         
-        let inputDictionary = [PropertyKeys.SavedLists.rawValue : propertyLists]
+        ///account for new structure
+        
+       let inputDictionary = [PropertyKeys.SavedLists.rawValue : propertyLists]
         
         Endpoints.appendToExisting(with: Endpoints.lists.url, values: inputDictionary)
         

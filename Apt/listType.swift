@@ -12,8 +12,6 @@ import Foundation
 struct ListType {
     
     var listName: String
-    var assignedUnits: [Apartment]
-    
-    
-    
+    var assignedUnits: [String]
+
 }
