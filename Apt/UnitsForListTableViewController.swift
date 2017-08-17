@@ -14,6 +14,8 @@ class UnitsForListTableViewController: UITableViewController {
     
     var units = [Apartment]()
     
+    var currentList: ListType?
+    
     var propertyEndPoint: DatabaseReference {
         
         return Endpoints.currentUSerProperties.url
@@ -21,7 +23,6 @@ class UnitsForListTableViewController: UITableViewController {
     }
     
     
-//add_to_list
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,10 +63,29 @@ class UnitsForListTableViewController: UITableViewController {
         
         
         let unitName = units[indexPath.row]
+        
+        if let keyCheck = unitName.itemKey {
+            
+           let ispresent = units.contains {$0.itemKey == keyCheck }
+            switch ispresent {
+            case true:
+                cell?.accessoryType = .checkmark
+            default:
+                cell?.accessoryType = .none
+            }
+            
+        }
+        
         cell?.textLabel?.text = unitName.apartmentName ?? "no name"
         
         return cell!
    
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
     

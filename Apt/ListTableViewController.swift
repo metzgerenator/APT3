@@ -13,7 +13,9 @@ class ListTableViewController: UITableViewController {
     
     var  propertyLists = [ListType]()
     
-    var nosubunitIndicator = "no_units"
+    let nosubunitIndicator = "no_units"
+    
+    let segueIdentifier = "add_to_list"
     
     var listEndPoints: DatabaseReference {
         
@@ -36,7 +38,6 @@ class ListTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -68,7 +69,23 @@ class ListTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "add_to_list", sender: self)
+        self.performSegue(withIdentifier: segueIdentifier, sender: propertyLists[indexPath.row])
+    }
+    
+    
+    
+    //MARK: Navigation 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == segueIdentifier {
+            
+            guard let vc = segue.destination as? UnitsForListTableViewController, let currentList = sender as? ListType else {return}
+    
+            vc.currentList = currentList
+            
+        }
+        
     }
 
    
