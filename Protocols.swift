@@ -38,11 +38,7 @@ protocol addToCustomAmenitiesDelegate {
     func addAmenity(with amenity: String, for cell: UITableViewCell)
 }
 
-protocol insertNewCellDelegate {
-    
-    func insertCell()
-    
-}
+
 
 protocol extraAmenitiesDelegate {
     

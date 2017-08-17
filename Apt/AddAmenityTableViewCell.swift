@@ -12,34 +12,26 @@ class AddAmenityTableViewCell: UITableViewCell {
     
     
     var delegate: addToCustomAmenitiesDelegate?
-    var insertCellDelegate: insertNewCellDelegate?
     
      var textTimer: Timer?
     
     var textToSend: String?
     
     
-    @IBOutlet var newAmenityTextField: UITextField!
+    @IBOutlet var newAmenity: UILabel!
     
     @IBOutlet var addAmenityButton: UIButton!
     
     
-    @IBAction func amenityTextDidChange(_ sender: UITextField) {
-        
-        textToSend = sender.text
-        textTimer?.invalidate()
-        textTimer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(editAmenity), userInfo: nil, repeats: false)
-        
-        
-       
-
-        
-    }
+  
     
-    
+    //don't forget to add to delegate
     func editAmenity() {
         if let textCheck = textToSend {
             delegate?.addAmenity(with:textCheck, for: self)
+        } else {
+            delegate?.addAmenity(with: "dicks", for: self)
+            
         }
         
         
@@ -48,9 +40,7 @@ class AddAmenityTableViewCell: UITableViewCell {
     
     @IBAction func addAmenityAction(_ sender: UIButton) {
         
-        insertCellDelegate?.insertCell()
-        
-        
+        editAmenity()
     }
 
     override func awakeFromNib() {
@@ -64,14 +54,22 @@ class AddAmenityTableViewCell: UITableViewCell {
     
     func configureCell(text: String)  {
         
-        newAmenityTextField.text = text
+        newAmenity.text = text
         
     }
     
     
     func hideTextField(isHidden: Bool) {
         
-        newAmenityTextField.isHidden = isHidden
+        if !isHidden {
+            newAmenity.isHidden = true
+            
+        } else {
+            newAmenity.isHidden = false
+            
+        }
+        
+        addAmenityButton.isHidden = isHidden
         
     }
 

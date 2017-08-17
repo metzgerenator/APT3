@@ -79,17 +79,16 @@ class AddCustomAmmenityTableViewController: UITableViewController {
         
         switch turnButtonOn {
         case buttonCheck:
-            cell.hideTextField(isHidden: true)
+            cell.hideTextField(isHidden: false)
          
         default:
-            cell.hideTextField(isHidden: false)
+            cell.hideTextField(isHidden: true)
         }
         
         cell.configureCell(text: turnButtonOn)
         
         
         cell.delegate = self
-        cell.insertCellDelegate = self
 
         return cell
     }
@@ -107,16 +106,22 @@ class AddCustomAmmenityTableViewController: UITableViewController {
 
 
 
-extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, insertNewCellDelegate, extraAmenitiesDelegate {
+extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, extraAmenitiesDelegate {
     
     func addAmenity(with amenity: String, for cell: UITableViewCell) {
         
         
         guard let index = tableView.indexPath(for: cell)?.row else {return}
         
-        customAmenities.remove(at: index)
         
+        tableView.beginUpdates()
         customAmenities.insert(amenity, at: index)
+        updateHeightToParrent()
+        let indexPath = IndexPath(item: index, section: 0)
+        //let indexPath = IndexPath(item: customAmenities.count-2, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
+        
 
         updateFirebase()
 
@@ -124,10 +129,10 @@ extension AddCustomAmmenityTableViewController: addToCustomAmenitiesDelegate, in
 
     
     
-    func insertCell() {
+    func insertCell(newAmenity: String) {
         
        tableView.beginUpdates()
-        customAmenities.insert("", at: customAmenities.count-1)
+        customAmenities.insert(newAmenity, at: customAmenities.count-1)
         updateHeightToParrent()
         let indexPath = IndexPath(item: customAmenities.count-2, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)

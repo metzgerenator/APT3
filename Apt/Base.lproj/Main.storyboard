@@ -1433,27 +1433,24 @@
                                                 <action selector="addAmenityAction:" destination="6Jv-RQ-TCJ" eventType="touchUpInside" id="j5O-z4-QYe"/>
                                             </connections>
                                         </button>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XwW-aj-Ec7">
-                                            <rect key="frame" x="8" y="8" width="339.5" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new amenity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNI-JO-c7D">
+                                            <rect key="frame" x="8" y="14" width="97" height="15.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <action selector="amenityTextDidChange:" destination="6Jv-RQ-TCJ" eventType="editingChanged" id="tZl-l6-aTe"/>
-                                            </connections>
-                                        </textField>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="XwW-aj-Ec7" secondAttribute="trailing" constant="20" id="4u3-pV-xGX"/>
-                                        <constraint firstItem="XwW-aj-Ec7" firstAttribute="top" secondItem="SXD-5X-LFQ" secondAttribute="topMargin" id="T4H-s9-lex"/>
+                                        <constraint firstItem="mNI-JO-c7D" firstAttribute="top" secondItem="SXD-5X-LFQ" secondAttribute="topMargin" constant="6" id="Ly5-ST-JSd"/>
                                         <constraint firstItem="AVb-Ge-gQs" firstAttribute="leading" secondItem="SXD-5X-LFQ" secondAttribute="leadingMargin" id="jpq-AL-AjF"/>
-                                        <constraint firstItem="XwW-aj-Ec7" firstAttribute="leading" secondItem="SXD-5X-LFQ" secondAttribute="leadingMargin" id="uFY-kb-aKE"/>
+                                        <constraint firstItem="mNI-JO-c7D" firstAttribute="leading" secondItem="SXD-5X-LFQ" secondAttribute="leadingMargin" id="onK-qa-Dln"/>
+                                        <constraint firstItem="mNI-JO-c7D" firstAttribute="centerY" secondItem="SXD-5X-LFQ" secondAttribute="centerY" id="tnR-YJ-vFg"/>
                                         <constraint firstItem="AVb-Ge-gQs" firstAttribute="top" secondItem="SXD-5X-LFQ" secondAttribute="topMargin" id="x5e-B0-vl9"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addAmenityButton" destination="AVb-Ge-gQs" id="lWF-R9-qy6"/>
-                                    <outlet property="newAmenityTextField" destination="XwW-aj-Ec7" id="bWP-gU-QGi"/>
+                                    <outlet property="newAmenity" destination="mNI-JO-c7D" id="clT-yp-fne"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1465,7 +1462,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K74-qT-jgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6127" y="1842"/>
+            <point key="canvasLocation" x="6126.3999999999996" y="1841.8290854572715"/>
         </scene>
         <!--PROFILE-->
         <scene sceneID="C7b-2Z-iOe">
