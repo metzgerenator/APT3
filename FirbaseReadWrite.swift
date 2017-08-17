@@ -31,6 +31,7 @@ enum Childs: String {
     case Authtype
     case Favorite_Properties
     case clearCover
+    case Lists
     
 }
 
@@ -51,6 +52,8 @@ enum PropertyKeys: String {
     case Address = "Address"
     case UserLocation = "User_Location"
     case ExtraAmenities = "Extra_Amenities"
+    
+    case SavedLists = "Saved_Lists"
 
     
 }
@@ -60,6 +63,7 @@ enum Endpoints {
     case users
     case currentUSerProperties
     case favoriteProperties
+    case lists
     
     var url: DatabaseReference {
         switch self {
@@ -73,7 +77,9 @@ enum Endpoints {
         case .favoriteProperties:
             
             return Database.database().reference().child(Childs.Users.rawValue).child("\(currentUSer?.uid ?? "")").child(Childs.Favorite_Properties.rawValue)
-    
+        case .lists:
+            return Database.database().reference().child(Childs.Users.rawValue).child("\(currentUSer?.uid ?? "")").child(Childs.Lists.rawValue)
+            
 
         }
     }

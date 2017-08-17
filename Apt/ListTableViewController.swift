@@ -58,7 +58,6 @@ class ListTableViewController: UITableViewController {
 }
 
 
-
 extension ListTableViewController {
     
     func addTextAlert() {
@@ -83,9 +82,8 @@ extension ListTableViewController {
                 
                 self.tableView.insertRows(at: [indexPath], with: .automatic)
                 self.tableView.endUpdates()
-                
-               // update firebase here
-                //self.updateFirebase()
+              
+                self.updateFireBase()
                 
             }
             
@@ -103,6 +101,18 @@ extension ListTableViewController {
         
         self.present(textAlert, animated: true, completion: nil)
         
+        
+    }
+    
+    
+    //MARK: update firebase 
+    
+    
+    func updateFireBase() {
+        
+        let inputDictionary = [PropertyKeys.SavedLists.rawValue : propertyLists]
+        
+        Endpoints.appendToExisting(with: Endpoints.lists.url, values: inputDictionary)
         
     }
     
