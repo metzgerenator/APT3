@@ -42,6 +42,8 @@
 		27D60BA71F2645CC00189686 /* addressSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D60BA61F2645CC00189686 /* addressSearch.swift */; };
 		27F5422A1F4610FB00A2840F /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F542291F4610FB00A2840F /* ListTableViewController.swift */; };
 		27F5422C1F46130C00A2840F /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5422B1F46130C00A2840F /* ListTableViewCell.swift */; };
+		27F5422E1F462ECF00A2840F /* listType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5422D1F462ECF00A2840F /* listType.swift */; };
+		27F542301F4638CF00A2840F /* UnitsForListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5422F1F4638CF00A2840F /* UnitsForListTableViewController.swift */; };
 		8CEB8DC593222523527A71A3 /* Pods_Apt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C6397714E41901F2A659AF /* Pods_Apt.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +106,8 @@
 		27D60BA61F2645CC00189686 /* addressSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addressSearch.swift; sourceTree = "<group>"; };
 		27F542291F4610FB00A2840F /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		27F5422B1F46130C00A2840F /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		27F5422D1F462ECF00A2840F /* listType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listType.swift; sourceTree = "<group>"; };
+		27F5422F1F4638CF00A2840F /* UnitsForListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitsForListTableViewController.swift; sourceTree = "<group>"; };
 		27F84F4A1F053BF700693945 /* Apt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Apt.entitlements; sourceTree = "<group>"; };
 		3CA3879DF81A39E1048246E4 /* Pods-Apt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Apt/Pods-Apt.debug.xcconfig"; sourceTree = "<group>"; };
 		56C6397714E41901F2A659AF /* Pods_Apt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -303,6 +307,8 @@
 			children = (
 				27F542291F4610FB00A2840F /* ListTableViewController.swift */,
 				27F5422B1F46130C00A2840F /* ListTableViewCell.swift */,
+				27F5422D1F462ECF00A2840F /* listType.swift */,
+				27F5422F1F4638CF00A2840F /* UnitsForListTableViewController.swift */,
 			);
 			name = "List View ";
 			sourceTree = "<group>";
@@ -516,12 +522,14 @@
 				27655A621F26ADE8007406C1 /* Annotations.swift in Sources */,
 				275D265F1F1F9C49009B5AD4 /* HomeViewController.swift in Sources */,
 				27693E571F1408D2005D891F /* GradientView.swift in Sources */,
+				27F5422E1F462ECF00A2840F /* listType.swift in Sources */,
 				27F5422A1F4610FB00A2840F /* ListTableViewController.swift in Sources */,
 				271731881F18A9AF0044BA27 /* PropertyPhotoStructures.swift in Sources */,
 				2714AC421F0CF4690028A81E /* CustomTabBarController.swift in Sources */,
 				275D26611F1F9C6B009B5AD4 /* HomeTableViewCell.swift in Sources */,
 				279745C51F03EDA700ED5D34 /* LoginViewController.swift in Sources */,
 				27D60BA71F2645CC00189686 /* addressSearch.swift in Sources */,
+				27F542301F4638CF00A2840F /* UnitsForListTableViewController.swift in Sources */,
 				279745D11F042F6200ED5D34 /* FirbaseReadWrite.swift in Sources */,
 				27693E5E1F164822005D891F /* PropertyPhotosViewController.swift in Sources */,
 				279745CE1F04283D00ED5D34 /* alertViews.swift in Sources */,

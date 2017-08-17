@@ -7,10 +7,19 @@
 //
 
 import UIKit
+import Firebase
 
 class ListTableViewController: UITableViewController {
     
     var  propertyLists = [String]()
+    
+  
+    
+    var listEndPoints: DatabaseReference {
+        
+        return Endpoints.lists.url
+        
+    }
 
     @IBAction func addToList(_ sender: UIBarButtonItem) {
         
@@ -19,6 +28,9 @@ class ListTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+       
 
     }
 
@@ -51,6 +63,12 @@ class ListTableViewController: UITableViewController {
         
         return cell
         
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "add_to_list", sender: self)
     }
 
    
