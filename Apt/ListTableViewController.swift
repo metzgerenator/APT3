@@ -13,7 +13,7 @@ class ListTableViewController: UITableViewController {
     
     var  propertyLists = [ListType]()
     
-  
+    var nosubunitIndicator = "no_units"
     
     var listEndPoints: DatabaseReference {
         
@@ -94,7 +94,7 @@ extension ListTableViewController {
 
                 self.tableView.beginUpdates()
                 
-                let newListType = ListType(listName: newText!, assignedUnits: [])
+                let newListType = ListType(listName: newText!, assignedUnits: ["nounits"])
                 
                 self.propertyLists.insert(newListType, at: 0)
 
@@ -129,10 +129,17 @@ extension ListTableViewController {
     
     
     func updateFireBase() {
-        
+        var ditionaryOfLists = [String : [String]]()
         ///account for new structure
+        for unit in propertyLists {
+
+            ditionaryOfLists.updateValue(unit.assignedUnits, forKey: unit.listName)
+            
+        }
         
-       let inputDictionary = [PropertyKeys.SavedLists.rawValue : propertyLists]
+        
+       let inputDictionary = [PropertyKeys.SavedLists.rawValue : ditionaryOfLists]
+        
         
         Endpoints.appendToExisting(with: Endpoints.lists.url, values: inputDictionary)
         
