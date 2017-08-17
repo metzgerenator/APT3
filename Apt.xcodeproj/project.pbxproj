@@ -40,6 +40,8 @@
 		279745D11F042F6200ED5D34 /* FirbaseReadWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279745D01F042F6200ED5D34 /* FirbaseReadWrite.swift */; };
 		27CFBB001F430C6200A9919A /* stretchyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CFBAFF1F430C6200A9919A /* stretchyHeader.swift */; };
 		27D60BA71F2645CC00189686 /* addressSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D60BA61F2645CC00189686 /* addressSearch.swift */; };
+		27F5422A1F4610FB00A2840F /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F542291F4610FB00A2840F /* ListTableViewController.swift */; };
+		27F5422C1F46130C00A2840F /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5422B1F46130C00A2840F /* ListTableViewCell.swift */; };
 		8CEB8DC593222523527A71A3 /* Pods_Apt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C6397714E41901F2A659AF /* Pods_Apt.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +102,8 @@
 		279745D01F042F6200ED5D34 /* FirbaseReadWrite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirbaseReadWrite.swift; sourceTree = "<group>"; };
 		27CFBAFF1F430C6200A9919A /* stretchyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stretchyHeader.swift; sourceTree = "<group>"; };
 		27D60BA61F2645CC00189686 /* addressSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addressSearch.swift; sourceTree = "<group>"; };
+		27F542291F4610FB00A2840F /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		27F5422B1F46130C00A2840F /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		27F84F4A1F053BF700693945 /* Apt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Apt.entitlements; sourceTree = "<group>"; };
 		3CA3879DF81A39E1048246E4 /* Pods-Apt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Apt/Pods-Apt.debug.xcconfig"; sourceTree = "<group>"; };
 		56C6397714E41901F2A659AF /* Pods_Apt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +225,7 @@
 		279745911F03E9FF00ED5D34 /* Apt */ = {
 			isa = PBXGroup;
 			children = (
+				27F542281F4610A200A2840F /* List View  */,
 				27655A5E1F26AA1F007406C1 /* MapView */,
 				275D265D1F1F9C2C009B5AD4 /* Home tab */,
 				275F6FED1F0D1EBF00F9B2C2 /* New Property  */,
@@ -291,6 +296,15 @@
 				27D60BA61F2645CC00189686 /* addressSearch.swift */,
 			);
 			name = "Address search";
+			sourceTree = "<group>";
+		};
+		27F542281F4610A200A2840F /* List View  */ = {
+			isa = PBXGroup;
+			children = (
+				27F542291F4610FB00A2840F /* ListTableViewController.swift */,
+				27F5422B1F46130C00A2840F /* ListTableViewCell.swift */,
+			);
+			name = "List View ";
 			sourceTree = "<group>";
 		};
 		A0756DD6E94A1E27BFF66940 /* Frameworks */ = {
@@ -502,6 +516,7 @@
 				27655A621F26ADE8007406C1 /* Annotations.swift in Sources */,
 				275D265F1F1F9C49009B5AD4 /* HomeViewController.swift in Sources */,
 				27693E571F1408D2005D891F /* GradientView.swift in Sources */,
+				27F5422A1F4610FB00A2840F /* ListTableViewController.swift in Sources */,
 				271731881F18A9AF0044BA27 /* PropertyPhotoStructures.swift in Sources */,
 				2714AC421F0CF4690028A81E /* CustomTabBarController.swift in Sources */,
 				275D26611F1F9C6B009B5AD4 /* HomeTableViewCell.swift in Sources */,
@@ -516,6 +531,7 @@
 				27655A601F26AA5C007406C1 /* MainMapViewController.swift in Sources */,
 				275F6FF51F0D7BAD00F9B2C2 /* RentTableViewController.swift in Sources */,
 				273686731F0E96DE002E9F93 /* Protocols.swift in Sources */,
+				27F5422C1F46130C00A2840F /* ListTableViewCell.swift in Sources */,
 				27693E4E1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift in Sources */,
 				275D26631F1FA646009B5AD4 /* ApartmentType.swift in Sources */,
 				275F6FEF1F0D1EDC00F9B2C2 /* PropertyNameViewController.swift in Sources */,

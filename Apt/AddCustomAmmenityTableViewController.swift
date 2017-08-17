@@ -92,28 +92,6 @@ class AddCustomAmmenityTableViewController: UITableViewController {
 
         return cell
     }
-    
-    
-    
-    //MARK: alertview controller
-
-    let alertController = UIAlertController(title: "Add New Name", message: "", preferredStyle: .alert)
-    
-    let saveAction = UIAlertAction(title: "Save", style: .default, handler: {
-        alert -> Void in
-        
-
-        
-    })
-    
-    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
-        (action : UIAlertAction!) -> Void in
-        
-    })
-    
-    
-
-    
 
 }
 
