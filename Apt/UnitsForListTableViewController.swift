@@ -18,6 +18,8 @@ class UnitsForListTableViewController: UITableViewController {
     
     var addtoListDelegate: passListToListView?
     
+    var nosubunitIndicator: String?
+    
     var propertyEndPoint: DatabaseReference {
         
         return Endpoints.currentUSerProperties.url
@@ -106,6 +108,19 @@ class UnitsForListTableViewController: UITableViewController {
             self.currentList?.assignedUnits = newSubList
             
         }
+
+        let listCheck = self.currentList?.assignedUnits.filter{$0 != nosubunitIndicator!}
+
+        if listCheck?.count == 0 {
+            
+            self.currentList?.assignedUnits.append(nosubunitIndicator!)
+            
+        } else {
+            let subList = self.currentList?.assignedUnits.filter{$0 != nosubunitIndicator!}
+            self.currentList?.assignedUnits = subList!
+           
+        }
+        
         
         addtoListDelegate?.addToList(for: self.currentList!)
         

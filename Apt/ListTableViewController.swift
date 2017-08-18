@@ -84,6 +84,7 @@ class ListTableViewController: UITableViewController {
     
             vc.currentList = currentList
             vc.addtoListDelegate = self
+            vc.nosubunitIndicator = nosubunitIndicator
             
         }
         
@@ -112,7 +113,7 @@ extension ListTableViewController: passListToListView {
 
                 self.tableView.beginUpdates()
                 
-                let newListType = ListType(listName: newText!, assignedUnits: ["nounits"])
+                let newListType = ListType(listName: newText!, assignedUnits: [self.nosubunitIndicator])
                 
                 self.propertyLists.insert(newListType, at: 0)
 
@@ -171,6 +172,7 @@ extension ListTableViewController: passListToListView {
       let filteredList = propertyLists.filter{$0.listName != list.listName}
         
        propertyLists = filteredList
+        //check for no list
        propertyLists.append(list)
        updateFireBase()
   
