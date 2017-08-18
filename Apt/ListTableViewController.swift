@@ -32,6 +32,18 @@ class ListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
+        listEndPoints.observe(.value, with: { (snapshot) in
+            
+            let valueDictionary = snapshot.value as? [String : Any] ?? [:]
+            guard let newList = currentListTypeArray(dictionary: valueDictionary) else {return}
+            
+            self.propertyLists = newList
+            self.tableView.reloadData()
+            
+        })
+
+        
+        
        
 
     }
