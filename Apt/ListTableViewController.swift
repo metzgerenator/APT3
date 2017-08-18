@@ -86,6 +86,26 @@ class ListTableViewController: UITableViewController {
     
     
     
+    
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            
+            //let currentValue = propertyLists[indexPath.row]
+            
+            
+                propertyLists.remove(at: indexPath.row)
+                let indexPath = IndexPath(row: indexPath.row, section: 0)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                updateFireBase()
+                
+            
+            
+        }
+    }
+    
+    
+    
     //MARK: Navigation 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
