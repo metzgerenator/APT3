@@ -124,10 +124,9 @@ class UnitsForListTableViewController: UITableViewController {
         
         addtoListDelegate?.addToList(for: self.currentList!)
         
-        tableView.reloadData()
+        tableView.reloadRows(at: [indexPath], with: .automatic)
         
-        
-        
+       
         
     }
     
