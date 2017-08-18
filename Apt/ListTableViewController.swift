@@ -166,9 +166,14 @@ extension ListTableViewController: passListToListView {
     
     
     
-    func addToList(unit: Apartment) {
+    func addToList(for list: ListType) {
         
-        print("here is unit \(unit)")
+      let filteredList = propertyLists.filter{$0.listName != list.listName}
+        
+       propertyLists = filteredList
+       propertyLists.append(list)
+       updateFireBase()
+  
         
     }
     

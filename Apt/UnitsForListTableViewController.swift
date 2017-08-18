@@ -89,22 +89,27 @@ class UnitsForListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        guard let currentList = currentList, let unitToSend = units[indexPath.row].itemKey else {return}
+        
         let cell = self.tableView(tableView, cellForRowAt: indexPath)
         
-        let unitToSend = units[indexPath.row]
         
         if cell.accessoryType == .checkmark {
             
-            
+            let newSubList = currentList.assignedUnits.filter{$0 != unitToSend}
+            self.currentList?.assignedUnits = newSubList
+
         } else {
             
+            var newSubList = currentList.assignedUnits
+            newSubList.append(unitToSend)
+            self.currentList?.assignedUnits = newSubList
             
         }
         
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        addtoListDelegate?.addToList(for: self.currentList!)
         
-        
-        addtoListDelegate?.addToList(unit: unitToSend)
+        tableView.reloadData()
         
         
         

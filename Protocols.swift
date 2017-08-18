@@ -51,7 +51,7 @@ protocol extraAmenitiesTableViewHeightDeelegate {
 
 
 protocol passListToListView {
-    func addToList(unit: Apartment)
+    func addToList(for list: ListType)
 }
 
 
