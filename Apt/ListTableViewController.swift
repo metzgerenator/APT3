@@ -83,6 +83,7 @@ class ListTableViewController: UITableViewController {
             guard let vc = segue.destination as? UnitsForListTableViewController, let currentList = sender as? ListType else {return}
     
             vc.currentList = currentList
+            vc.addtoListDelegate = self
             
         }
         
@@ -93,7 +94,7 @@ class ListTableViewController: UITableViewController {
 }
 
 
-extension ListTableViewController {
+extension ListTableViewController: passListToListView {
     
     func addTextAlert() {
         
@@ -159,6 +160,15 @@ extension ListTableViewController {
         
         
         Endpoints.appendToExisting(with: Endpoints.lists.url, values: inputDictionary)
+        
+    }
+    
+    
+    
+    
+    func addToList(unit: Apartment) {
+        
+        print("here is unit \(unit)")
         
     }
     

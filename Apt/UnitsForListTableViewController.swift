@@ -16,6 +16,8 @@ class UnitsForListTableViewController: UITableViewController {
     
     var currentList: ListType?
     
+    var addtoListDelegate: passListToListView?
+    
     var propertyEndPoint: DatabaseReference {
         
         return Endpoints.currentUSerProperties.url
@@ -64,10 +66,11 @@ class UnitsForListTableViewController: UITableViewController {
         
         let unitName = units[indexPath.row]
         
-        if let keyCheck = unitName.itemKey {
+        if let keyCheck = unitName.itemKey, let presentList = currentList {
             
-           let ispresent = units.contains {$0.itemKey == keyCheck }
-            switch ispresent {
+            let isPresent = presentList.assignedUnits.contains{$0 == keyCheck}
+            
+            switch isPresent {
             case true:
                 cell?.accessoryType = .checkmark
             default:
@@ -85,6 +88,26 @@ class UnitsForListTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = self.tableView(tableView, cellForRowAt: indexPath)
+        
+        let unitToSend = units[indexPath.row]
+        
+        if cell.accessoryType == .checkmark {
+            
+            
+        } else {
+            
+            
+        }
+        
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+        
+        addtoListDelegate?.addToList(unit: unitToSend)
+        
+        
+        
         
     }
     
