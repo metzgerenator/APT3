@@ -1249,7 +1249,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="JNC-uB-mvE">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="jwS-Jx-XxJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="jwS-Jx-XxJ">
+                            <connections>
+                                <segue destination="G0Q-ZT-shs" kind="show" id="eeb-bK-3at"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Xhp-zL-veT" id="8LD-72-pIM"/>
@@ -1425,6 +1429,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fac-6W-2FM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3842" y="1879"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Cf4-nr-9I0">
+            <objects>
+                <viewController id="G0Q-ZT-shs" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7WM-cF-Dtq"/>
+                        <viewControllerLayoutGuide type="bottom" id="dYH-Z2-yrm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yR7-Hx-l66">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price high to low " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bju-wK-BUW">
+                                <rect key="frame" x="23" y="211" width="132" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="By List " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAx-aH-l0f">
+                                <rect key="frame" x="19" y="248" width="56" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price low to high " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AG-lP-R0H">
+                                <rect key="frame" x="21" y="167" width="132" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3XZ-Qg-LBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2294" y="2628"/>
         </scene>
         <!--Units For List Table View Controller-->
         <scene sceneID="z9w-kG-h9X">
