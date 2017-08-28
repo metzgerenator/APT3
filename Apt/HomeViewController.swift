@@ -170,22 +170,44 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! HomeTableViewCell
         
-        let unit = properties[indexPath.row]
-        
-        if let unitKey = unit.itemKey {
-            let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
-            cell.changeButton(isFavorite: unitSaved)
-            
-        }
-        
+         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! HomeTableViewCell
         
         cell.delegate = self
         
-        cell.configureCell(unit: unit)
+        if let _ = currentFilter {
+            let currentList = propertyLists[indexPath.section]
+            let currentUnitID = currentList.assignedUnits[indexPath.row]
+            let unit = properties.filter{$0.itemKey == currentUnitID}[0]
+            
+            if let unitKey = unit.itemKey {
+                let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
+                cell.changeButton(isFavorite: unitSaved)
+                
+            }
+            
+            cell.configureCell(unit: unit)
+            return cell
+            
+        } else {
+            
+            let unit = properties[indexPath.row]
+            
+            if let unitKey = unit.itemKey {
+                let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
+                cell.changeButton(isFavorite: unitSaved)
+                
+            }
+            cell.configureCell(unit: unit)
+            
+            return cell
+            
+        }
         
-        return cell
+    
+        
+        
+        
     }
     
     
