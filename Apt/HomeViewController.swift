@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     var properties = [Apartment]()
     var ref: DatabaseReference?
+    static var filterView = "Filter"
     
     var propertyFavorites = [ApartmentFavorites]()
     
@@ -30,6 +31,12 @@ class HomeViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
+    @IBAction func filterButton(_ sender: UIBarButtonItem) {
+        
+        self.performSegue(withIdentifier: "Filter", sender: self)
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

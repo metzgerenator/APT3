@@ -13,6 +13,7 @@
 		273498DD1F3B478D0006DE2B /* AddCustomAmmenityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273498DC1F3B478D0006DE2B /* AddCustomAmmenityTableViewController.swift */; };
 		273686731F0E96DE002E9F93 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273686721F0E96DE002E9F93 /* Protocols.swift */; };
 		274108DE1F06BCEC00B60BBA /* CurrentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274108DD1F06BCEC00B60BBA /* CurrentUserViewController.swift */; };
+		2741A8041F54696F00DBE22F /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2741A8031F54696F00DBE22F /* FilterViewController.swift */; };
 		27562C111F04432600C6FFFC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27562C0D1F04432600C6FFFC /* Bolts.framework */; };
 		275D265F1F1F9C49009B5AD4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D265E1F1F9C49009B5AD4 /* HomeViewController.swift */; };
 		275D26611F1F9C6B009B5AD4 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D26601F1F9C6B009B5AD4 /* HomeTableViewCell.swift */; };
@@ -71,6 +72,7 @@
 		273498DC1F3B478D0006DE2B /* AddCustomAmmenityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCustomAmmenityTableViewController.swift; sourceTree = "<group>"; };
 		273686721F0E96DE002E9F93 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		274108DD1F06BCEC00B60BBA /* CurrentUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserViewController.swift; sourceTree = "<group>"; };
+		2741A8031F54696F00DBE22F /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		27562C0D1F04432600C6FFFC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		275D265E1F1F9C49009B5AD4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		275D26601F1F9C6B009B5AD4 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				275D265E1F1F9C49009B5AD4 /* HomeViewController.swift */,
 				275D26601F1F9C6B009B5AD4 /* HomeTableViewCell.swift */,
 				275D26621F1FA646009B5AD4 /* ApartmentType.swift */,
+				2741A8031F54696F00DBE22F /* FilterViewController.swift */,
 			);
 			name = "Home tab";
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				27655A601F26AA5C007406C1 /* MainMapViewController.swift in Sources */,
 				275F6FF51F0D7BAD00F9B2C2 /* RentTableViewController.swift in Sources */,
 				273686731F0E96DE002E9F93 /* Protocols.swift in Sources */,
+				2741A8041F54696F00DBE22F /* FilterViewController.swift in Sources */,
 				27F5422C1F46130C00A2840F /* ListTableViewCell.swift in Sources */,
 				27693E4E1F13E697005D891F /* PropertyPhotoCollectionViewCell.swift in Sources */,
 				275D26631F1FA646009B5AD4 /* ApartmentType.swift in Sources */,
