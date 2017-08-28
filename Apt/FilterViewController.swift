@@ -13,6 +13,8 @@ class FilterViewController: UIViewController {
     
     @IBAction func doneButton(_ sender: UIButton) {
         
+        self.dismiss(animated: true, completion: nil)
+        
         
     }
     

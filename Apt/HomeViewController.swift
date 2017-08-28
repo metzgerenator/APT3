@@ -12,6 +12,11 @@ import Firebase
 class HomeViewController: UIViewController {
     
     var properties = [Apartment]()
+    
+     var  propertyLists = [ListType]()
+    
+    var currentFilter: Filter?
+    
     var ref: DatabaseReference?
     static var filterView = "Filter"
     
@@ -25,6 +30,12 @@ class HomeViewController: UIViewController {
     var propertyEndPoint: DatabaseReference {
         
         return Endpoints.currentUSerProperties.url
+        
+    }
+    
+    var listEndPoints: DatabaseReference {
+        
+        return Endpoints.lists.url
         
     }
 
@@ -45,6 +56,18 @@ class HomeViewController: UIViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 190
+        
+        //list for saved lists 
+        
+        listEndPoints.observe(.value, with: { (snapshot) in
+            
+            let valueDictionary = snapshot.value as? [String : Any] ?? [:]
+            guard let newList = currentListTypeArray(dictionary: valueDictionary) else {return}
+            
+            self.propertyLists = newList
+            
+            
+        })
         
     
         propertyEndPoint.observe(.value, with: { (snapshot) in
@@ -90,19 +113,54 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        
+        if let filterCheck = currentFilter {
+            
+            switch filterCheck.sortByList {
+            case true:
+                return propertyLists.count
+            case false:
+                return 1
+            }
+            
+        } else {
+            return 1
+        }
+        
+
+        
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return properties.count
+        
+        if let _ = currentFilter {
+            
+            let currentList = propertyLists[section]
+            return currentList.assignedUnits.count 
+
+        } else {
+            return properties.count
+        }
+        
+   
     }
     
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+ 
+        if let _ = currentFilter {
+            return propertyLists[section].listName
+    
+        } else {
+            return nil
+        }
+    }
     
     
+    //fix this for slection under filter
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+            //fix thsi
          let propertyKey = properties[indexPath.row]
 
         self.performSegue(withIdentifier: "propertyDetail", sender: propertyKey)
@@ -201,6 +259,33 @@ extension HomeViewController: likeButtonDelegate {
         
     }
     
+}
+
+
+//MARK: filtered 
+
+extension HomeViewController {
+    
+    func filterHomeView(CurrentFilter: Filter) {
+        //filterbySections
+        self.currentFilter = CurrentFilter
+        tableView.reloadData()
+  
+    }
+    
+    
+}
+
+
+// MARK: Filter Struct
+
+
+struct Filter {
+    
+    var highToLow: Bool
+    var lowToHigh: Bool
+    var sortByList: Bool
+
 }
 
 
