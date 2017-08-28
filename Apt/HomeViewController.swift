@@ -65,6 +65,10 @@ class HomeViewController: UIViewController {
             guard let newList = currentListTypeArray(dictionary: valueDictionary) else {return}
             
             self.propertyLists = newList
+            let filter = Filter(highToLow: false, lowToHigh: false, sortByList: true)
+            
+            self.filterHomeView(CurrentFilter: filter)
+            
             
             
         })
@@ -179,6 +183,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let currentList = propertyLists[indexPath.section]
             let currentUnitID = currentList.assignedUnits[indexPath.row]
             let unit = properties.filter{$0.itemKey == currentUnitID}[0]
+            // check for blank
             
             if let unitKey = unit.itemKey {
                 let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
