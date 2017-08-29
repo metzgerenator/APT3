@@ -13,7 +13,7 @@ class ListTableViewController: UITableViewController {
     
     var  propertyLists = [ListType]()
     
-    let nosubunitIndicator = "no_units"
+    let nosubunitIndicator = PropertyKeys.NoUnitCheck.rawValue
     
     let segueIdentifier = "add_to_list"
     

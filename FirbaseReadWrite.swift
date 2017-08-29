@@ -54,6 +54,7 @@ enum PropertyKeys: String {
     case ExtraAmenities = "Extra_Amenities"
     
     case SavedLists = "Saved_Lists"
+    case NoUnitCheck = "no_units"
 
     
 }
