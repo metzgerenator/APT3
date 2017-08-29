@@ -12,6 +12,8 @@ class FilterViewController: UIViewController {
     
     var filterDelegate: FilterCurrentView?
     
+    var currentFilter: Filter?
+    
     @IBAction func doneButton(_ sender: UIButton) {
         
         filterMainView()
@@ -56,6 +58,15 @@ class FilterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let filterCheck = currentFilter {
+            
+            byListOutlit.isOn = filterCheck.sortByList
+            lowToHighOutlet.isOn = filterCheck.lowToHigh
+            highToLowOutlet.isOn = filterCheck.highToLow
+            
+        }
+        
 
     }
 

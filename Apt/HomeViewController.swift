@@ -134,24 +134,37 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let _ = currentFilter {
+        if let filterCheck = currentFilter {
             
-            let currentList = propertyLists[section]
-            return currentList.assignedUnits.count 
-
+            switch filterCheck.sortByList {
+            case true:
+                let currentList = propertyLists[section]
+                return currentList.assignedUnits.count
+                
+            case false:
+                return properties.count
+    
+            }
         } else {
             return properties.count
+            
         }
-        
-   
     }
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
  
-        if let _ = currentFilter {
-            return propertyLists[section].listName
-    
+        if let filterCheck = currentFilter {
+
+            switch filterCheck.sortByList {
+            case true:
+                return propertyLists[section].listName
+                
+            case false:
+                return nil
+                
+            }
+
         } else {
             return nil
         }
@@ -160,7 +173,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     //fix this for slection under filter
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            //fix thsi
+            //fix this
          let propertyKey = properties[indexPath.row]
 
         self.performSegue(withIdentifier: "propertyDetail", sender: propertyKey)
@@ -175,20 +188,38 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.delegate = self
         
-        if let _ = currentFilter {
-            let currentList = propertyLists[indexPath.section]
-            let currentUnitID = currentList.assignedUnits[indexPath.row]
-            let unit = properties.filter{$0.itemKey == currentUnitID}[0]
-         
+        if let filterCheck = currentFilter {
             
-            if let unitKey = unit.itemKey {
-                let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
-                cell.changeButton(isFavorite: unitSaved)
+            switch filterCheck.sortByList {
+            case true :
+                let currentList = propertyLists[indexPath.section]
+                let currentUnitID = currentList.assignedUnits[indexPath.row]
+                let unit = properties.filter{$0.itemKey == currentUnitID}[0]
                 
+                
+                if let unitKey = unit.itemKey {
+                    let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
+                    cell.changeButton(isFavorite: unitSaved)
+                    
+                }
+                
+                cell.configureCell(unit: unit)
+                return cell
+            case false:
+                let unit = properties[indexPath.row]
+                
+                if let unitKey = unit.itemKey {
+                    let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
+                    cell.changeButton(isFavorite: unitSaved)
+                    
+                }
+                cell.configureCell(unit: unit)
+                
+                return cell
             }
             
-            cell.configureCell(unit: unit)
-            return cell
+            
+           
             
         } else {
             
@@ -245,6 +276,7 @@ extension HomeViewController {
             
             guard let vc = segue.destination as? FilterViewController else {return }
             vc.filterDelegate = self
+            vc.currentFilter = currentFilter
             
             
         }
@@ -299,14 +331,8 @@ extension HomeViewController: likeButtonDelegate {
 extension HomeViewController: FilterCurrentView {
     
     func filterHomeView(CurrentFilter: Filter) {
-        
-        if CurrentFilter.sortByList == false {
-            
-            self.currentFilter = nil
-        } else {
-            self.currentFilter = CurrentFilter
-        }
-
+       
+        self.currentFilter = CurrentFilter
         tableView.reloadData()
         
     }
