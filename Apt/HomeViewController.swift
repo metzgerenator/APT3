@@ -66,7 +66,7 @@ class HomeViewController: UIViewController {
             //check and skip lists with no unites
             self.propertyLists = newList.filter{$0.assignedUnits[0] != PropertyKeys.NoUnitCheck.rawValue}
   
-
+            self.tableView.reloadData()
         })
         
     
@@ -188,9 +188,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.delegate = self
         
-        if let filterCheck = currentFilter {
-            
-            switch filterCheck.sortByList {
+        let filterCheck = currentFilter?.sortByList ?? false
+        
+        
+            switch filterCheck {
             case true :
                 let currentList = propertyLists[indexPath.section]
                 let currentUnitID = currentList.assignedUnits[indexPath.row]
@@ -221,20 +222,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             
            
             
-        } else {
-            
-            let unit = properties[indexPath.row]
-            
-            if let unitKey = unit.itemKey {
-                let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
-                cell.changeButton(isFavorite: unitSaved)
-                
-            }
-            cell.configureCell(unit: unit)
-            
-            return cell
-            
-        }
+         
         
     
         
