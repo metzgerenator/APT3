@@ -65,11 +65,7 @@ class HomeViewController: UIViewController {
             guard let newList = currentListTypeArray(dictionary: valueDictionary) else {return}
             //check and skip lists with no unites
             self.propertyLists = newList.filter{$0.assignedUnits[0] != PropertyKeys.NoUnitCheck.rawValue}
-            
-            
-            let filter = Filter(highToLow: false, lowToHigh: false, sortByList: true)
-            
-            self.filterHomeView(CurrentFilter: filter)
+  
 
         })
         
@@ -183,9 +179,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let currentList = propertyLists[indexPath.section]
             let currentUnitID = currentList.assignedUnits[indexPath.row]
             let unit = properties.filter{$0.itemKey == currentUnitID}[0]
-            
-          
-            // check for blank
+         
             
             if let unitKey = unit.itemKey {
                 let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
@@ -245,6 +239,15 @@ extension HomeViewController {
          
             
         }
+        
+        
+        if segue.identifier == "Filter" {
+            
+            guard let vc = segue.destination as? FilterViewController else {return }
+            vc.filterDelegate = self
+            
+            
+        }
     }
     
     
@@ -293,10 +296,9 @@ extension HomeViewController: likeButtonDelegate {
 
 //MARK: filtered 
 
-extension HomeViewController {
+extension HomeViewController: FilterCurrentView {
     
     func filterHomeView(CurrentFilter: Filter) {
-        //filterbySections
         self.currentFilter = CurrentFilter
         tableView.reloadData()
   

@@ -11,6 +11,8 @@ import Firebase
 
 class ListTableViewController: UITableViewController {
     
+    
+    
     var  propertyLists = [ListType]()
     
     let nosubunitIndicator = PropertyKeys.NoUnitCheck.rawValue

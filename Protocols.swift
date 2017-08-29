@@ -58,6 +58,13 @@ protocol passListToListView {
 
 
 
+protocol FilterCurrentView {
+   
+     func filterHomeView(CurrentFilter: Filter)
+}
+
+
+
 
 
 

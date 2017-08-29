@@ -10,8 +10,11 @@ import UIKit
 
 class FilterViewController: UIViewController {
     
+    var filterDelegate: FilterCurrentView?
     
     @IBAction func doneButton(_ sender: UIButton) {
+        
+        filterMainView()
         
         self.dismiss(animated: true, completion: nil)
         
@@ -54,7 +57,6 @@ class FilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,3 +68,23 @@ class FilterViewController: UIViewController {
  
 
 }
+
+
+//MARK: Convience Methods
+
+extension FilterViewController {
+    
+    
+    func filterMainView() {
+        
+        let filter = Filter(highToLow: highToLowOutlet.isOn, lowToHigh: lowToHighOutlet.isOn, sortByList: byListOutlit.isOn)
+        filterDelegate?.filterHomeView(CurrentFilter: filter)
+        
+    }
+
+}
+
+
+
+
+
