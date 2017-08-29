@@ -299,12 +299,18 @@ extension HomeViewController: likeButtonDelegate {
 extension HomeViewController: FilterCurrentView {
     
     func filterHomeView(CurrentFilter: Filter) {
-        self.currentFilter = CurrentFilter
+        
+        if CurrentFilter.sortByList == false {
+            
+            self.currentFilter = nil
+        } else {
+            self.currentFilter = CurrentFilter
+        }
+
         tableView.reloadData()
-  
+        
     }
-    
-    
+
 }
 
 
