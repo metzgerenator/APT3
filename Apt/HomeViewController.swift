@@ -51,7 +51,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // set automatic dimension for table view 
         
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -95,7 +95,8 @@ class HomeViewController: UIViewController {
        
 
     }
-
+    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -219,15 +220,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 return cell
             }
-            
-            
-           
-            
-         
-        
-    
-        
-        
+
         
     }
     

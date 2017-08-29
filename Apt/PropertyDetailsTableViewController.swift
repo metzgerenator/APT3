@@ -95,6 +95,17 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     let washingMachines = ["None", "In Unit", "In Building", "Hookups"]
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.layer.zPosition = 0
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
