@@ -175,10 +175,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     //fix this for slection under filter
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            //fix this
-         let propertyKey = properties[indexPath.row]
+        
+        var unit: Apartment
+        let filterCheck = currentFilter?.sortByList ?? false
+        
+        switch filterCheck {
+        case true :
+            let currentList = propertyLists[indexPath.section]
+            let currentUnitID = currentList.assignedUnits[indexPath.row]
+            unit = properties.filter{$0.itemKey == currentUnitID}[0]
+   
+            
+        case false:
+            unit = properties[indexPath.row]
+            
+            
+        }
 
-        self.performSegue(withIdentifier: "propertyDetail", sender: propertyKey)
+        self.performSegue(withIdentifier: "propertyDetail", sender: unit)
         
     }
     
@@ -191,15 +205,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         
         let filterCheck = currentFilter?.sortByList ?? false
-        
-        
+
             switch filterCheck {
             case true :
                 let currentList = propertyLists[indexPath.section]
                 let currentUnitID = currentList.assignedUnits[indexPath.row]
                 let unit = properties.filter{$0.itemKey == currentUnitID}[0]
-                
-                
+ 
                 if let unitKey = unit.itemKey {
                     let unitSaved = propertyFavorites.contains{$0.propertyKey == unitKey}
                     cell.changeButton(isFavorite: unitSaved)
