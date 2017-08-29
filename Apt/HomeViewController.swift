@@ -65,6 +65,8 @@ class HomeViewController: UIViewController {
             guard let newList = currentListTypeArray(dictionary: valueDictionary) else {return}
             //check and skip lists with no unites
             self.propertyLists = newList.filter{$0.assignedUnits[0] != PropertyKeys.NoUnitCheck.rawValue}
+            
+            
             let filter = Filter(highToLow: false, lowToHigh: false, sortByList: true)
             
             self.filterHomeView(CurrentFilter: filter)

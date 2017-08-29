@@ -1135,7 +1135,7 @@
         <!--Home-->
         <scene sceneID="uSg-NW-ZbF">
             <objects>
-                <viewController id="Ac7-tK-Uyr" customClass="HomeViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Ac7-tK-Uyr" customClass="HomeViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v4h-dE-tmg"/>
                         <viewControllerLayoutGuide type="bottom" id="Td8-ER-WIk"/>

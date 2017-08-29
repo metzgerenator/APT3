@@ -54,6 +54,8 @@ protocol passListToListView {
     func addToList(for list: ListType)
 }
 
+//filter protocol   
+
 
 
 
