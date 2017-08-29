@@ -1240,7 +1240,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Td8-ER-WIk" firstAttribute="top" secondItem="Xhp-zL-veT" secondAttribute="bottom" id="028-9U-yYs"/>
                             <constraint firstItem="Xhp-zL-veT" firstAttribute="top" secondItem="v4h-dE-tmg" secondAttribute="bottom" id="7mY-D6-2us"/>
@@ -1434,7 +1434,7 @@
         <!--Filter View Controller-->
         <scene sceneID="Cf4-nr-9I0">
             <objects>
-                <viewController id="G0Q-ZT-shs" customClass="FilterViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="G0Q-ZT-shs" customClass="FilterViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7WM-cF-Dtq"/>
                         <viewControllerLayoutGuide type="bottom" id="dYH-Z2-yrm"/>
@@ -1443,77 +1443,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RqB-yW-GUG">
-                                <rect key="frame" x="16" y="54" width="343" height="109"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fw-gg-YLL">
+                                <rect key="frame" x="16" y="66" width="343" height="138"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBM-pZ-EiW">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRl-MW-zqr">
+                                        <rect key="frame" x="8" y="0.0" width="37" height="30"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneButton:" destination="G0Q-ZT-shs" eventType="touchUpInside" id="42B-0j-rBH"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RqB-yW-GUG">
+                                        <rect key="frame" x="0.0" y="29" width="333" height="109"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price low to high " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AG-lP-R0H">
-                                                <rect key="frame" x="0.0" y="0.0" width="294" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zbe-5p-8db">
-                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="lowtoHighAction:" destination="G0Q-ZT-shs" eventType="valueChanged" id="9Ts-FX-1V8"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYz-py-bO5">
-                                        <rect key="frame" x="0.0" y="39" width="343" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price high to low " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bju-wK-BUW">
-                                                <rect key="frame" x="0.0" y="0.0" width="294" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Uga-q9-yoL">
-                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="highToLowAction:" destination="G0Q-ZT-shs" eventType="valueChanged" id="cBj-bc-CqU"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-YS-ScX">
-                                        <rect key="frame" x="0.0" y="78" width="343" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By List " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAx-aH-l0f">
-                                                <rect key="frame" x="0.0" y="0.0" width="294" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xny-As-CkB">
-                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="byListAction:" destination="G0Q-ZT-shs" eventType="valueChanged" id="5F0-Wb-Ynr"/>
-                                                </connections>
-                                            </switch>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBM-pZ-EiW">
+                                                <rect key="frame" x="0.0" y="0.0" width="333" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price low to high " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AG-lP-R0H">
+                                                        <rect key="frame" x="0.0" y="0.0" width="284" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zbe-5p-8db">
+                                                        <rect key="frame" x="284" y="0.0" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="lowtoHighAction:" destination="G0Q-ZT-shs" eventType="valueChanged" id="9Ts-FX-1V8"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYz-py-bO5">
+                                                <rect key="frame" x="0.0" y="39" width="333" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price high to low " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bju-wK-BUW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="284" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Uga-q9-yoL">
+                                                        <rect key="frame" x="284" y="0.0" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="highToLowAction:" destination="G0Q-ZT-shs" eventType="valueChanged" id="cBj-bc-CqU"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vIj-YS-ScX">
+                                                <rect key="frame" x="0.0" y="78" width="333" height="31"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By List " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAx-aH-l0f">
+                                                        <rect key="frame" x="0.0" y="0.0" width="284" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Xny-As-CkB">
+                                                        <rect key="frame" x="284" y="0.0" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="byListAction:" destination="G0Q-ZT-shs" eventType="valueChanged" id="5F0-Wb-Ynr"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRl-MW-zqr">
-                                <rect key="frame" x="21" y="16" width="37" height="30"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="doneButton:" destination="G0Q-ZT-shs" eventType="touchUpInside" id="42B-0j-rBH"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="RqB-yW-GUG" firstAttribute="top" secondItem="7fw-gg-YLL" secondAttribute="top" constant="29" id="G2Q-Bu-M1w"/>
+                                    <constraint firstItem="nRl-MW-zqr" firstAttribute="leading" secondItem="7fw-gg-YLL" secondAttribute="leading" constant="8" id="PZj-A1-I3R"/>
+                                    <constraint firstItem="nRl-MW-zqr" firstAttribute="top" secondItem="7fw-gg-YLL" secondAttribute="top" id="Vos-K4-CrO"/>
+                                    <constraint firstAttribute="bottom" secondItem="RqB-yW-GUG" secondAttribute="bottom" id="boh-9d-sZn"/>
+                                    <constraint firstItem="RqB-yW-GUG" firstAttribute="leading" secondItem="7fw-gg-YLL" secondAttribute="leading" id="bxZ-wE-ivz"/>
+                                    <constraint firstAttribute="trailing" secondItem="RqB-yW-GUG" secondAttribute="trailing" constant="10" id="nbd-Dm-Cz3"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="0.30148909395973156" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RqB-yW-GUG" firstAttribute="top" secondItem="7WM-cF-Dtq" secondAttribute="bottom" constant="34" id="4eN-aL-vE4"/>
-                            <constraint firstItem="nRl-MW-zqr" firstAttribute="leading" secondItem="yR7-Hx-l66" secondAttribute="leadingMargin" constant="5" id="IhM-Dk-chX"/>
-                            <constraint firstItem="RqB-yW-GUG" firstAttribute="leading" secondItem="yR7-Hx-l66" secondAttribute="leadingMargin" id="c5I-ed-qSu"/>
-                            <constraint firstItem="nRl-MW-zqr" firstAttribute="top" secondItem="yR7-Hx-l66" secondAttribute="topMargin" constant="16" id="meD-QI-DTO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RqB-yW-GUG" secondAttribute="trailing" id="ube-rc-duj"/>
+                            <constraint firstItem="7fw-gg-YLL" firstAttribute="top" secondItem="7WM-cF-Dtq" secondAttribute="bottom" constant="46" id="4Q0-j6-waC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7fw-gg-YLL" secondAttribute="trailing" id="6b5-67-ndL"/>
+                            <constraint firstItem="7fw-gg-YLL" firstAttribute="leading" secondItem="yR7-Hx-l66" secondAttribute="leadingMargin" id="7Kk-iT-3bq"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1524,7 +1536,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3XZ-Qg-LBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2294" y="2628"/>
+            <point key="canvasLocation" x="2293.5999999999999" y="2627.136431784108"/>
         </scene>
         <!--Units For List Table View Controller-->
         <scene sceneID="z9w-kG-h9X">

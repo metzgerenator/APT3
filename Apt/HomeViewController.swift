@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
             guard let newList = currentListTypeArray(dictionary: valueDictionary) else {return}
             //check and skip lists with no unites
             self.propertyLists = newList.filter{$0.assignedUnits[0] != PropertyKeys.NoUnitCheck.rawValue}
-  
+           
             self.tableView.reloadData()
         })
         
@@ -77,6 +77,7 @@ class HomeViewController: UIViewController {
             let arrayOfUnites = ApartmentArray.init(dictionary: valueDictionary)
             
             self.properties = arrayOfUnites.apartments
+ 
             self.tableView.reloadData()
             
         })
@@ -321,6 +322,58 @@ extension HomeViewController: FilterCurrentView {
     func filterHomeView(CurrentFilter: Filter) {
        
         self.currentFilter = CurrentFilter
+        
+        let orderList = (CurrentFilter.highToLow, CurrentFilter.lowToHigh)
+        switch orderList {
+        case (true, false):
+
+           properties = properties.sorted(by: { (Apartment1, Apartment2) -> Bool in
+                
+                if let numb1 = Apartment1.price, let numb2 = Apartment2.price {
+                    
+                    if Int(numb1)! > Int(numb2)! {
+                        return true
+                    } else {
+                        return false
+                    }
+                    
+                } else {
+                    
+                    return false
+                    
+                }
+
+            })
+  
+        case (false, true):
+            properties = properties.sorted(by: { (Apartment1, Apartment2) -> Bool in
+                
+                if let numb1 = Apartment1.price, let numb2 = Apartment2.price {
+                    
+                    if Int(numb1)! < Int(numb2)! {
+                        return true
+                    } else {
+                        return false
+                    }
+                    
+                } else {
+                    
+                    return false
+                    
+                }
+                
+            })
+            
+            
+        case (false, false):
+            
+            tableView.reloadData()
+            
+        default:
+             break
+        }
+        
+        
         tableView.reloadData()
         
     }
