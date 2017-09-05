@@ -20,6 +20,7 @@ class MainMapViewController: UIViewController {
     
     
     var unitsForMap = [Apartment]()
+    var annotations = [PropertyView]()
     
     
     var propertyEndPoint: DatabaseReference {
@@ -45,6 +46,7 @@ class MainMapViewController: UIViewController {
             
             self.unitsForMap = ApartmentArray.init(dictionary: valueDictionary).apartments
             self.mapView.removeAnnotations(self.mapView.annotations)
+            self.annotations.removeAll()
             self.addPins()
             self.centerOnMap()
             
@@ -83,10 +85,13 @@ extension MainMapViewController: MKMapViewDelegate {
     
     func addPins() {
         
+        
         for unit in self.unitsForMap {
             
             if let logitude = unit.location?.longitude, let latitude = unit.location?.latitude {
                 let unitToAdd = PropertyView.init(unit: unit, latitude: latitude, longitude: logitude)
+                
+                self.annotations.append(unitToAdd)
                 
                 mapView.addAnnotation(unitToAdd)
                
@@ -169,11 +174,14 @@ extension MainMapViewController {
     
     
     func centerOnMap() {
-        let unit = unitsForMap[0]
-        guard let location = unit.location else {return}
         
-        let initialLocation = CLLocation(latitude: location.latitude , longitude: location.longitude)
-        centerMapOnLocation(location: initialLocation)
+        
+        if !annotations.isEmpty {
+            
+            
+            mapView.showAnnotations(annotations, animated: true)
+        }
+
     }
     
     
