@@ -1155,45 +1155,40 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rbC-8Q-qLq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="CpT-l8-FBF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="146.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="146.5" id="AuQ-JF-z2r"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nJ9-YA-QlY" userLabel="button and label">
+                                                    <rect key="frame" x="8" y="146.5" width="359" height="37.5"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="CpT-l8-FBF">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="154.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="154.5" id="XcV-fd-V6c"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nJ9-YA-QlY" userLabel="button and label">
-                                                            <rect key="frame" x="0.0" y="154.5" width="375" height="37.5"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="kI0-Lt-kqn">
+                                                            <rect key="frame" x="0.0" y="0.0" width="327" height="37.5"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="kI0-Lt-kqn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="37.5"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Cozy apartment in the suburbs " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVW-Gs-9G9">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="241" height="20.5"/>
-                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <color key="textColor" red="0.15319481492042542" green="0.52981960773468018" blue="0.97835761308670044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ditmas Park, Brooklyn " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ll-wU-hz8">
-                                                                            <rect key="frame" x="0.0" y="20.5" width="146" height="17"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                            <color key="textColor" red="0.66267138719558716" green="0.66278749704360962" blue="0.66266411542892456" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </stackView>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBJ-5r-guW">
-                                                                    <rect key="frame" x="353" y="0.0" width="22" height="37.5"/>
-                                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <connections>
-                                                                        <action selector="apartmentLikeButton:" destination="u7b-h3-8Y5" eventType="touchUpInside" id="8qW-9q-JCZ"/>
-                                                                    </connections>
-                                                                </button>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Cozy apartment in the suburbs " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVW-Gs-9G9">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="241" height="20.5"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.15319481492042542" green="0.52981960773468018" blue="0.97835761308670044" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ditmas Park, Brooklyn " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ll-wU-hz8">
+                                                                    <rect key="frame" x="0.0" y="20.5" width="146" height="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" red="0.66267138719558716" green="0.66278749704360962" blue="0.66266411542892456" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                         </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBJ-5r-guW">
+                                                            <rect key="frame" x="337" y="0.0" width="22" height="37.5"/>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <connections>
+                                                                <action selector="apartmentLikeButton:" destination="u7b-h3-8Y5" eventType="touchUpInside" id="8qW-9q-JCZ"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1I-er-lGq" customClass="GradientView" customModule="Apt" customModuleProvider="target">
@@ -1216,12 +1211,15 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="rbC-8Q-qLq" firstAttribute="top" secondItem="cth-DG-ALY" secondAttribute="top" id="5qO-eO-FRE"/>
+                                                <constraint firstItem="CpT-l8-FBF" firstAttribute="top" secondItem="cth-DG-ALY" secondAttribute="top" id="2VU-Ni-PSO"/>
+                                                <constraint firstItem="nJ9-YA-QlY" firstAttribute="leading" secondItem="cth-DG-ALY" secondAttribute="leadingMargin" id="IGT-60-c4h"/>
+                                                <constraint firstAttribute="trailing" secondItem="CpT-l8-FBF" secondAttribute="trailing" id="O5c-4H-ZyO"/>
                                                 <constraint firstItem="L1I-er-lGq" firstAttribute="top" secondItem="cth-DG-ALY" secondAttribute="topMargin" constant="81" id="P13-rH-z34"/>
-                                                <constraint firstItem="rbC-8Q-qLq" firstAttribute="leading" secondItem="cth-DG-ALY" secondAttribute="leading" id="Xk9-b0-Yie"/>
-                                                <constraint firstAttribute="trailing" secondItem="rbC-8Q-qLq" secondAttribute="trailing" id="XzQ-tG-4gd"/>
+                                                <constraint firstItem="nJ9-YA-QlY" firstAttribute="top" secondItem="CpT-l8-FBF" secondAttribute="bottom" id="Wkp-4D-zzV"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="nJ9-YA-QlY" secondAttribute="bottom" id="ZMB-TS-8IF"/>
+                                                <constraint firstItem="CpT-l8-FBF" firstAttribute="leading" secondItem="cth-DG-ALY" secondAttribute="leading" id="kHO-bF-Jyb"/>
                                                 <constraint firstItem="L1I-er-lGq" firstAttribute="leading" secondItem="cth-DG-ALY" secondAttribute="leadingMargin" constant="10" id="uae-fO-8gf"/>
-                                                <constraint firstAttribute="bottom" secondItem="rbC-8Q-qLq" secondAttribute="bottom" id="vdJ-YI-z5B"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nJ9-YA-QlY" secondAttribute="trailing" id="wtc-4L-Ryu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1781,6 +1779,7 @@
         <image name="Maps - On" width="14" height="18"/>
         <image name="Settings - Off" width="19" height="18"/>
         <image name="Unchecked" width="22" height="22"/>
+        <image name="test" width="4368" height="2912"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qZb-Yo-VaA"/>
