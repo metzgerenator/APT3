@@ -47,9 +47,9 @@ class HomeTableViewCell: UITableViewCell {
     func changeButton(isFavorite: Bool) {
         
         if isFavorite {
-            apartmentName.backgroundColor = UIColor.yellow
+            likeButtonOutlet.setImage(#imageLiteral(resourceName: "Heart - Full"), for: .normal)
         } else {
-            apartmentName.backgroundColor = UIColor.white
+            likeButtonOutlet.setImage(#imageLiteral(resourceName: "Heart - Empty"), for: .normal)
         }
         
     }
