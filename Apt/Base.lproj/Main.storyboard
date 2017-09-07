@@ -1343,7 +1343,7 @@
         <scene sceneID="HRg-xN-Kde">
             <objects>
                 <navigationController title="Home " automaticallyAdjustsScrollViewInsets="NO" id="Zll-Yy-EB2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="HOME" id="h86-Ls-Wa3"/>
+                    <tabBarItem key="tabBarItem" title="Home " image="Home - On" selectedImage="Home - On" id="h86-Ls-Wa3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aff-B9-NDp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1362,7 +1362,7 @@
         <scene sceneID="82f-Vj-zwC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CDS-oi-F1e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="LISTS" id="GQj-PX-Uwb"/>
+                    <tabBarItem key="tabBarItem" title="LISTS" image="Lists - On" selectedImage="Lists - On" id="GQj-PX-Uwb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="us3-4w-WqL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1570,7 +1570,7 @@
         <scene sceneID="5be-Xl-Mlx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lSK-O6-KbE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="MAP" id="NgF-4M-Too"/>
+                    <tabBarItem key="tabBarItem" title="MAP" image="Maps - On" selectedImage="Maps - On" id="NgF-4M-Too"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aDw-Td-avJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1643,7 +1643,7 @@
         <scene sceneID="C7b-2Z-iOe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fYF-Sl-en9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="PROFILE" id="6DY-SA-nrv"/>
+                    <tabBarItem key="tabBarItem" title="PROFILE" image="Settings - Off" selectedImage="Settings - Off" id="6DY-SA-nrv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jmF-lc-kfG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1775,6 +1775,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Home - On" width="19" height="19"/>
+        <image name="Lists - On" width="20" height="18"/>
+        <image name="Maps - On" width="14" height="18"/>
+        <image name="Settings - Off" width="19" height="18"/>
         <image name="Unchecked" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
