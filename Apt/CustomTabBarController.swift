@@ -33,7 +33,7 @@ class CustomTabBar: UITabBarController {
         
         view.addSubview(menuButton)
         
-        menuButton.setImage(UIImage(named: "example"), for: .normal)
+        menuButton.setImage(#imageLiteral(resourceName: "Plus"), for: .normal)
         menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
 
         self.tabBar.barTintColor = UIColor.white

@@ -1249,7 +1249,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="JNC-uB-mvE">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="jwS-Jx-XxJ">
+                        <barButtonItem key="rightBarButtonItem" image="Filter-Button" id="jwS-Jx-XxJ">
                             <connections>
                                 <action selector="filterButton:" destination="Ac7-tK-Uyr" id="Xkr-sR-gos"/>
                             </connections>
@@ -1775,6 +1775,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Filter-Button" width="18" height="20"/>
         <image name="Home - On" width="19" height="19"/>
         <image name="Lists - On" width="20" height="18"/>
         <image name="Maps - On" width="14" height="18"/>
