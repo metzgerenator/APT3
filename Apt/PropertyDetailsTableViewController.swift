@@ -13,6 +13,10 @@ import SwiftyJSON
 
 class PropertyDetailsTableViewController: UITableViewController {
     
+    
+    
+    
+    
     @IBAction func coverPhotoAction(_ sender: UIButton) {
         
         
@@ -36,6 +40,11 @@ class PropertyDetailsTableViewController: UITableViewController {
     
     var extraAmenitiesDelegate: extraAmenitiesDelegate?
     
+    
+    @IBOutlet var currentAddressLabel: UILabel!
+    
+    
+    @IBOutlet var currentRentLabel: UILabel!
     
     @IBOutlet var headerHeightConstraint: NSLayoutConstraint!
   
@@ -110,6 +119,8 @@ class PropertyDetailsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
      coverPhoto.contentMode = .scaleAspectFill
     coverPhoto.clipsToBounds = true
         
@@ -143,6 +154,8 @@ class PropertyDetailsTableViewController: UITableViewController {
         bedRoomSelectionRow.isHidden = true
         bathRoomSelectionRow.isHidden = true
         washerDryerSelectionRow.isHidden = true
+        
+        //Mark: scroll to top here!
         
         tableView.reloadData()
 
@@ -611,8 +624,13 @@ extension PropertyDetailsTableViewController {
         
         if let rentPrice = singleUnite.price, let frequency = singleUnite.RentFrequency {
             
+            currentRentLabel.text = "\(rentPrice), \(frequency)"
+            
             dictionaryToSave.updateValue(rentPrice, forKey: PropertyKeys.RentPrice.rawValue)
             dictionaryToSave.updateValue(frequency, forKey: PropertyKeys.RentFrequency.rawValue)
+            
+        } else {
+            currentRentLabel.text  = "?"
             
         }
         
@@ -652,9 +670,15 @@ extension PropertyDetailsTableViewController {
     
         
         if let address = singleUnite.location {
+            
+            currentAddressLabel.text = address.address
 
             let locationDic =  [PropertyKeys.Address.rawValue : address.address, PropertyKeys.Latitude.rawValue : String(address.latitude), PropertyKeys.Longitude.rawValue : String(address.longitude)]
             dictionaryToSave.updateValue(locationDic, forKey: PropertyKeys.UserLocation.rawValue)
+            
+        } else {
+            
+            currentAddressLabel.text = "?"
             
         }
         
