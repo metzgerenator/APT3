@@ -147,13 +147,11 @@ class PropertyDetailsTableViewController: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-        
-        
+
         bedRoomSelectionRow.isHidden = true
         bathRoomSelectionRow.isHidden = true
         washerDryerSelectionRow.isHidden = true
         
-        //Mark: scroll to top here!
         
         tableView.reloadData()
 
@@ -539,11 +537,11 @@ extension PropertyDetailsTableViewController {
             let coverPhotoDic = [caption : bacgroundURL]
             
             self.dictionaryToSave.updateValue(coverPhotoDic, forKey: PropertyKeys.CoverPhoto.rawValue)
-            
-            
+           
+
         }
 
-        
+         tableView.setContentOffset(CGPoint.zero, animated: true)
     }
     
     
@@ -581,7 +579,6 @@ extension PropertyDetailsTableViewController {
             let placeholderImage = #imageLiteral(resourceName: "test")
             
             coverPhoto.sd_setImage(with: url, placeholderImage: placeholderImage)
-            //coverPhoto.clipsToBounds = true
             
         }
         
