@@ -238,6 +238,11 @@
                                 <action selector="cancelAction:" destination="yhF-HG-gPn" id="qRf-3u-OdZ"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="p7n-Gv-VEJ">
+                            <connections>
+                                <action selector="nextButton:" destination="yhF-HG-gPn" id="hi3-qU-fL1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="propertyName" destination="Lc4-L5-w9O" id="H9P-Vx-Aw3"/>
@@ -1757,7 +1762,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cZF-vK-o2y">
-                                <rect key="frame" x="0.0" y="108" width="375" height="843"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="892"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="lZ0-7E-W76">
@@ -1808,7 +1813,7 @@
         <image name="test" width="4368" height="2912"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qZb-Yo-VaA"/>
+        <segue reference="fLM-sD-Bo3"/>
         <segue reference="qSC-MX-tZX"/>
     </inferredMetricsTieBreakers>
 </document>

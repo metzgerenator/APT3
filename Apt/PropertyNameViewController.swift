@@ -11,16 +11,27 @@ import UIKit
 class PropertyNameViewController: UIViewController {
     
     
+    @IBAction func nextButton(_ sender: UIBarButtonItem) {
+        nextAction()
+        
+    }
 
     @IBOutlet var propertyName: UITextField!
     
     
     @IBAction func propertyNameDone(_ sender: Any) {
         
+        nextAction()
+        
+    }
+    
+    
+    func nextAction() {
+        
         guard let name = propertyName.text else { return }
         
         if name.characters.count > 0 {
-      
+            
             
             self.performSegue(withIdentifier: "property_details", sender: name)
             
@@ -29,7 +40,7 @@ class PropertyNameViewController: UIViewController {
             self.standardAlert(title: "Fill in Fields", message: "Please fill in Property Name ")
         }
         
-     
+        
         
     }
     
@@ -47,7 +58,6 @@ class PropertyNameViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         
-
 
         // Do any additional setup after loading the view.
     }
