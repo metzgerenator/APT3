@@ -120,7 +120,6 @@ class PropertyDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        
      coverPhoto.contentMode = .scaleAspectFill
     coverPhoto.clipsToBounds = true
         
@@ -128,7 +127,6 @@ class PropertyDetailsTableViewController: UITableViewController {
             apartmentNameOutlet.text = unitName
         }
         
-        self.navigationController?.title = "ADD DETAILS"
 
         if let url = propertyID {
             

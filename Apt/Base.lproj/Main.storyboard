@@ -470,7 +470,7 @@
             </objects>
             <point key="canvasLocation" x="7636" y="229.83508245877064"/>
         </scene>
-        <!--Property Details Table View Controller-->
+        <!--Add Details-->
         <scene sceneID="z4U-wM-bhn">
             <objects>
                 <tableViewController storyboardIdentifier="propertyDetails" id="A8z-Fx-6oj" customClass="PropertyDetailsTableViewController" customModule="Apt" customModuleProvider="target" sceneMemberID="viewController">
@@ -547,7 +547,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="lS2-Tb-xZR">
-                                        <rect key="frame" x="0.0" y="283" width="376" height="44"/>
+                                        <rect key="frame" x="0.0" y="282.5" width="375.5" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lS2-Tb-xZR" id="26e-iP-wAp">
                                             <rect key="frame" x="0.0" y="0.0" width="342.5" height="43.5"/>
@@ -871,6 +871,7 @@
                             <outlet property="delegate" destination="A8z-Fx-6oj" id="KWt-jc-aMf"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Add Details" id="3au-Cb-DHf"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375.5" height="1000"/>
                     <connections>
@@ -1219,8 +1220,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1I-er-lGq" customClass="GradientView" customModule="Apt" customModuleProvider="target">
                                                     <rect key="frame" x="18" y="89" width="131" height="41"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sK-H5-8BV">
-                                                            <rect key="frame" x="0.0" y="8" width="83.5" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sK-H5-8BV">
+                                                            <rect key="frame" x="0.0" y="8" width="13" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
