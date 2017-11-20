@@ -14,6 +14,7 @@
 		273686731F0E96DE002E9F93 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273686721F0E96DE002E9F93 /* Protocols.swift */; };
 		274108DE1F06BCEC00B60BBA /* CurrentUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274108DD1F06BCEC00B60BBA /* CurrentUserViewController.swift */; };
 		2741A8041F54696F00DBE22F /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2741A8031F54696F00DBE22F /* FilterViewController.swift */; };
+		274C999C1FC2F0E300647C9F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274C999B1FC2F0E300647C9F /* ProfileViewController.swift */; };
 		27562C111F04432600C6FFFC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27562C0D1F04432600C6FFFC /* Bolts.framework */; };
 		275D265F1F1F9C49009B5AD4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D265E1F1F9C49009B5AD4 /* HomeViewController.swift */; };
 		275D26611F1F9C6B009B5AD4 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275D26601F1F9C6B009B5AD4 /* HomeTableViewCell.swift */; };
@@ -73,6 +74,7 @@
 		273686721F0E96DE002E9F93 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		274108DD1F06BCEC00B60BBA /* CurrentUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserViewController.swift; sourceTree = "<group>"; };
 		2741A8031F54696F00DBE22F /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		274C999B1FC2F0E300647C9F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		27562C0D1F04432600C6FFFC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		275D265E1F1F9C49009B5AD4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		275D26601F1F9C6B009B5AD4 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -152,6 +154,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		274C999A1FC2F0CA00647C9F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				274C999B1FC2F0E300647C9F /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		275D265D1F1F9C2C009B5AD4 /* Home tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +219,7 @@
 		279745861F03E9FF00ED5D34 = {
 			isa = PBXGroup;
 			children = (
+				274C999A1FC2F0CA00647C9F /* Profile */,
 				279745CF1F04284900ED5D34 /* Resources */,
 				279745911F03E9FF00ED5D34 /* Apt */,
 				279745A61F03E9FF00ED5D34 /* AptTests */,
@@ -525,6 +536,7 @@
 				27655A621F26ADE8007406C1 /* Annotations.swift in Sources */,
 				275D265F1F1F9C49009B5AD4 /* HomeViewController.swift in Sources */,
 				27693E571F1408D2005D891F /* GradientView.swift in Sources */,
+				274C999C1FC2F0E300647C9F /* ProfileViewController.swift in Sources */,
 				27F5422E1F462ECF00A2840F /* listType.swift in Sources */,
 				27F5422A1F4610FB00A2840F /* ListTableViewController.swift in Sources */,
 				271731881F18A9AF0044BA27 /* PropertyPhotoStructures.swift in Sources */,
